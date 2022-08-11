@@ -1,0 +1,175 @@
+DROP database PROJECT3;
+CREATE database PROJECT3;
+USE PROJECT3;
+
+CREATE TABLE user (
+  user_id varchar(255) NOT NULL,
+  user_pw varchar(255) NOT NULL,
+  user_phone varchar(255) NOT NULL,
+  user_email varchar(255) NOT NULL,
+  user_adress varchar(255) NOT NULL,
+  CONSTRAINT PRIMARY KEY (user_id),
+  CONSTRAINT UNIQUE KEY (user_phone),
+  CONSTRAINT UNIQUE KEY (user_email)
+);
+INSERT INTO USER(user_id,user_pw,user_phone,user_email,user_adress)
+values ('user1','u1234','010-0000-0001','user1@gamil.com','서울시 마포구 양화로 122'),
+('user2','u1234','010-0000-0002','user2@gamil.com','서울시 마포구 양화로 122'),
+('user3','u1234','010-0000-0003','user3@gamil.com','서울시 마포구 양화로 122'),
+('user4','u1234','010-0000-0004','user4@gamil.com','서울시 마포구 양화로 122'),
+('user5','u1234','010-0000-0005','user5@gamil.com','서울시 마포구 양화로 122'),
+('user6','u1234','010-0000-0006','user6@gamil.com','서울시 마포구 양화로 122'),
+('user7','u1234','010-0000-0007','user7@gamil.com','서울시 마포구 양화로 122'),
+('user8','u1234','010-0000-0008','user8@gamil.com','서울시 마포구 양화로 122'),
+('user9','u1234','010-0000-0009','user9@gamil.com','서울시 마포구 양화로 122'),
+('user10','u1234','010-0000-0010','user10@gamil.com','서울시 마포구 양화로 122');
+
+CREATE TABLE category (
+  category_id varchar(255) NOT NULL,
+  category_section varchar(255) NOT NULL,
+  category_name varchar(255) NOT NULL,
+  category_no int NOT NULL,
+  category_code int NOT NULL,
+  CONSTRAINT PRIMARY KEY (category_no),
+  FOREIGN KEY(category_code) REFERENCES CATEGORY(category_no)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+INSERT INTO CATEGORY(category_id,category_section,category_name,category_no,category_code)
+values ('노트북', '제조사','ASUS', '101001','101000'),    
+('노트북', '제조사','HP', '101003','101000'),
+('노트북', '제조사','LG', '101005','101000'),
+('노트북', 'CPU종류','AMD라이젠9-5', '102060','102000'),
+('노트북', 'CPU종류','인텔코어i9-12', '102061','102000'),
+('노트북', 'CPU종류','아톰', '102062','102000'),
+('데스크탑', '그래픽칩셋','지포스 RTX 3070 Ti', '204006','204000'),
+('데스크탑', '그래픽칩셋','라데온 RX 6950 XT', '204006','204000'),
+('데스크탑', '그래픽칩셋','UHD 그래픽스 770', '204006','204000'),
+('데스크탑', '운영체제','윈도우11', '205011','205000'),
+('데스크탑', '운영체제','윈도우10', '205012','205000'),
+('데스크탑', '운영체제','freeDOS', '205013','205000');
+
+CREATE TABLE image (
+  prod_img_id varchar(255) NOT NULL,
+  review_img_id varchar(255) NOT NULL,
+  img_path varchar(255) NOT NULL,
+  CONSTRAINT PRIMARY KEY (prod_img_id)
+);
+
+CREATE TABLE notebook (
+  division_code int NOT NULL,
+  notebook_name varchar(255) NOT NULL,
+  maker varchar(255) DEFAULT NULL,
+  main_cpu varchar(255) DEFAULT NULL,
+  screen_size float DEFAULT NULL,
+  memory_size varchar(255) DEFAULT NULL,
+  storage_size varchar(255) DEFAULT NULL,
+  weight float DEFAULT NULL,
+  CONSTRAINT PRIMARY KEY (division_code)
+);
+INSERT INTO NOTEBOOK(division_code,notebook_name,maker,main_cpu,screen_size,memory_size,storage_size,weight)
+values ('001','ASUS TUF Gaming A15 FA507RM-R6725','ASUS','AMD라이젠9-5','15.6','16GB','512GB','1.9'),
+('002','ASUS 젠북 14X OLED UM5401QA-KN030','ASUS','AMD라이젠9-4','14.0','16GB','512GB','1.4'),
+('003','HP 빅터스 15-fa0051TX ','HP','인텔코어i5-12','15.6','8GB','256GB','2.29'),
+('004','HP Nero 15s-eq3043AU ','HP','AMD라이젠5-4','15.6','8GB','256GB','1.69'),
+('005','LG전자 2022 울트라PC 15UD40Q-GX30K WIN10','LG','AMD라이젠3-4','15.6','8GB','256GB','1.75'),
+('006', LG전자 2022 그램360 16TD90Q-GX56K ','LG','인텔코어i5-12','15.6','16GB','256GB','1.48');
+
+CREATE TABLE seller (
+  seller_id varchar(255) NOT NULL,
+  seller_name varchar(255) NOT NULL,
+  seller_phone varchar(255) NOT NULL,
+  seller_loc varchar(255) NOT NULL,
+  CONSTRAINT PRIMARY KEY (seller_id)
+);
+INSERT INTO SELLER(seller_id,seller_name,seller_phone,seller_loc)
+values ('seller1','LG전자','02-3777-1114','서울시 영등포구 여의대로 128'),
+('seller2','삼성전자','02-2255-0114','경기도 수원시 영통구 삼성로 129('),
+('seller3','ASUSKorea','02-1566-6868','서울시 용산구 백범로90길 90'),
+('seller4','HPKorea','02-780-6200','서울시 영등포구 의사당대로 83'),
+('seller5','APPLE','02-6712-6770','서울시 강남구 영동대로 517');
+
+CREATE TABLE shipping (
+  shipping_id varchar(255) NOT NULL,
+  shipping_name varchar(255) NOT NULL,
+  shipping_phone varchar(255) NOT NULL,
+  shipping_fee int NOT NULL DEFAULT 0,
+  CONSTRAINT PRIMARY KEY (shipping_id)
+);
+INSERT INTO SELLER(shipping_id,shipping_name,shipping_phone,shipping_fee)
+values ('shipping1','CJ대한통운','1588-1255','3000'),
+('shipping2','롯데글로벌로지스','1588-2121','3000'),
+('shipping3','한진택배','1588-0011','3000'),
+('shipping4','우체국택배','1588-1300','3000'),
+('shipping5','로젠택배','1588-9988','3000');
+
+CREATE TABLE product (
+  prod_id varchar(255) NOT NULL,
+  prod_name varchar(255) NOT NULL,
+  prod_price int NOT NULL DEFAULT 0,
+  prod_stock varchar(255) NOT NULL DEFAULT 0,
+  category_no int NOT NULL,
+  prod_img_id varchar(255) NOT NULL,
+  division_code int NOT NULL,
+  good int DEFAULT NULL DEFAULT 0,
+  seller_id varchar(255) NOT NULL,
+  shipping_id varchar(255) NOT NULL,
+  CONSTRAINT PRIMARY KEY (prod_id),
+  FOREIGN KEY(category_no) REFERENCES CATEGORY(category_no)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(prod_img_id) REFERENCES IMAGE(prod_img_id)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(division_code) REFERENCES NOTEBOOK(division_code)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(seller_id) REFERENCES SELLER(seller_id)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(shipping_id) REFERENCES SHIPPING(shipping_id)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE ordersheet (
+  order_no int NOT NULL,
+  user_id varchar(255) NOT NULL,
+  order_type varchar(255) NOT NULL,
+  order_time datetime DEFAULT CURRENT_TIMESTAMP(),
+  CONSTRAINT PRIMARY KEY (order_no),
+  FOREIGN KEY(user_id) REFERENCES USER(user_id)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+CREATE TABLE orderlist (
+  orderlist_no int NOT NULL,
+  order_no int NOT NULL,
+  prod_id varchar(255) NOT NULL,
+  order_qty int NOT NULL DEFAULT 0,
+  CONSTRAINT PRIMARY KEY (orderlist_no),
+  FOREIGN KEY(order_no) REFERENCES ORDERSHEET(order_no)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(prod_id) REFERENCES PRODUCT(prod_id)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE review (
+  review_no int NOT NULL,
+  prod_id varchar(255) NOT NULL,
+  user_id varchar(255) NOT NULL,
+  review_title varchar(255) NOT NULL,
+  review_content varchar(255) NOT NULL,
+  review_img varchar(255) DEFAULT NULL,
+  review_score int NOT NULL DEFAULT 0,
+  review_time datetime DEFAULT CURRENT_TIMESTAMP(),
+  CONSTRAINT PRIMARY KEY (review_no),
+  FOREIGN KEY(prod_id) REFERENCES PRODUCT(prod_id)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(user_id) REFERENCES USER(user_id)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE basket (
+  basket_no int NOT NULL,
+  user_id varchar(255) NOT NULL,
+  prod_id varchar(255) NOT NULL,
+  CONSTRAINT PRIMARY KEY (basket_no),
+  FOREIGN KEY(user_id) REFERENCES USER(user_id)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(prod_id) REFERENCES PRODUCT(prod_id)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
