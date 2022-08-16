@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>상품 상세 페이지</title>
+</head>
+<style>
+#fixedSection{
+width:100%; border:1px solid black; text-align: center; line-height: 200px;
+}
+#pageBody{
+margin: 50px 300px;
+}
+h1{
+text-align: center;
+}
+#imgHeader{
+display:flex; justify-content: center;
+}
+#imgBox{
+width:500px; border:1px solid black; text-align: center; line-height: 502px;
+}
+#pageBodyDetail{
+width:500px; margin-left: 100px;
+}
+#payDetail{
+float:right;
+}
+#detailSection{
+display:flex; justify-content: space-around; margin-top: 25px;
+
+}
+#prodDetailImg{
+display:flex; justify-content: center;
+}
+#prodDetailImgBox{
+width:800px; height: 1000px; border:1px solid black; text-align: center; line-height: 100px; margin-bottom: 100px;
+}
+#tableStyle{
+display:flex; justify-content: center;
+}
+#detailLabel{
+margin:100px;
+}
+#tableRegular {
+margin:25px; width: 100%; border-top:1px solid lightgrey; border-collapse: collapse; text-align: center;
+}
+th{
+background-color: rgb(232,232,232);
+}
+#tableRegular th, #tableRegular td{
+border-bottom:1px solid lightgrey; padding: 10px;
+}
+
+#qnaSection{
+display:flex;
+}
+#colTable{
+margin:25px; padding:100px; width: 100%; border:1px solid lightgrey; border-collapse: collapse; text-align:inherit;
+}
+#colTable{
+border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
+}
+</style>
+<body>
+	<header></header>
+	<div id="fixedSection">
+		<strong>nav 부분 입니다</strong>
+	</div>
+	<div id="pageBody">
+		<h1>제품 상세 페이지 입니다.</h1>
+		<br>
+			<div id="imgHeader">
+				<div id="imgBox">
+					이미지부분
+				</div>
+				<div id="pageBodyDetail">
+				<p>판매가</p>
+				<hr>
+				<p>상품평</p>
+				<hr>
+				<p>적립금</p>
+				<hr>
+				<p>카드혜택</p>
+				<hr>
+				<p>배송정보</p>
+				<hr>
+				<p>배송비</p>
+				<hr>
+					<div id="payDetail">
+					<p>총 합계 금액</p>
+					<button>좋아요</button>
+					<button>장바구니</button>
+					<button>구매하기</button>
+					</div>
+				</div>
+			</div>
+		<br>
+		<div id="detailSection">
+		<p style="font-weight: bold; background-color: lightgrey;"> 상세정보</p>
+		<p> 구매후기</p>
+		<p> Q&A</p>
+		<p> 배송/교환/환불</p>
+		</div>
+		<hr>
+		<div id="prodDetailImg">
+		<div id="prodDetailImgBox">
+		제품상세이미지
+		</div>
+		</div>
+		<div id="detailSection">
+		<p> 상세정보</p>
+		<p style="font-weight: bold; background-color: lightgrey;"> 구매후기</p>
+		<p> Q&A</p>
+		<p> 배송/교환/환불</p>
+		</div>
+		<hr>
+		<label id="detailLabel">
+			<div>
+			<span>전체(2) |</span> 
+			<input type="radio"> 최신순
+			<input type="radio"> 평점순
+			<input type="radio"> 추천순
+			</div>
+			<div id="tableStyle">
+			<table id="tableRegular">
+				  <tr>
+				    <th>번호</th>
+				    <th>별점</th>
+				    <th>내용</th>
+				    <th>작성자</th>
+				    <th>작성일</th>
+				    <th>추천</th>
+				  </tr>
+				  <tr>
+				    <td>1</td>
+				    <td>4.5/5.0</td>
+				    <td>저렴하게 잘 구매했습니다.</td>
+				    <td>user1</td>
+				    <td>2022-08-16</td>
+				    <td>5</td>
+				  </tr>
+				  <tr>
+				    <td>2</td>
+				    <td>3.5/5.0</td>
+				    <td>배송 잘 받았습니다.</td>
+				    <td>user2</td>
+				    <td>2022-08-16</td>
+				    <td>7</td>
+				  </tr>
+				</table>
+			</div>
+		</label>
+		<div id="detailSection">
+		<p> 상세정보</p>
+		<p> 구매후기</p>
+		<p style="font-weight: bold; background-color: lightgrey;"> Q&A</p>
+		<p> 배송/교환/환불</p>
+		</div>
+		<hr>
+		<label id="detailLabel">
+			<div id="qnaSection">
+			<span>전체(3) |</span> 
+			<span>답변완료(2) |</span> 
+			<span>답변대기(1)</span> 
+			<button style="margin-left: auto;">Q&A작성하기</button>
+			</div>
+			<div id="tableStyle">
+			<table id="tableRegular">
+				  <tr>
+				    <th>문의유형</th>
+				    <th>답변상태</th>
+				    <th>제목</th>
+				    <th>작성자</th>
+				    <th>작성일</th>
+				  </tr>
+				  <tr>
+				    <td>상품</td>
+				    <td>답변대기</td>
+				    <td>추가슬롯 문의드립니다.</td>
+				    <td>user1</td>
+				    <td>2022-08-15</td>
+				  <tr>
+				    <td>상품</td>
+				    <td>답변완료</td>
+				    <td>비밀글입니다.</td>
+				    <td>user2</td>
+				    <td>2022-08-13</td>
+				  <tr>
+				    <td>상품</td>
+				    <td>답변완료</td>
+				    <td>USB PD 문의</td>
+				    <td>user3</td>
+				    <td>2022-08-11</td>
+				  </tr>
+				</table>
+			</div>
+		</label>
+		<div id="detailSection">
+		<p> 상세정보</p>
+		<p> 구매후기</p>
+		<p> Q&A</p>
+		<p style="font-weight: bold; background-color: lightgrey;"> 배송/교환/환불</p>
+		</div>
+		<hr>
+		<label id="detailLabel">
+			<div id="tableStyle">
+			<colgroup>
+				<col width="30%">
+			</colgroup>
+			<table id="colTable">
+		 		<tr>
+				    <th>배송</th>
+				    <td>
+				    	<ul>
+				    	<li>결제 마감시간 전에 입금하시면 당일 발송됩니다</li>
+				    	<li>도서산간지역은 2~3일 추가 소요됩니다.</li>
+				    	<li>일요일, 공휴일은 배송되지 않습니다.</li>
+				    	</ul>
+				    </td>
+				</tr>
+		 		<tr>
+				    <th>교환 / 환불</th>
+				    <td>
+				    	<ul>
+				    	<li>제품 수령 후 7일 이내에 교환/반품을 신청하실 수 있습니다.</li>
+				    	<li>제품포장상태(박스, 내용물등)이 완벽해야 하며 제품 발송시 동봉해드린 영수증이 있으셔야 합니다.</li>
+				    	<li>교환 및 반품에 소요되는 운송비는 고객분께서 부담하셔야 됩니다. (색상 교환, 사이즈 교환, 모델 변경 등 포함)</li>
+				    	</ul>
+				    </td>
+				</tr>
+			</table>
+			</div>
+		</label>
+	</div>
+		<div id="fixedSection">
+		<strong>footer 부분 입니다</strong>
+	</div>
+</body>
+</html>
