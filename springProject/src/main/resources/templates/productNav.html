@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #productNav {
+            display: flex;
+            justify-content: space-between;
+            width: 1200px;
+            height: 60px;
+            background-color: #f8f8f8;
+            border: 1px solid;
+            font-size: 14px;
+        }
+        #navFlex {
+            display: flex;
+            align-items: center;
+        }
+        #productNav a {
+            text-decoration: none;
+            color: black;
+        }
+        .filterTab {
+            cursor: pointer;
+            margin: 0 25px;
+        }
+        .vLine {
+            width: 1px;
+            height: 31px;
+            background-color: #e3e3e3;
+        }
+        #limit {
+            display: flex;
+            align-items: center;
+            margin-right: 25px;
+        }
+        #pageLimit {
+            border: solid 1px #e3e3e3;
+            background-color: #ffffff;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="productNav">
+        <div id="navFlex">
+            <div class="filterTab">
+                <a href="#">추천순</a>
+            </div>
+            <div class="vLine"></div>
+            <div class="filterTab">
+                <a href="#">판매량순</a>
+            </div>
+            <div class="vLine"></div>
+            <div class="filterTab">
+                <a href="#">할인율순</a>
+            </div>
+            <div class="vLine"></div>
+            <div class="filterTab">
+                <a href="#">낮은가격순</a>
+            </div>
+            <div class="vLine"></div>
+            <div class="filterTab">
+                <a href="#">높은가격순</a>
+            </div>
+            <div class="vLine"></div>
+            <div class="filterTab">
+                <a href="#">최근등록순</a>
+            </div>
+            <div class="vLine"></div>
+            <div class="filterTab">
+                <a href="#">후기많은순</a>
+            </div>
+        </div>
+        <div id="limit">
+            <div id="pageLimit">
+                <div>
+                    <span id="limitTxt">20</span>개씩 보기
+                    <span id="selectBtnSpan">
+                        <img class="selectBtn" src="https://cdn.icoda.co.kr/asset/img/usr/estimate/select_btn.png">
+                    </span>
+                </div>
+                <div id="showPageLimit" style="display: none;">
+                    <div data-limit="20">20개씩 보기</div>
+                    <div data-limit="40">40개씩 보기</div>
+                    <div data-limit="60">60개씩 보기</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>
