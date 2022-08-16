@@ -1,0 +1,202 @@
+DROP database PROJECT3;
+CREATE database PROJECT3;
+USE PROJECT3;
+
+CREATE TABLE user (
+  user_id varchar(255) NOT NULL,
+  user_pw varchar(255) NOT NULL,
+  user_phone varchar(255) NOT NULL,
+  user_email varchar(255) NOT NULL,
+  user_adress varchar(255) NOT NULL,
+  CONSTRAINT PRIMARY KEY (user_id),
+  CONSTRAINT UNIQUE KEY (user_phone),
+  CONSTRAINT UNIQUE KEY (user_email)
+);
+INSERT INTO USER(user_id,user_pw,user_phone,user_email,user_adress)
+values ('user1','u1234','010-0000-0001','user1@gamil.com','서울시 마포구 양화로 122'),
+('user2','u1234','010-0000-0002','user2@gamil.com','서울시 마포구 양화로 122'),
+('user3','u1234','010-0000-0003','user3@gamil.com','서울시 마포구 양화로 122'),
+('user4','u1234','010-0000-0004','user4@gamil.com','서울시 마포구 양화로 122'),
+('user5','u1234','010-0000-0005','user5@gamil.com','서울시 마포구 양화로 122'),
+('user6','u1234','010-0000-0006','user6@gamil.com','서울시 마포구 양화로 122'),
+('user7','u1234','010-0000-0007','user7@gamil.com','서울시 마포구 양화로 122'),
+('user8','u1234','010-0000-0008','user8@gamil.com','서울시 마포구 양화로 122'),
+('user9','u1234','010-0000-0009','user9@gamil.com','서울시 마포구 양화로 122'),
+('user10','u1234','010-0000-0010','user10@gamil.com','서울시 마포구 양화로 122');
+
+CREATE TABLE category (
+  category_no int NOT NULL,
+  category_name varchar(255) NOT NULL,
+  category_code varchar(255) NOT NULL,
+  category_root varchar(255),
+  CONSTRAINT PRIMARY KEY (category_code),
+  FOREIGN KEY(category_root) REFERENCES CATEGORY(category_code)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+INSERT INTO CATEGORY(category_no,category_name,category_code)
+values (1,'노트북','100000');
+	INSERT INTO CATEGORY(category_no,category_name,category_code,category_root)
+	values (2, '제조사','101000','100000');
+		INSERT INTO CATEGORY(category_no,category_name,category_code,category_root)
+		values (3, 'ASUS','101001','101000'),    
+			(3, 'HP','101002','101000'),
+			(3, 'LG','101003','101000');
+	INSERT INTO CATEGORY(category_no,category_name,category_code,category_root)
+	values (2, 'CPU종류','102000','100000');
+		INSERT INTO CATEGORY(category_no,category_name,category_code,category_root)
+		values (3, 'AMD라이젠9-5','102001','102000'),
+			(3, '인텔코어i9-12','102002','102000'),
+			(3, '아톰','102003','102000');
+INSERT INTO CATEGORY(category_no,category_name,category_code)
+values (1,'데스크탑','200000');
+	INSERT INTO CATEGORY(category_no,category_name,category_code,category_root)
+	values (2, '제조사','201000','200000');
+		INSERT INTO CATEGORY(category_no,category_name,category_code,category_root)
+		values (3, 'ASUS','201001','201000'),    
+			(3, 'HP','201002','201000'),
+			(3, 'LG','201003','201000');
+	INSERT INTO CATEGORY(category_no,category_name,category_code,category_root)
+	values (2, 'CPU종류','202000','200000');
+		INSERT INTO CATEGORY(category_no,category_name,category_code,category_root)
+		values (3, 'AMD라이젠7-5','202001','202000'),
+			(3, '인텔코어i9-12','202002','202000');
+
+CREATE TABLE notebook (
+  division_code int NOT NULL,
+  notebook_name varchar(255) NOT NULL,
+  maker varchar(255) DEFAULT NULL,
+  main_cpu varchar(255) DEFAULT NULL,
+  screen_size float DEFAULT NULL,
+  memory_size varchar(255) DEFAULT NULL,
+  storage_size varchar(255) DEFAULT NULL,
+  weight float DEFAULT NULL,
+  CONSTRAINT PRIMARY KEY (division_code)
+);
+INSERT INTO NOTEBOOK(division_code,notebook_name,maker,main_cpu,screen_size,memory_size,storage_size,weight)
+values ('001','ASUS TUF Gaming A15 FA507RM-R6725','ASUS','AMD라이젠9-5','15.6','16GB','512GB','1.9'),
+('002','ASUS 젠북 14X OLED UM5401QA-KN030','ASUS','AMD라이젠9-4','14.0','16GB','512GB','1.4'),
+('003','HP 빅터스 15-fa0051TX ','HP','인텔코어i5-12','15.6','8GB','256GB','2.29'),
+('004','HP Nero 15s-eq3043AU ','HP','AMD라이젠5-4','15.6','8GB','256GB','1.69'),
+('005','LG전자 2022 울트라PC 15UD40Q-GX30K WIN10','LG','AMD라이젠3-4','15.6','8GB','256GB','1.75'),
+('006','LG전자 2022 그램360 16TD90Q-GX56K','LG','인텔코어i5-12','15.6','16GB','256GB','1.48');
+
+CREATE TABLE shipping (
+  shipping_id varchar(255) NOT NULL,
+  shipping_name varchar(255) NOT NULL,
+  shipping_phone varchar(255) NOT NULL,
+  shipping_fee int NOT NULL DEFAULT 0,
+  CONSTRAINT PRIMARY KEY (shipping_id)
+);
+INSERT INTO SHIPPING(shipping_id,shipping_name,shipping_phone,shipping_fee)
+values ('shipping1','CJ대한통운','1588-1255','3000'),
+('shipping2','롯데글로벌로지스','1588-2121','3000'),
+('shipping3','한진택배','1588-0011','3000'),
+('shipping4','우체국택배','1588-1300','3000'),
+('shipping5','로젠택배','1588-9988','3000');
+
+CREATE TABLE product (
+  prod_id varchar(255) NOT NULL,
+  prod_name varchar(255) NOT NULL,
+  prod_price int NOT NULL DEFAULT 0,
+  prod_stock varchar(255) NOT NULL DEFAULT 0,
+  category_code varchar(255) NOT NULL,
+  prod_img varchar(255) DEFAULT NULL,
+  division_code int NOT NULL,
+  good int NOT NULL DEFAULT 0,
+  shipping_id varchar(255) NOT NULL,
+  CONSTRAINT PRIMARY KEY (prod_id),
+  FOREIGN KEY(category_code) REFERENCES CATEGORY(category_code)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(division_code) REFERENCES NOTEBOOK(division_code)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(shipping_id) REFERENCES SHIPPING(shipping_id)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+INSERT INTO product (prod_id, prod_name, prod_price, prod_stock, category_code, division_code, good, shipping_id)
+values ('product1', 'ASUS 젠북 14X OLED UM5401QA-KN030',  '1299000', '100', '101001', '002', '1', 'shipping3'),
+('product2', 'ASUS TUF Gaming A15 FA507RM-R6725',  '1205000', '80', '101001', '001', '2', 'shipping3'),
+('product3', 'HP 빅터스 15-fa0051TX ',  '799000', '120', '101002', '003', '3', 'shipping3'),
+('product4', 'HP Nero 15s-eq3043AU',  '469000', '100', '101002', '004', '5', 'shipping1'),
+('product5', 'LG전자 2022 울트라PC 15UD40Q-GX30K WIN10',  '529000', '20', '101003', '005', '7', 'shipping4');
+
+
+CREATE TABLE ordersheet (
+  order_no int NOT NULL,
+  user_id varchar(255) NOT NULL,
+  order_type varchar(255) NOT NULL,
+  order_time datetime DEFAULT CURRENT_TIMESTAMP(),
+  CONSTRAINT PRIMARY KEY (order_no),
+  FOREIGN KEY(user_id) REFERENCES USER(user_id)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+INSERT INTO ordersheet (order_no, user_id, order_type, order_time) 
+values ('001', 'user1', 'card', '2022-01-31 22:59:59'),
+('002', 'user2', 'depositor', '2022-01-31 21:59:59'),
+('003', 'user3', 'depositor', '2022-01-31 20:59:59'),
+('004', 'user4', 'card', '2022-01-31 19:59:59'),
+('005', 'user5', 'card', '2022-01-31 18:59:59');
+
+
+CREATE TABLE orderlist (
+  orderlist_no int NOT NULL,
+  order_no int NOT NULL,
+  prod_id varchar(255) NOT NULL,
+  order_qty int NOT NULL DEFAULT 0,
+  CONSTRAINT PRIMARY KEY (orderlist_no),
+  FOREIGN KEY(order_no) REFERENCES ORDERSHEET(order_no)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(prod_id) REFERENCES PRODUCT(prod_id)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+INSERT INTO orderlist (orderlist_no, order_no, prod_id, order_qty)
+values ('1', '001', 'product1', '1'),
+('2', '002', 'product2', '1'),
+('3', '003', 'product3', '1'),
+('4', '004', 'product4', '1'),
+('5', '005', 'product5', '2');
+
+CREATE TABLE review (
+  review_no int NOT NULL,
+  prod_id varchar(255) NOT NULL,
+  user_id varchar(255) NOT NULL,
+  review_title varchar(255) NOT NULL,
+  review_content varchar(255) NOT NULL,
+  review_img varchar(255) DEFAULT NULL,
+  review_score int NOT NULL DEFAULT 0,
+  review_time datetime DEFAULT CURRENT_TIMESTAMP(),
+  CONSTRAINT PRIMARY KEY (review_no),
+  FOREIGN KEY(prod_id) REFERENCES PRODUCT(prod_id)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(user_id) REFERENCES USER(user_id)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+INSERT INTO review (review_no, prod_id, user_id, review_title, review_content, review_score, review_time)
+values ('1', 'product1', 'user1', 'user1가 쓴 1번 글입니다.', '글내용입니다.', '5', '2022-01-30 23:59:59'),
+('2', 'product2', 'user2', 'user2가 쓴 1번 글입니다.', '글내용입니다.', '4', '2022-01-29 23:59:59'),
+('3', 'product3', 'user3', 'user3가 쓴 1번 글입니다.', '글내용입니다.', '3', '2022-01-28 23:59:59'),
+('4', 'product4', 'user4', 'user4가 쓴 1번 글입니다.', '글내용입니다.', '2', '2022-01-27 23:59:59'),
+('5', 'product5', 'user5', 'user5가 쓴 1번 글입니다.', '글내용입니다.', '5', '2022-01-26 23:59:59');
+
+
+CREATE TABLE basket (
+  basket_no int NOT NULL,
+  user_id varchar(255) NOT NULL,
+  prod_id varchar(255) NOT NULL,
+  CONSTRAINT PRIMARY KEY (basket_no),
+  FOREIGN KEY(user_id) REFERENCES USER(user_id)
+  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY(prod_id) REFERENCES PRODUCT(prod_id)
+  ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+INSERT INTO basket(basket_no, user_id, prod_id)
+values ('1', 'user1', 'product1'),
+('2', 'user2', 'product2'),
+('3', 'user3', 'product3'),
+('4', 'user4', 'product4'),
+('5', 'user5', 'product5');
