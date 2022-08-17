@@ -2,6 +2,8 @@ package com.group3.springProject.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 /*
@@ -23,10 +25,11 @@ import lombok.Data;
 public class Review {
 	private int review_no;
 	private String prod_id;
-	private String user_id;
 	private String review_title;
 	private String review_content;
 	private String review_img;
 	private int review_score;
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
 	private Date review_time;
+	private String user_id;
 }
