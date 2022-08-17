@@ -1,5 +1,11 @@
-DROP database PROJECT3;
+DROP database PROJECT3;	//처음등록할땐 이부분 제외하고 사용
 CREATE database PROJECT3;
+
+DROP USER 'project_host'@'localhost';	//처음등록할땐 이부분 제외하고 사용
+CREATE USER 'project_host'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
+
+GRANT SELECT, INSERT, UPDATE, DELETE on PROJECT3.* to 'project_host'@'localhost';
+
 USE PROJECT3;
 
 CREATE TABLE user (
