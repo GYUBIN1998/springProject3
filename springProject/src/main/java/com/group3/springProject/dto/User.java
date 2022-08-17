@@ -13,6 +13,7 @@ import lombok.Data;
 | user_adress | varchar(255) | NO   |     | NULL    |       |
 +-------------+--------------+------+-----+---------+-------+
 */
+
 @Data
 public class User {
 	private String user_id;
