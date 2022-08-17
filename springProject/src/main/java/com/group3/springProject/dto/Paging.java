@@ -5,7 +5,7 @@ public class Paging {
 	private int page;
 	private int rowCount;
 	private String url;
-	private int row = 2;
+	private int row = 5;
 	
 	private int start;
 	private int end;
