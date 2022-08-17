@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>회원 정보 수정</title>
+</head>
+
+<style>
+	.title{
+		display: flex;
+	    justify-content: center;
+	}
+	.userInfo>div>div{
+		padding: 10px;
+		display: inline-block;
+	}
+	.verti{
+		display: block;
+	}
+	.wd250{
+		width: 250px;
+	}
+	.wd100{
+		width: 100px;
+	}
+	.wd50{
+		width: 50px;
+	}
+	.userInfo>div>div>input{
+		width: 150px;
+	}
+	.userInfoBtns>div{
+		display: inline-block;
+	}
+	.container{
+		display: flex;
+	    justify-content: center;
+	}
+	.userInfoBtns{
+		display: flex;
+	    justify-content: center;
+	    padding: 20px;
+	}
+	.userInfoBtns>div>button{
+		width: 100px;
+		margin: 10px;
+		padding: 10px
+	}
+	.verti{
+		display: block;
+	}
+	#userAddressInput>div{
+		vertical-align: top;
+	}
+	#userAddressInput>div>div>input{
+		margin-bottom: 10px;
+	}
+</style>
+
+<body>
+	<h1 class="title">회원 정보 수정</h1>
+	<hr>
+	<br>
+	
+	<form action="/user/update.do" method="post">
+	
+		<div class="container">
+			<div class="userUpdateForm">
+				<div class="userInfo">
+					<div>
+						<div class="wd100">아이디</div>
+						<div>
+							<input name="userId" readonly>
+						</div>
+					</div>
+					<div>
+						<div class="wd100">비밀번호</div>
+						<div>
+							<input name="userPw">
+						</div>
+					</div>
+					<div>
+						<div class="wd100">비밀번호확인</div>
+						<div>
+							<input name="userPw">
+						</div>
+					</div>
+					<br>
+					<div>
+						<div class="wd100">핸드폰번호</div>
+						<div>
+							<input name="userPhone">
+						</div>
+					</div>
+					<div>
+						<div class="wd100">email</div>
+						<div>
+							<input name="userEmail">
+						</div>
+					</div>
+					<br>
+					<div id="userAddressInput">
+						<div>
+							<div class="wd100" style="vertical-align: middle;">주소</div>
+						</div>
+						<div>
+							<div class="verti">
+								<input name="userAddress" style="width: 100px;">
+								<button type="button">주소검색</button>
+							</div>
+							<div>
+								<input class="wd250">
+							</div>
+							<div>
+								<input class="wd250">
+							</div>
+						</div>
+					</div>
+				</div>
+			
+				<div class="userInfoBtns">
+					<div>
+						<button type="reset" >초기화</button>
+					</div>	
+					<div>
+						<button type="submit">제출</button>
+					</div>	
+				</div>
+			</div>
+		</div>
+		
+	</form>
+</body>
+</html>
