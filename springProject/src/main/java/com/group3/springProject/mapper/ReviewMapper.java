@@ -11,5 +11,5 @@ import com.group3.springProject.dto.Review;
 @Mapper
 public interface ReviewMapper {
 	List<Review> selectAll();
-	Review selectOne(String userId);
+	List<Review> selectByUserId(String userId);
 }

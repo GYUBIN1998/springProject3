@@ -15,7 +15,7 @@
 	<select id="selectAll" resultType="Review">
 		SELECT * FROM REVIEW
 	</select>
-	<select id="selectOne" resultMap="ReviewMap" parameterType="String">
+	<select id="selectByUserId" resultMap="ReviewMap">
 		SELECT *, (select count(*) from review where user_id=#{userId})AS review_count FROM REVIEW WHERE user_id=#{userId}
 	</select>
 </mapper>

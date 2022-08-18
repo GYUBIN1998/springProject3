@@ -1,5 +1,6 @@
 package com.group3.springProject.controller;
 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,13 +18,12 @@ public class ReviewController {
 
 	@Autowired
 	private ReviewMapper reviewMapper;
-	
+	 
 	@GetMapping("/reviewList/{userId}")
 	public String UserReviewList(@PathVariable String userId , Model model) {
-		System.out.println(userId);
-		Review review=reviewMapper.selectOne(userId);
-		model.addAttribute(review);
-		System.out.println(review);
+		List<Review> reviews=reviewMapper.selectByUserId(userId);
+		model.addAttribute("reviews",reviews);
+		System.out.println(reviews);
 		return"/review/reviewList";
 	}
 }
