@@ -6,33 +6,48 @@
     <style>
         #path {
             display: flex;
-            margin-left: 1200px;
         }
         #path ol {
             display: flex;
+            margin-left: auto;
         }
-        #path ol li{
+        #path ol li {
+            height: 27px;
+            line-height: 25px;
             list-style: none;
-            margin-right: 10px;
+            padding: 0 0 0 12px;
+            margin: 0 0 0 8px;
+            background: url(https://img.echosting.cafe24.com/skin/base/layout/ico_path.gif) no-repeat 0 8px;
         }
-        #path ol li a{
+        #path ol li:first-child {
+            background: none;
+        }
+        #path ol li:first-child a {
+            padding: 0 6px 0 8px;
+            background: url(https://bakery.co.kr/_wg/img/_ico/path_home.png) no-repeat 0 6px;
+            font-size: 0;
+        }
+        #path ol li a {
+            display: block;
             text-decoration: none;
             color: black;
         }
         h2 {
-            margin-top: 0;
+            margin: 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e8e8e8;
         }
         #table {
             display: flex;
             justify-content: center;
-            margin: 30px 0;
+            margin: 40px 0 60px 0;
         }
-        #list {
+        #table #tableList {
             border: 1px solid;
             border-collapse: collapse;
             width: 80%;
         } 
-        #list th, td {
+        #table #tableList th, td {
             border: 1px solid;
             text-align: center;
             padding: 10px 25px;
@@ -41,12 +56,36 @@
             display: flex;
             margin-left: 10%;
         }
+        #searchForm select {
+            width: 72px;
+            height: 24px;
+            border: 1px solid #d5d5d5;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+        #searchForm input {
+            width: 162px;
+            height: 24px;
+            padding: 2px 4px;
+            border: 1px solid #d5d5d5;
+            color: #353535;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
         #searchForm a {
             display: inline-block;
+            width: 72px;
             text-decoration: none;
+            text-align: center;
             color: white;
-            background-color: #bbb;
-            padding: 5px 10px;
+            background-color: #84868b;
+            padding: 2px 8px;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            vertical-align: middle;
+            font-size: 12px;
+            line-height: 18px;
+            box-sizing: border-box;
         }
     </style>
 </head>
@@ -59,9 +98,8 @@
         </ol>
     </div>
         <h2>상품 Q&A</h2>
-        <hr>
     <div id="table">
-        <table id="list">
+        <table id="tableList">
             <thead>
                 <tr>
                     <th>번호</th>
