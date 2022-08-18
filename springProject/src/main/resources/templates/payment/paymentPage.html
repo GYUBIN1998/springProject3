@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>결제 페이지</title>
+</head>
+<style>
+h1 {
+text-align: center;
+}
+#pageOutline{
+margin: 50px 100px; display: flex; justify-content: space-evenly;
+}
+#paymentMethod{
+margin-bottom: 70px;
+}
+</style>
+<body>
+	<h1>결제 페이지입니다.</h1>
+	<div id="pageOutline">
+		<div id="firstSection">
+			<div id="UserInfo">
+			<h2>주문 정보</h2>
+			<hr>
+					주문자 * <input type="text"><br>
+					이메일 * <input type="text"> @
+					<select name="email">
+					<option>gmail.com</option>
+					<option>kakao.com</option>
+					<option>naver.com</option>
+					</select>
+					<br>
+					전화번호 *
+					<select>
+					<option>010</option>
+					<option>011</option>
+					<option>017</option>
+					<option>02</option>
+					<option>031</option>
+					<option>032</option>
+					</select>
+					<input type="tel" size="3">
+					<input type="tel" size="3">
+					<br>
+					주소 *
+					<input type="text" placeholder="우편번호" size="5">
+					<button>주소검색</button> <br>
+					<input type="text" placeholder="기본주소"><br>
+					<input type="text" placeholder="나머지주소(선택입력가능)"><br>
+			</div>
+			<div id="shippingAdress">
+			<h2>배송지</h2>
+			<hr>
+				<button>최근배송지</button>
+				<button>직접입력</button>
+				<br>
+				<form method="post">
+				<input type="radio" name="shippingAdress" value="same">주문자 정보와 동일
+				<input type="radio" name="shippingAdress" value="new">새로운 배송지
+				</form>
+				받는사람 * <input type="text"><br>
+				주소 *
+					<input type="text" placeholder="우편번호" size="5">
+					<button>주소검색</button> <br>
+					<input type="text" placeholder="기본주소"><br>
+					<input type="text" placeholder="나머지주소(선택입력가능)"><br>
+					전화번호 *
+					<select>
+					<option>010</option>
+					<option>011</option>
+					<option>017</option>
+					<option>02</option>
+					<option>031</option>
+					<option>032</option>
+					</select>
+					<input type="tel" size="3">
+					<input type="tel" size="3">
+					<br>
+					<select>
+					<option>배송 메세지선택(선택사항)</option>
+					<option>배송 전 연락바랍니다.</option>
+					<option>부재시 연락바랍니다.</option>
+					<option>부재시 문 앞에 놔주세요.</option>
+					</select>
+			</div>
+		</div>
+		<div id="SecondSection">
+			<div id="paymentMethod">
+			<h2>결제수단</h2>
+			<hr>
+				<fieldset>
+				<legend>결제 수단 선택</legend>
+				<input type="radio">신용카드
+				<input type="radio">계좌이체
+				<input type="radio">무통장입금
+				<input type="radio">가상계좌
+				</fieldset>
+				<input type="checkbox"> 결제수단을 다음에도 사용
+			</div>
+			<div id="paymentInfo">
+			<h2>결제정보</h2>
+			<hr>
+				<p><span>주문상품</span> <strong>839,000</strong></p>
+				<p><span>배송비</span> <strong>0</strong></p>
+				<p><span>결제금액</span> <strong>839,000 원</strong></p> 
+			</div>
+		</div>
+	</div>
+</body>
+</html>
