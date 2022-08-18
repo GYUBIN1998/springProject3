@@ -13,6 +13,12 @@
 	<result column="good" property="good"/>
 	<result column="shipping_id" property="shipping_id"/>
 	</resultMap>
+	<select id="selectAll" resultType="Product">
+		SELECT * FROM PRODUCT LIMIT #{startRow}, #{row}
+	</select>
+	<select id="selectAllCount" resultType="int">
+		SELECT COUNT(*) FROM PRODUCT
+	</select>
 	<select id="selectFindOne" resultMap="ProductMap">
 		SELECT * FROM PRODUCT WHERE prod_id=#{prodId}
 	</select>

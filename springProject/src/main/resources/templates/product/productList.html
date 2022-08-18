@@ -84,7 +84,7 @@
             <div class="thumbnail">이미지 영역</div>
             <div class="listInfo">
                 <div class="title">
-                    <a href="#" th:text="${product.prod_name}">삼성전자 노트북 플러스2 NT550XDA-K24AT 노트북</a>
+                    <a href="#" th:text="${product.prod_name}"></a>
                 </div>
                 <div class="detail">    
                     제품 설명란        
@@ -97,11 +97,11 @@
             <div class="vLine"></div>
             <div class="listPrice">
                 <div>
-                    <span class="sale">20%</span>
-                    <span class="originalPrice">1,000,000원</span>
+                    <span class="sale">%</span>
+                    <span class="originalPrice">원</span>
                 </div>
                 <div class="price">
-                    <span class="saledPrice">800,000원</span>
+                    <span class="saledPrice" th:text="${product.prod_price} + '원'"></span>
                 </div>
                 <div class="reviewStar">
                     <span>
