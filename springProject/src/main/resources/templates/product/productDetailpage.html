@@ -63,10 +63,7 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 }
 </style>
 <body>
-	<header></header>
-	<div id="fixedSection">
-		<strong>nav 부분 입니다</strong>
-	</div>
+	<header th:insert="/header"></header>
 	<div id="pageBody">
 		<h1>제품 상세 페이지 입니다.</h1>
 		<br>
@@ -233,8 +230,6 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 			</div>
 		</label>
 	</div>
-		<div id="fixedSection">
-		<strong>footer 부분 입니다</strong>
-	</div>
+	<footer th:insert="/footer"></footer>
 </body>
 </html>
