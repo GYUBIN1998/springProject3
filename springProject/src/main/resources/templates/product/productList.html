@@ -4,63 +4,65 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        #productList {
-            display: flex;
-            justify-content: center;
+        #productContainer {
             padding: 0;
         }
-        #productList li {
+        #productContainer li {
+        	display: flex;
+        	justify-content: center;
+        }
+        #productContainer li .productList {
             display: flex;
             list-style: none;
             border: 1px solid;
             padding: 15px;
         }
-        #productList .thumbnail {
+        #productContainer .thumbnail {
             width: 130px;
             height: 130px;
             border: 1px solid;
             margin-right: 30px;
         }
-        #productList .listInfo div{
+        #productContainer .listInfo div{
             margin-bottom: 20px;
         }
-        #productList .listInfo .title a {
+        #productContainer .listInfo .title a {
             text-decoration: none;
             color: black;
             font-weight: bold;
         }
-        #productList .listInfo .detail {
+        #productContainer .listInfo .detail {
             width: 450px;
             height: 150px;
             border: 1px solid;
             font-size: 12px;
         }
-        #productList .listInfo .property {
+        #productContainer .listInfo .property {
             display: inline-block;
             padding: 3px 6px;
             border: 1px solid;
             margin-right: 10px;
         }
-        #productList .listPrice {
+        #productContainer .listPrice {
             border: 1px solid;
             padding: 10px 15px;
         }
-        #productList .listPrice .sale {
+        #productContainer .listPrice .sale {
             font-size: 20px;
             font-weight: bold;
             color: red;
         }
-        #productList .listPrice div {
+        #productContainer .listPrice div {
             margin-bottom: 10px;
         }
-        #productList .listPrice .originalPrice {
+        #productContainer .listPrice .originalPrice {
             text-decoration: line-through;
         }
-        #productList .listPrice .price .saledPrice {
+        #productContainer .listPrice .price .saledPrice {
             font-size: 24px;
             font-weight: bold;
         }
-        #productList .listPrice .basketBuy a {
+        #productContainer .listPrice .basketBuy a {
             display: inline-block;
             text-decoration: none;
             color: black;
@@ -76,12 +78,13 @@
 </head>
 <body>
 	<header th:insert="/header"></header>
-    <ul id="productList">
-        <li>
+    <ul id="productContainer">
+        <li th:each="product : ${products}">
+          <div class="productList">
             <div class="thumbnail">이미지 영역</div>
             <div class="listInfo">
                 <div class="title">
-                    <a href="#">삼성전자 노트북 플러스2 NT550XDA-K24AT 노트북</a>
+                    <a href="#" th:text="${product.prod_name}">삼성전자 노트북 플러스2 NT550XDA-K24AT 노트북</a>
                 </div>
                 <div class="detail">    
                     제품 설명란        
@@ -111,8 +114,10 @@
                     <a href="#">구매하기</a>
                 </div>
             </div>     
+          </div>
         </li>
     </ul>
+    <div class="d-flex justify-content-center" th:insert="/paging"></div>
     <footer th:insert="/footer"></footer>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="EUC-KR">
-<title>��ǰ �� ������</title>
+<meta charset="UTF-8">
+<title>상품 상세 페이지</title>
 </head>
 <style>
 #fixedSection{
@@ -63,79 +63,76 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 }
 </style>
 <body>
-	<header></header>
-	<div id="fixedSection">
-		<strong>nav �κ� �Դϴ�</strong>
-	</div>
+	<header th:insert="/header"></header>
 	<div id="pageBody">
-		<h1>��ǰ �� ������ �Դϴ�.</h1>
+		<h1 th:text="${product.prod_name}"></h1>
 		<br>
 			<div id="imgHeader">
 				<div id="imgBox">
-					�̹����κ�
+					이미지부분
 				</div>
 				<div id="pageBodyDetail">
-				<p>�ǸŰ�</p>
+				<p>판매가 <strong th:text="${#numbers.formatInteger(product.prod_price, 3, 'COMMA')+'원'}"></strong></p>
 				<hr>
-				<p>��ǰ��</p>
+				<p>상품평</p>
 				<hr>
-				<p>������</p>
+				<p>적립금</p>
 				<hr>
-				<p>ī������</p>
+				<p>카드혜택</p>
 				<hr>
-				<p>�������</p>
+				<p>배송정보</p>
 				<hr>
-				<p>��ۺ�</p>
+				<p>배송비</p>
 				<hr>
 					<div id="payDetail">
-					<p>�� �հ� �ݾ�</p>
-					<button>���ƿ�</button>
-					<button>��ٱ���</button>
-					<button>�����ϱ�</button>
+					<p>총 합계 금액 <strong th:text="${#numbers.formatInteger(product.prod_price, 3, 'COMMA')+'원'}"></strong></p>
+					<button>좋아요</button>
+					<button>장바구니</button>
+					<button>구매하기</button>
 					</div>
 				</div>
 			</div>
 		<br>
 		<div id="detailSection">
-		<p style="font-weight: bold; background-color: lightgrey;"> ������</p>
-		<p> �����ı�</p>
+		<p style="font-weight: bold; background-color: lightgrey;"> 상세정보</p>
+		<p> 구매후기</p>
 		<p> Q&A</p>
-		<p> ���/��ȯ/ȯ��</p>
+		<p> 배송/교환/환불</p>
 		</div>
 		<hr>
 		<div id="prodDetailImg">
 		<div id="prodDetailImgBox">
-		��ǰ���̹���
+		제품상세이미지
 		</div>
 		</div>
 		<div id="detailSection">
-		<p> ������</p>
-		<p style="font-weight: bold; background-color: lightgrey;"> �����ı�</p>
+		<p> 상세정보</p>
+		<p style="font-weight: bold; background-color: lightgrey;"> 구매후기</p>
 		<p> Q&A</p>
-		<p> ���/��ȯ/ȯ��</p>
+		<p> 배송/교환/환불</p>
 		</div>
 		<hr>
 		<label id="detailLabel">
 			<div>
-			<span>��ü(2) |</span> 
-			<input type="radio"> �ֽż�
-			<input type="radio"> ������
-			<input type="radio"> ��õ��
+			<span>전체(2) |</span> 
+			<input type="radio"> 최신순
+			<input type="radio"> 평점순
+			<input type="radio"> 추천순
 			</div>
 			<div id="tableStyle">
 			<table id="tableRegular">
 				  <tr>
-				    <th>��ȣ</th>
-				    <th>����</th>
-				    <th>����</th>
-				    <th>�ۼ���</th>
-				    <th>�ۼ���</th>
-				    <th>��õ</th>
+				    <th>번호</th>
+				    <th>별점</th>
+				    <th>내용</th>
+				    <th>작성자</th>
+				    <th>작성일</th>
+				    <th>추천</th>
 				  </tr>
 				  <tr>
 				    <td>1</td>
 				    <td>4.5/5.0</td>
-				    <td>�����ϰ� �� �����߽��ϴ�.</td>
+				    <td>저렴하게 잘 구매했습니다.</td>
 				    <td>user1</td>
 				    <td>2022-08-16</td>
 				    <td>5</td>
@@ -143,7 +140,7 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 				  <tr>
 				    <td>2</td>
 				    <td>3.5/5.0</td>
-				    <td>��� �� �޾ҽ��ϴ�.</td>
+				    <td>배송 잘 받았습니다.</td>
 				    <td>user2</td>
 				    <td>2022-08-16</td>
 				    <td>7</td>
@@ -152,44 +149,44 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 			</div>
 		</label>
 		<div id="detailSection">
-		<p> ������</p>
-		<p> �����ı�</p>
+		<p> 상세정보</p>
+		<p> 구매후기</p>
 		<p style="font-weight: bold; background-color: lightgrey;"> Q&A</p>
-		<p> ���/��ȯ/ȯ��</p>
+		<p> 배송/교환/환불</p>
 		</div>
 		<hr>
 		<label id="detailLabel">
 			<div id="qnaSection">
-			<span>��ü(3) |</span> 
-			<span>�亯�Ϸ�(2) |</span> 
-			<span>�亯���(1)</span> 
-			<button style="margin-left: auto;">Q&A�ۼ��ϱ�</button>
+			<span>전체(3) |</span> 
+			<span>답변완료(2) |</span> 
+			<span>답변대기(1)</span> 
+			<button style="margin-left: auto;">Q&A작성하기</button>
 			</div>
 			<div id="tableStyle">
 			<table id="tableRegular">
 				  <tr>
-				    <th>��������</th>
-				    <th>�亯����</th>
-				    <th>����</th>
-				    <th>�ۼ���</th>
-				    <th>�ۼ���</th>
+				    <th>문의유형</th>
+				    <th>답변상태</th>
+				    <th>제목</th>
+				    <th>작성자</th>
+				    <th>작성일</th>
 				  </tr>
 				  <tr>
-				    <td>��ǰ</td>
-				    <td>�亯���</td>
-				    <td>�߰����� ���ǵ帳�ϴ�.</td>
+				    <td>상품</td>
+				    <td>답변대기</td>
+				    <td>추가슬롯 문의드립니다.</td>
 				    <td>user1</td>
 				    <td>2022-08-15</td>
 				  <tr>
-				    <td>��ǰ</td>
-				    <td>�亯�Ϸ�</td>
-				    <td>��б��Դϴ�.</td>
+				    <td>상품</td>
+				    <td>답변완료</td>
+				    <td>비밀글입니다.</td>
 				    <td>user2</td>
 				    <td>2022-08-13</td>
 				  <tr>
-				    <td>��ǰ</td>
-				    <td>�亯�Ϸ�</td>
-				    <td>USB PD ����</td>
+				    <td>상품</td>
+				    <td>답변완료</td>
+				    <td>USB PD 문의</td>
 				    <td>user3</td>
 				    <td>2022-08-11</td>
 				  </tr>
@@ -197,10 +194,10 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 			</div>
 		</label>
 		<div id="detailSection">
-		<p> ������</p>
-		<p> �����ı�</p>
+		<p> 상세정보</p>
+		<p> 구매후기</p>
 		<p> Q&A</p>
-		<p style="font-weight: bold; background-color: lightgrey;"> ���/��ȯ/ȯ��</p>
+		<p style="font-weight: bold; background-color: lightgrey;"> 배송/교환/환불</p>
 		</div>
 		<hr>
 		<label id="detailLabel">
@@ -210,22 +207,22 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 			</colgroup>
 			<table id="colTable">
 		 		<tr>
-				    <th>���</th>
+				    <th>배송</th>
 				    <td>
 				    	<ul>
-				    	<li>���� �����ð� ���� �Ա��Ͻø� ���� �߼۵˴ϴ�</li>
-				    	<li>�����갣������ 2~3�� �߰� �ҿ�˴ϴ�.</li>
-				    	<li>�Ͽ���, �������� ��۵��� �ʽ��ϴ�.</li>
+				    	<li>결제 마감시간 전에 입금하시면 당일 발송됩니다</li>
+				    	<li>도서산간지역은 2~3일 추가 소요됩니다.</li>
+				    	<li>일요일, 공휴일은 배송되지 않습니다.</li>
 				    	</ul>
 				    </td>
 				</tr>
 		 		<tr>
-				    <th>��ȯ / ȯ��</th>
+				    <th>교환 / 환불</th>
 				    <td>
 				    	<ul>
-				    	<li>��ǰ ���� �� 7�� �̳��� ��ȯ/��ǰ�� ��û�Ͻ� �� �ֽ��ϴ�.</li>
-				    	<li>��ǰ�������(�ڽ�, ���빰��)�� �Ϻ��ؾ� �ϸ� ��ǰ �߼۽� �����ص帰 �������� �����ž� �մϴ�.</li>
-				    	<li>��ȯ �� ��ǰ�� �ҿ�Ǵ� ��ۺ�� �����в��� �δ��ϼž� �˴ϴ�. (���� ��ȯ, ������ ��ȯ, �� ���� �� ����)</li>
+				    	<li>제품 수령 후 7일 이내에 교환/반품을 신청하실 수 있습니다.</li>
+				    	<li>제품포장상태(박스, 내용물등)이 완벽해야 하며 제품 발송시 동봉해드린 영수증이 있으셔야 합니다.</li>
+				    	<li>교환 및 반품에 소요되는 운송비는 고객분께서 부담하셔야 됩니다. (색상 교환, 사이즈 교환, 모델 변경 등 포함)</li>
 				    	</ul>
 				    </td>
 				</tr>
@@ -233,8 +230,6 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 			</div>
 		</label>
 	</div>
-		<div id="fixedSection">
-		<strong>footer �κ� �Դϴ�</strong>
-	</div>
+	<footer th:insert="/footer"></footer>
 </body>
 </html>
