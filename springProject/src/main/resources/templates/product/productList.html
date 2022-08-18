@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #productList {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+        #productList li {
+            display: flex;
+            list-style: none;
+            border: 1px solid;
+            padding: 15px;
+        }
+        #productList .thumbnail {
+            width: 130px;
+            height: 130px;
+            border: 1px solid;
+            margin-right: 30px;
+        }
+        #productList .listInfo div{
+            margin-bottom: 20px;
+        }
+        #productList .listInfo .title a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        #productList .listInfo .detail {
+            width: 450px;
+            height: 150px;
+            border: 1px solid;
+            font-size: 12px;
+        }
+        #productList .listInfo .property {
+            display: inline-block;
+            padding: 3px 6px;
+            border: 1px solid;
+            margin-right: 10px;
+        }
+        #productList .listPrice {
+            border: 1px solid;
+            padding: 10px 15px;
+        }
+        #productList .listPrice .sale {
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+        #productList .listPrice div {
+            margin-bottom: 10px;
+        }
+        #productList .listPrice .originalPrice {
+            text-decoration: line-through;
+        }
+        #productList .listPrice .price .saledPrice {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #productList .listPrice .basketBuy a {
+            display: inline-block;
+            text-decoration: none;
+            color: black;
+            border: 1px solid;
+            padding: 10px 15px;
+        }
+        .vLine {
+            width: 1px;
+            margin: 0 20px;
+            background-color: #e3e3e3;
+        }
+    </style>
+</head>
+<body>
+    <ul id="productList">
+        <li>
+            <div class="thumbnail">이미지 영역</div>
+            <div class="listInfo">
+                <div class="title">
+                    <a href="#">삼성전자 노트북 플러스2 NT550XDA-K24AT 노트북</a>
+                </div>
+                <div class="detail">    
+                    제품 설명란        
+                </div>
+                <div class="properties">
+                    <span id="sale" class="property">SALE</span>
+                    <span id="free" class="property">무료 배송</span>
+                </div>
+            </div>
+            <div class="vLine"></div>
+            <div class="listPrice">
+                <div>
+                    <span class="sale">20%</span>
+                    <span class="originalPrice">1,000,000원</span>
+                </div>
+                <div class="price">
+                    <span class="saledPrice">800,000원</span>
+                </div>
+                <div class="reviewStar">
+                    <span>
+                        ❤❤❤❤❤
+                    </span>
+                    <span>5</span>
+                </div>
+                <div class="basketBuy">
+                    <a href="#">장바구니</a>
+                    <a href="#">구매하기</a>
+                </div>
+            </div>     
+        </li>
+    </ul>
+</body>
+</html>

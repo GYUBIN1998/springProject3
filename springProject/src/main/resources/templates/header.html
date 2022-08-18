@@ -1,71 +1,103 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title></title>
-<style>
-    #header {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 15px;
-    }
-    #headerRight>ul {
-        display: flex;
-        justify-content: space-around;
-    }
-    #headerRight>ul li {
-        list-style: none;
-        padding-left: 20px;
-    }
-    #headerRight>ul li a{
-        display: inline-block;
-        text-decoration: none;
-        color: black;
-    }
-    #navBox {
-        background-color: dodgerblue;
-        display: flex;
-        justify-content: space-around;
-    }
-    #navBox a {
-        display: inline-block;
-        text-decoration: none;
-        padding: 15px;
-        color: white;
-    }
-</style>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #header {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px;
+        }
+        #header #headerCenter #searchBox {
+            width: 520px;
+            height: 46px;
+            border: 2px solid dodgerblue;
+            box-sizing: border-box;
+            position: relative;
+        }
+        #header #headerCenter #searchBox #searchForm #searchInput {
+            width: 452px;
+            height: 42px;
+            padding-left: 12px;
+            line-height: 42px;
+            color: #333;
+            font-size: 15px;
+            border: none;
+            box-sizing: border-box;
+            outline: none;
+        }
+        #header #headerCenter #searchBox #searchForm #searchIcon {
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+            z-index: 50;
+        }
+        #header #headerRight ul {
+            display: flex;
+            justify-content: space-around;
+        }
+        #header #headerRight ul li {
+            list-style: none;
+        }
+        #header #headerRight ul li a {
+            display: inline-block;
+            text-decoration: none;
+            color: black;
+        }
+        #nav #navBox {
+            display: flex;
+            background-color: dodgerblue;
+            justify-content: space-around;
+        }
+        #nav #navBox a {
+            display: inline-block;
+            text-decoration: none;
+            padding: 15px;
+            color: white;
+        }
+        .vLine {
+            width: 1px;
+            background-color: #e3e3e3;
+            margin: 0 15px;
+        }
+    </style>
 </head>
 <body>
-	<div id="header">
-		<div id="headerLeft">
-			<h1>Project_3.com</h1>
-		</div>
+    <div id="header">
+        <div id="headerLeft">
+            <h1>Project_3.com</h1>
+        </div>
         <div id="headerCenter">
-			<div id="searchBox">
-                <form action="#" name="searchForm" method="get">
+            <div id="searchBox">
+                <form action="#" id="searchForm" name="searchForm" method="get">
                     <label>
-                        <input type="text" name="searchInput" value minlength="2" maxlength="50">
-                        <input type="image" value="검색" src="https://cdn.icoda.co.kr/asset/img/usr/main/search_btn.jpg" name="searchBtn">
+                        <input type="text" name="searchInput" id="searchInput" value minlength="2" maxlength="50">
+                        <input type="image" value="검색" name="searchIcon" id="searchIcon"
+                            src="https://cdn.icoda.co.kr/asset/img/usr/main/search_btn.jpg" name="searchBtn">
                     </label>
                 </form>
             </div>
-		</div>
+        </div>
         <div id="headerRight">
-			<ul>
+            <ul>
                 <li><a href="#">로그인</a></li>
+                <div class="vLine"></div>
                 <li><a href="#">회원가입</a></li>
+                <div class="vLine"></div>
                 <li><a href="#">장바구니</a></li>
             </ul>
-		</div>
-	</div>
+        </div>
+    </div>
     <div id="nav">
         <div id="navBox">
-                <a href="#">카테고리</a>
-                <a href="#">노트북/데스크탑</a>
-                <a href="#">주변 기기</a>
-                <a href="#">조립형 PC</a>
-                <a href="#">고객 센터</a>  
+            <a href="#">카테고리</a>
+            <a href="#">노트북/데스크탑</a>
+            <a href="#">주변 기기</a>
+            <a href="#">조립형 PC</a>
+            <a href="#">고객 센터</a>
         </div>
     </div>
 </body>
