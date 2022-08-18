@@ -101,7 +101,7 @@
                     <span class="originalPrice">원</span>
                 </div>
                 <div class="price">
-                    <span class="saledPrice" th:text="${product.prod_price} + '원'"></span>
+                    <span class="saledPrice" th:text="${#numbers.formatInteger(product.prod_price, 3, 'COMMA')} + '원'"></span>
                 </div>
                 <div class="reviewStar">
                     <span>
