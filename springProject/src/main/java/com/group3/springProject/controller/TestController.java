@@ -16,5 +16,8 @@ public class TestController {
 	
 	@GetMapping("/userUpdate")
 	public void detail() {}
+	
+	@GetMapping("/qnaForm")
+	public void newQna() {}
 
 }

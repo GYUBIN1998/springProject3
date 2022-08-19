@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>문의하기</title>
+</head>
+
+<style>
+	.title{
+		display: flex;
+	    justify-content: center;
+	    margin-top: 20px;
+	}
+	.container{
+		display: flex;
+	    justify-content: center;
+	}
+	.userInfoBtns{
+		display: flex;
+	    justify-content: center;
+	    padding: 20px;
+	}
+	.userInfoBtns{
+		margin-bottom: 20px;
+	}
+	.userInfoBtns>div>button{
+		width: 100px;
+		margin: 10px;
+		padding: 10px;
+	}
+	textarea{
+		width: 1000px;
+		padding: 10px;
+	}
+	.wd1000{
+		width: 1000px;
+	}
+	.mb10{
+		margin-bottom: 10px;
+	}
+	#qnaTitle{
+		width: 1000px;
+		padding: 10px;
+	}
+</style>
+
+<body>
+	<header th:insert="/header"></header>
+
+	<h1 class="title">문의하기</h1>
+	<hr>
+	<br>
+	
+	<div class="container">
+		<form action="insertQna.do" method="post">
+			<div class="wd1000 mb10">
+				<input id="qnaTitle" type="text" autofocus="autofocus" placeholder="제목을 입력하세요.">
+			</div>
+			<div>
+				<textarea id="qnaContes" rows="10" maxlength="1000" placeholder="문의하실 내용을 입력하세요."></textarea>
+			</div>
+			<div>
+				<input type="checkbox" id="secretYn">
+				<label for="secretYn">비공개</label>
+			</div>
+			
+			<div class="userInfoBtns">
+				<div>
+					<button type="button">이전</button>
+				</div>	
+				<div>
+					<button type="submit">등록</button>
+				</div>	
+			</div>
+		</form>
+	</div>
+	
+	<footer th:insert="/footer"></footer>
+</body>
+</html>

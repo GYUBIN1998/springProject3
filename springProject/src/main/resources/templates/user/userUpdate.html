@@ -9,6 +9,7 @@
 	.title{
 		display: flex;
 	    justify-content: center;
+	    margin-top: 20px;
 	}
 	.userInfo>div>div{
 		padding: 10px;
@@ -41,6 +42,9 @@
 	    justify-content: center;
 	    padding: 20px;
 	}
+	.userInfoBtns{
+		margin-bottom: 20px;
+	}
 	.userInfoBtns>div>button{
 		width: 100px;
 		margin: 10px;
@@ -64,9 +68,8 @@
 	<hr>
 	<br>
 	
-	<form action="/user/update.do" method="post">
-	
-		<div class="container">
+	<div class="container">
+		<form action="/user/update.do" method="post">
 			<div class="userUpdateForm">
 				<div class="userInfo">
 					<div>
@@ -125,13 +128,12 @@
 						<button type="reset" >초기화</button>
 					</div>	
 					<div>
-						<button type="submit">제출</button>
+						<button type="submit">수정</button>
 					</div>	
 				</div>
 			</div>
-		</div>
-		
-	</form>
+		</form>
+	</div>
 	
 	<footer th:insert="/footer"></footer>
 </body>
