@@ -13,37 +13,36 @@
             border: 1px solid;
             font-size: 14px;
         }
-        #navFlex {
+        #productNav #navFlex {
             display: flex;
             align-items: center;
         }
-        #productNav a {
+        #productNav #navFlex a {
             text-decoration: none;
             color: black;
         }
-        .filterTab {
+        #productNav #navFlex .filterTab {
             cursor: pointer;
             margin: 0 25px;
+        }
+        #productNav #limit {
+            display: flex;
+            align-items: center;
+            margin-right: 25px;
+        }
+        #productNav #limit #pageLimit {
+            border: solid 1px #e3e3e3;
+            background-color: #ffffff;
+            padding: 5px 10px;
+            cursor: pointer;
         }
         .vLine {
             width: 1px;
             height: 31px;
             background-color: #e3e3e3;
         }
-        #limit {
-            display: flex;
-            align-items: center;
-            margin-right: 25px;
-        }
-        #pageLimit {
-            border: solid 1px #e3e3e3;
-            background-color: #ffffff;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
     </style>
 </head>
-
 <body>
     <nav id="productNav">
         <div id="navFlex">

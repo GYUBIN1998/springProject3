@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        #container {
+            padding: 92px 0;
+        }
+        #container #subContainer {
+            position: relative;
+            width: 459px;
+            margin: 0 auto;
+        }
+        #container #subContainer #signupBox {
+            width: 100%;
+            height: 504px;
+        }
+        #container #subContainer #signupBox #signupLogo {
+            width: 100%;
+            height: 50px;
+            font-size: 27px;
+            font-weight: 700;
+        }
+        #container #subContainer #signupBox #signupForm .signupInputBox {
+            position: relative;
+            width: 460px;
+            margin-bottom: 10px;
+        }
+        #container #subContainer #signupBox #signupForm .signupInputBoxNoMargin {
+            margin-bottom: 0;
+        }
+        #container #subContainer #signupBox #signupForm .signupInputBox .signupInput {
+            width: 100%;
+            height: 54px;
+            border: 1px solid #d5d5d5;
+            font-size: 14px;
+            font-weight: bold;
+            color: black;
+            padding-left: 17px;
+            line-height: 54px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="subContainer">
+            <div id="signupBox">
+                <div id="signupLogo">회원가입</div>
+                <form action="#" name="signupForm" id="signupForm" method="post">
+                    <div class="signupInputBox">
+                        <input type="text" name="signupName" id="signupName" class="signupInput" placeholder="이름 2자 이상, 한글 or 영문 (특수기호, 공백 사용 불가)" value minlength="2" maxlength="16" required>
+                    </div>
+                    <div class="signupInputBox">
+                        <input type="text" name="signupId" id="signupId" class="signupInput" placeholder="ID 4 ~ 16자" value minlength="4" maxlength="16" required>
+                    </div>
+                    <div class="signupInputBox signupInputBoxNoMargin">
+                        <input type="password" name="signupPw" id="signupPw" class="signupInput" placeholder="비밀번호 8 ~ 16자" value minlength="8" maxlength="16" required>
+                    </div>
+                    <div class="signupInputBox">
+                        <input type="password" name="signupPwCheck" id="signupPwCheck" class="signupInput" placeholder="비밀번호 재확인" value minlength="8" maxlength="16" required>
+                    </div>
+                    <div class="signupInputBox">
+                        <input type="email" name="signupEmail" id="signupEmail" class="signupInput" placeholder="이메일 주소" value required>
+                    </div>
+                    <div class="signupInputBox">
+                        <input type="text" name="signupPhone" id="signupPhone" class="signupInput" placeholder="휴대폰번호('-' 제외하고 숫자만 입력)" value minlength="10" maxlength="12" required>
+                    </div>
+                    <button>가입하기</button>          
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

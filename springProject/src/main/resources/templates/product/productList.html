@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #productContainer {
+            padding: 0;
+        }
+        #productContainer li {
+        	display: flex;
+        	justify-content: center;
+        }
+        #productContainer li .productList {
+            display: flex;
+            list-style: none;
+            border: 1px solid;
+            padding: 15px;
+        }
+        #productContainer .thumbnail {
+            width: 130px;
+            height: 130px;
+            border: 1px solid;
+            margin-right: 30px;
+        }
+        #productContainer .listInfo div{
+            margin-bottom: 20px;
+        }
+        #productContainer .listInfo .title a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        #productContainer .listInfo .detail {
+            width: 450px;
+            height: 150px;
+            border: 1px solid;
+            font-size: 12px;
+        }
+        #productContainer .listInfo .property {
+            display: inline-block;
+            padding: 3px 6px;
+            border: 1px solid;
+            margin-right: 10px;
+        }
+        #productContainer .listPrice {
+            border: 1px solid;
+            padding: 10px 15px;
+        }
+        #productContainer .listPrice .sale {
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+        #productContainer .listPrice div {
+            margin-bottom: 10px;
+        }
+        #productContainer .listPrice .originalPrice {
+            text-decoration: line-through;
+        }
+        #productContainer .listPrice .price .saledPrice {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #productContainer .listPrice .basketBuy a {
+            display: inline-block;
+            text-decoration: none;
+            color: black;
+            border: 1px solid;
+            padding: 10px 15px;
+        }
+        .vLine {
+            width: 1px;
+            margin: 0 20px;
+            background-color: #e3e3e3;
+        }
+    </style>
+</head>
+<body>
+	<header th:insert="/header"></header>
+    <ul id="productContainer">
+        <li th:each="product : ${products}">
+          <div class="productList">
+            <div class="thumbnail">이미지 영역</div>
+            <div class="listInfo">
+                <div class="title">
+                    <a href="#" th:text="${product.prod_name}"></a>
+                </div>
+                <div class="detail">    
+                    제품 설명란        
+                </div>
+                <div class="properties">
+                    <span id="sale" class="property">SALE</span>
+                    <span id="free" class="property">무료 배송</span>
+                </div>
+            </div>
+            <div class="vLine"></div>
+            <div class="listPrice">
+                <div>
+                    <span class="sale">%</span>
+                    <span class="originalPrice">원</span>
+                </div>
+                <div class="price">
+                    <span class="saledPrice" th:text="${#numbers.formatInteger(product.prod_price, 3, 'COMMA')} + '원'"></span>
+                </div>
+                <div class="reviewStar">
+                    <span>
+                        ❤❤❤❤❤
+                    </span>
+                    <span>5</span>
+                </div>
+                <div class="basketBuy">
+                    <a href="#">장바구니</a>
+                    <a href="#">구매하기</a>
+                </div>
+            </div>     
+          </div>
+        </li>
+    </ul>
+    <div class="d-flex justify-content-center" th:insert="/paging"></div>
+    <footer th:insert="/footer"></footer>
+</body>
+</html>

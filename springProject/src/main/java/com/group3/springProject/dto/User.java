@@ -1,5 +1,7 @@
 package com.group3.springProject.dto;
 
+import java.util.List;
+
 import lombok.Data;
 
 /*
@@ -20,5 +22,5 @@ public class User {
 	private String user_pw;
 	private String user_phone;
 	private String user_email;
-	private String user_adress; 
+	private String user_adress;
 }
