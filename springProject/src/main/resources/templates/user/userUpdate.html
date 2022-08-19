@@ -9,6 +9,7 @@
 	.title{
 		display: flex;
 	    justify-content: center;
+	    margin-top: 20px;
 	}
 	.userInfo>div>div{
 		padding: 10px;
@@ -41,6 +42,9 @@
 	    justify-content: center;
 	    padding: 20px;
 	}
+	.userInfoBtns{
+		margin-bottom: 20px;
+	}
 	.userInfoBtns>div>button{
 		width: 100px;
 		margin: 10px;
@@ -58,13 +62,14 @@
 </style>
 
 <body>
+	<header th:insert="/header"></header>
+
 	<h1 class="title">회원 정보 수정</h1>
 	<hr>
 	<br>
 	
-	<form action="/user/update.do" method="post">
-	
-		<div class="container">
+	<div class="container">
+		<form action="/user/update.do" method="post">
 			<div class="userUpdateForm">
 				<div class="userInfo">
 					<div>
@@ -100,12 +105,10 @@
 					</div>
 					<br>
 					<div id="userAddressInput">
-						<div>
-							<div class="wd100" style="vertical-align: middle;">주소</div>
-						</div>
+						<div class="wd100">주소</div>
 						<div>
 							<div class="verti">
-								<input name="userAddress" style="width: 100px;">
+								<input name="userAddress" class="wd100">
 								<button type="button">주소검색</button>
 							</div>
 							<div>
@@ -123,12 +126,13 @@
 						<button type="reset" >초기화</button>
 					</div>	
 					<div>
-						<button type="submit">제출</button>
+						<button type="submit">수정</button>
 					</div>	
 				</div>
 			</div>
-		</div>
-		
-	</form>
+		</form>
+	</div>
+	
+	<footer th:insert="/footer"></footer>
 </body>
 </html>
