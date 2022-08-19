@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Q&A 상세페이지</title>
+</head>
+<style>
+#pageBody{
+margin: 10px 100px; display: flex; flex-direction: column; align-items: center;
+}
+table{
+border: 1px solid grey; border-collapse: collapse;
+}
+tr,th,td{
+border-top: 1px solid grey;  padding: 10px;
+}
+th{
+border-right: 1px solid grey;
+}
+#btns{
+display: flex; padding: 5px 250px; justify-content: flex-end;
+}
+</style>
+<body>
+	<div id="pageBody">
+	<h1>Q&A 상세페이지 입니다.</h1>
+	<table>
+		<thead>
+		<colgroup>
+			<col width="100px;"> 
+			<col width="auto;"> 
+			<col width="100px;"> 
+			<col width="100px;"> 
+		</colgroup>
+			<tr>
+				<th>상품정보</th>
+				<td>SAMSUNG 노트북</td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td>노트북은 안 오고 웬 벽돌이 왔는데 신고해도 될까요?</td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td>박규빈</td>
+			</tr>
+			<tr>
+				<th>작성일</th>
+				<td>2022-08-16</td>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="2">
+					<Strong>내용</Strong>			
+					<p>
+					노트북을 샀는데 빨간 벽돌 4장이 들어왔습니다. 이거 어떻게 된 일인지 해명이 되지 않으면 신고하려고 합니다.
+					</p>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">
+					<strong>답변</strong>
+					<p>
+					안녕하세요, 박규빈 고객님.<br>
+					현재 배송업체에 문의한 결과 배송 착오로 물건이 잘못 도착한 것으로 확인되었습니다.<br>
+					배송 실수로 인한 불편에 대해 사과의 말씀드립니다.<br>
+					상품은 2~3일 이내로 도착할 예정입니다.<br>
+					다시 한 번 불편을 드린 점 사과드립니다.
+					</p>
+					<p>
+					문의사항이 있으시면 언제든지 고객센터>Q&A 또는
+					유선번호 1234-4321번으로 연락주시기바랍니다.
+					감사합니다.
+					</p>
+				</td>
+			</tr>
+			<tr>
+			<td style="border-right:1px solid grey;">첨부파일</td>
+			</tr>
+		</tfoot>
+	</table>
+	</div>
+	<div id="btns">
+	<button>목록</button>
+	<button>수정</button>
+	<button>삭제</button>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>결제 내역</title>
+</head>
+<style>
+#pageBody{
+margin: 50px 150px;
+}
+#shippingStatus{
+display:flex; justify-content: space-evenly;
+}
+#shippingStatus>div{
+margin: 10px 30px;  display: flex;  flex-direction: column; align-items: center;
+}
+#tableContainer{
+display: flex; justify-content: center;
+}
+#dateSearching{
+display: flex; justify-content: center;
+}
+Table{
+width:100%; padding:10px; border-bottom: 1px solid grey; border-collapse: collapse;
+}
+th,td{
+padding: 5px 50px; border-bottom: 1px solid grey;
+}
+</style>
+
+<body>
+	<header th:insert="/header"></header>
+	<div id="pageBody">
+		<h1 style="text-align: center;">결제 내역 페이지 입니다.(배송확인)</h1>
+		<div id="shippingStatus">
+			<div>
+			<p>입금전</p>
+			<p>0건</p>
+			</div>
+			<div>
+			<p>배송준비중</p>
+			<p>0건</p>
+			</div>
+			<div>
+			<p>배송중</p>
+			<p>1건</p>
+			</div>
+			<div>
+			<p>배송완료</p>
+			<p>0건</p>
+			</div>
+			<div>
+			<p>취소/환불/교환</p>
+			<p>0건</p>
+			</div>
+		</div>
+		<div id="dateSearching">
+			<input type="date"> ~ <input type="date">
+			<select>
+			<option>전체상태</option>
+			<option>배송중</option>
+			<option>배송완료</option>
+			<option>취소/환불/교환</option>
+			</select>
+			<button>조회</button>
+		</div>
+		<hr>
+		<div id="tableContainer">
+			<table>
+				<tr>
+					<th>
+					주문일자
+					<br>
+					주문번호
+					</th>
+					<th>상품정보</th>
+					<th>수량</th>
+					<th>상품구매금액</th>
+					<th>주문처리상태</th>
+				</tr>
+				<tr>
+					<td>
+					2022-08-19
+					<br>
+					<a href="#">22020819001</a>
+					</td>
+					<td>ASUS 젠북 14X OLED UM5401QA-KN030</td>
+					<td>1개</td>
+					<td>1,299,000원</td>
+					<td>배송중</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<footer th:insert="/footer"></footer>
+</body>
+</html>
