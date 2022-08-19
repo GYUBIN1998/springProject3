@@ -3,52 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Project3.com</title>
-    <style>
-    	body {
-    		margin: 0;
-    		padding: 0;
-    	}
-        #swiperMain {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 60px;
-        }
-        #swiperSub {
-            display: flex;
-            justify-content: space-evenly;
-            margin-bottom: 60px;
-        }
-        #swiperSub .swiperSubImg{
-            text-align: center;
-        }
-        #swiperSub .swiperSubImg img {
-            width: 100px;
-            height: 100px;
-        }
-        #swiperSub h3{
-            text-align: center;
-        }
-        #promotion {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 60px;
-        }
-        #promotion #promotionImg {
-            margin-right: 120px;
-        }
-        #promotion #promotionImg img {
-            width: 500px;
-            height: 300px;
-        }
-        #promotion a {
-            display: inline-block;
-            background-color: dodgerblue;
-            text-decoration: none;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-    </style>
+	<link rel="stylesheet" href="/public/css/index.css">
 </head>
 <body>
 	<header th:insert="/header"></header>
@@ -63,7 +18,7 @@
         <div>
             <div class="swiperSubImg">
                 <a href="#">
-                    <img src="./45-450792_laptop-png-gaming-laptop-png-lenovo-transparent-png.png" alt="">
+                    <img src="./45-450792_laptop-png-gaming-laptop-png-lenovo-transparent-png.png" alt="image">
                 </a>    
             </div>
             <h3>게이밍 노트북</h3>
@@ -74,7 +29,7 @@
         <div>
             <div class="swiperSubImg">
                 <a href="#">
-                    <img src="./apple-logo-52C416BDDD-seeklogo.com.png" alt="">
+                    <img src="./apple-logo-52C416BDDD-seeklogo.com.png" alt="image">
                 </a>  
             </div>
             <h3>Apple Zone</h3>
@@ -85,11 +40,11 @@
     </div>
     <div id="promotion">
         <div id="promotionImg">
-           <img src="./asus.png" alt="">
+           <img src="./asus.png" alt="image">
         </div>
         <div>
             <h1>Big Event</h1>
-            <h2>아수스 노트북 특가전</h3>
+            <h2>아수스 노트북 특가전</h2>
             <p>
                 <strong>최신 Intel, AMD가 탑재된</strong>
                 <br>
@@ -104,5 +59,4 @@
     </div>  
     <footer th:insert="/footer"></footer>
 </body>
-</html>
-    </div>       
+</html>     

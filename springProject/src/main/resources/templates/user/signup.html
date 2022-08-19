@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<link rel="stylesheet" href="/public/css/signup.css">
+</head>
+<body>
+	<header th:insert="/header"></header>
+	<main class="container">
+    <div id="container">
+        <div id="subContainer">
+            <div id="signupBox">
+                <div id="signupLogo">회원가입</div>
+                 <form action="#" name="signupForm" id="signupForm" method="post">
+				    <div class="row g-3 align-items-center">
+					  <div class="col-auto signupInputBox">
+					    <input type="text" name="inputName" class="form-control signupInput" placeholder="이름 2자 이상" value minlength="2" maxlength="16" required>
+					  </div>
+					  <div class="col-auto">
+					  <span class="form-text">사용 가능합니다.</span>
+						 <span class="valid-feedback">
+						   사용 가능합니다.
+						 </span>
+						 <span class="invalid-feedback">
+						   2자 이상 입력하세요.
+						 </span> 
+						</div>
+					</div>
+					<div class="row g-3 align-items-center">
+					  <div class="col-auto signupInputBox">
+					    <input type="text" name="inputId" class="form-control signupInput" placeholder="ID 4 ~ 16자" value minlength="4" maxlength="16" required>
+					  </div>
+					  <div class="col-auto">
+						 <span class="valid-feedback">
+						   사용 가능한 아이디입니다.
+						 </span>
+						 <span class="invalid-feedback">
+						   이미 사용 중인 아이디입니다.
+						 </span> 
+						</div>
+					</div>
+					<div class="row g-3 align-items-center">
+					  <div class="col-auto signupInputBox">
+					    <input type="password" name="inputPw" class="form-control signupInput" placeholder="비밀번호 8 ~ 16자" value minlength="8" maxlength="16" required>
+					  </div>
+					  <div class="col-auto">
+						 <span class="valid-feedback">
+						   사용 가능한 비밀번호입니다.
+						 </span>
+						 <span class="invalid-feedback">
+						   이미 사용 중인 비밀번호입니다.
+						 </span> 
+						</div>
+					</div>
+					<div class="row g-3 align-items-center">
+					  <div class="col-auto signupInputBox">
+					    <input type="password" name="inputPwCheck" class="form-control signupInput" placeholder="비밀번호 확인" value minlength="8" maxlength="16" required>
+					  </div>
+					  <div class="col-auto">
+						 <span class="valid-feedback">
+						   일치합니다.
+						 </span>
+						 <span class="invalid-feedback">
+						   불일치합니다.
+						 </span> 
+						</div>
+					</div>
+					<div class="row g-3 align-items-center">
+					  <div class="col-auto signupInputBox">
+					    <input type="email" name="inputEmail" class="form-control signupInput" placeholder="이메일 주소" value required>
+					  </div>
+					  <div class="col-auto">
+						 <span class="valid-feedback">
+						   사용 가능한 이메일입니다.
+						 </span>
+						 <span class="invalid-feedback">
+						   이미 사용 중인 이메일입니다.
+						 </span> 
+						</div>
+					</div>
+					<div class="row g-3 align-items-center">
+					  <div class="col-auto signupInputBox">
+					    <input type="text" name="inputPhone" class="form-control signupInput" placeholder="휴대폰 번호('-' 제외하고 숫자만 입력)" value minlength="10" maxlength="12" required>
+					  </div>
+					  <div class="col-auto">
+						 <span class="valid-feedback">
+						   사용 가능한 전화번호입니다.
+						 </span>
+						 <span class="invalid-feedback">
+						   이미 사용 중인 전화번호입니다.
+						 </span> 
+						</div>
+					</div> 
+				  <button class="btn btn-primary">가입하기</button>
+				</form>
+            </div>
+        </div>
+    </div>
+    </main>
+	<footer th:insert="/footer"></footer>
+</body>
+</html>

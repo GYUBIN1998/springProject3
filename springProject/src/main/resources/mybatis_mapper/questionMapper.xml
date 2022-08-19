@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group3.springProject.mapper.QuestionMapper">
+	<select id="selectQnaAll" resultType="QnaBoard">
+		SELECT * FROM QNABOARD LIMIT #{startRow}, #{row}
+	</select>
+	<select id="selectQnaAllCount" resultType="int">
+		SELECT COUNT(*) FROM QNABOARD
+	</select>
+	<select id="selectFaqAll" resultType="FaqBoard">
+		SELECT * FROM FAQBOARD LIMIT #{startRow}, #{row}
+	</select>
+	<select id="selectFaqAllCount" resultType="int">
+		SELECT COUNT(*) FROM FAQBOARD
+	</select>
+</mapper>

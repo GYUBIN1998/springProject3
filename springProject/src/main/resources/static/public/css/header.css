@@ -1,0 +1,59 @@
+ #header {
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     padding: 15px;
+ }
+ #header #headerCenter #searchBox {
+     width: 520px;
+     height: 46px;
+     border: 2px solid dodgerblue;
+     box-sizing: border-box;
+     position: relative;
+ }
+ #header #headerCenter #searchBox #searchForm #searchInput {
+     width: 452px;
+     height: 42px;
+     padding-left: 12px;
+     line-height: 42px;
+     color: #333;
+     font-size: 15px;
+     border: none;
+     box-sizing: border-box;
+     outline: none;
+ }
+ #header #headerCenter #searchBox #searchForm #searchIcon {
+     position: absolute;
+     right: 0;
+     top: 0;
+     cursor: pointer;
+     z-index: 50;
+ }
+ #header #headerRight ul {
+     display: flex;
+     justify-content: space-around;
+ }
+ #header #headerRight ul li {
+     list-style: none;
+ }
+ #header #headerRight ul li a {
+     display: inline-block;
+     text-decoration: none;
+     color: black;
+ }
+ #nav #navBox {
+     display: flex;
+     background-color: dodgerblue;
+     justify-content: space-around;
+ }
+ #nav #navBox a {
+     display: inline-block;
+     text-decoration: none;
+     padding: 15px;
+     color: white;
+ }
+ .vLine {
+     width: 1px;
+     background-color: #e3e3e3;
+     margin: 0 15px;
+ }

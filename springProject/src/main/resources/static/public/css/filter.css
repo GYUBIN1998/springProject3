@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#filterArea {
+    width: 1225px;
+    height: 680px;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 40px;
+}
+#filterArea article {
+    display: flex;
+}
+#filterArea article div:nth-child(2) {
+    border-bottom: 1px solid #d2d2d2;
+    border-right: 1px solid #d2d2d2;
+}
+#filterArea .filterGroup {
+    width: 210px;
+    background-color: #444b57;
+    box-sizing: border-box;
+    padding-top: 18px;
+    padding-left: 16px;
+    padding-right: 18px;
+    border-bottom: 1px solid #393c43;
+}
+#filterArea .filterGroup span {
+    color: white;
+}
+#filterArea .filterList {
+    width: 1016px;
+    padding-top: 16px;
+    padding-left: 15px;
+    margin: 0;
+    box-sizing: border-box;
+}
+#filterArea #firstList {
+    border-top: 1px solid #d2d2d2;
+}
+#filterArea .filterList li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 35px;
+    margin-bottom: 16px;
+}
+#filterArea .filterList .moneyInput {
+    color: #b1b1b1;
+    margin-left: 10px;
+}
+#filterArea .filterList input {
+    width: 110px;
+    height: 25px;
+    background-color: #ffffff;
+    border: 1px solid #e3e3e3;
+    box-sizing: border-box;
+    padding-left: 5px;
+    padding-right: 20px;
+    text-align: right;
+}
+#filterArea .filterList label {
+    color: #848484;
+    position: absolute;
+    margin-left: -20px;
+    margin-top: 6px;
+}
+#filterArea .filterList img {
+    vertical-align: middle;
+    margin-top: -2px;
+}
+#filterArea .filterList .notSelected, #filterArea .pointer {
+    cursor: pointer;
+}
+#filterArea .propertyClickArea {
+    background-color: #f8f8f8;
+    min-height: 45px;
+    border: 1px solid #d2d2d2;
+    border-top: 0;
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+}
+#filterArea .propertyClickArea ul {
+    padding: 11px 0px;
+    margin: 0;
+    flex: 1;
+    display: flex;
+}
+#filterArea .propertyClickArea ul span {
+    margin-left: 20px;
+    display: inline-block;
+    color: #ccc;
+}

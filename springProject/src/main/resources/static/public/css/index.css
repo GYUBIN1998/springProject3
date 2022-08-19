@@ -1,0 +1,44 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+#swiperMain {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+#swiperSub {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 60px;
+}
+#swiperSub .swiperSubImg{
+    text-align: center;
+}
+#swiperSub .swiperSubImg img {
+    width: 100px;
+    height: 100px;
+}
+#swiperSub h3{
+    text-align: center;
+}
+#promotion {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+#promotion #promotionImg {
+    margin-right: 120px;
+}
+#promotion #promotionImg img {
+    width: 500px;
+    height: 300px;
+}
+#promotion a {
+    display: inline-block;
+    background-color: dodgerblue;
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+}

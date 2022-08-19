@@ -15,6 +15,8 @@ public class UserController {
 	private UserMapper userMapper;
 	
 	@GetMapping("/userUpdate")
-	public void detail() {}
-
+	public void detail() {};
+	
+	@GetMapping("/signup")
+	public void signup() {};
 }

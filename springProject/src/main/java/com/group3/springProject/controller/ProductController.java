@@ -25,10 +25,10 @@ public class ProductController {
 		Paging paging = new Paging(page, rowCount, "/product/productList/", row);
 		List<Product> products = productMapper.selectAll(startRow, row);
 		model.addAttribute("products", products);
-		model.addAttribute("paging", paging);
+		model.addAttribute("row", row);
 		model.addAttribute("rowCount", rowCount);
 		model.addAttribute("page", page);
-		model.addAttribute("row", row);
+		model.addAttribute("paging", paging);
 		System.out.println(products);
 		return "/product/productList";	
 	}

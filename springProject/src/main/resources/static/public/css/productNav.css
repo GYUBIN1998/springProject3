@@ -1,0 +1,11 @@
+#productNav {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    height: 60px;
+}
+.vLine {
+    width: 1px;
+    background-color: #e3e3e3;
+    margin: 0 15px;
+}

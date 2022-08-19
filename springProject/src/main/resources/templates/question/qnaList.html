@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<link rel="stylesheet" href="/public/css/qnaList.css">
+</head>
+<body>
+	<header th:insert="/header"></header>
+	<main class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" id="path">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#">홈</a></li>
+	    <li class="breadcrumb-item"><a href="#">고객 센터</a></li>
+	    <li class="breadcrumb-item" aria-current="page"><a href="#" class="breadcrumb-item active">상품 Q&A</a></li>
+	  </ol>
+	</nav>
+        <h2>상품 Q&A</h2>
+    <div id="table">
+        <table id="tableList" class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>글 번호</th>
+                    <th>제목</th>
+                    <th>작성자 아이디</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="qna: ${qnaList}">
+                    <td th:text="${qna.qnaboard_no}"></td>
+                    <td th:text="${qna.qnaboard_title}"></td>
+                    <td th:text="${qna.user_id}"></td>
+                    <td th:text="${#dates.format(qna.post_time, 'yyyy-MM-dd')}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-center" th:insert="/paging"></div>
+    <div id="searchArea">
+    <form action="#" method="get" enctype="multipart/form-data">
+           <select name="searchDate" id="searchDate" class="form-select form-select-sm">
+               <option value="week">일주일</option>
+               <option value="month">1개월</option>
+               <option value="month6">6개월</option>
+               <option value="all">전체</option>
+           </select>
+           <select name="searchKey" id="searchKey" class="form-select form-select-sm">
+                <option value="subject">제목</option>
+                <option value="content">내용</option>
+                <option value="writerName">작성자 이름</option>
+                <option value="memberId">작성자 아이디</option>
+            </select>
+            <input type="search" name="search" id="search" class="form-control">
+            <a href="#" class="btn btn-secondary">찾기</a>
+        </form>
+    </div>
+    </main>
+    <footer th:insert="/footer"></footer>
+</body>
+</html>
