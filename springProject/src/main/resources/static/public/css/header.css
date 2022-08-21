@@ -1,59 +1,92 @@
- #header {
+#header {
      display: flex;
      justify-content: space-around;
      align-items: center;
-     padding: 15px;
- }
- #header #headerCenter #searchBox {
+     padding: 30px;
+}
+#header #headerLeft h1 a {
+	text-decoration: none;
+	color: dodgerblue;
+}
+#header #headerCenter #searchBox {
      width: 520px;
-     height: 46px;
-     border: 2px solid dodgerblue;
+     height: 45px;
      box-sizing: border-box;
-     position: relative;
- }
- #header #headerCenter #searchBox #searchForm #searchInput {
-     width: 452px;
-     height: 42px;
-     padding-left: 12px;
-     line-height: 42px;
-     color: #333;
-     font-size: 15px;
-     border: none;
+}
+#header #headerCenter #searchBox #searchForm #searchInput {
+     height: 45px;
+     line-height: 45px;
      box-sizing: border-box;
-     outline: none;
- }
- #header #headerCenter #searchBox #searchForm #searchIcon {
-     position: absolute;
-     right: 0;
-     top: 0;
-     cursor: pointer;
-     z-index: 50;
- }
- #header #headerRight ul {
-     display: flex;
-     justify-content: space-around;
- }
- #header #headerRight ul li {
-     list-style: none;
- }
- #header #headerRight ul li a {
-     display: inline-block;
+     border: 1px solid dodgerblue;
+}
+#header #headerCenter #searchBox #searchForm button {
+ 	 border: 1px solid dodgerblue;
+}
+#header #headerCenter #searchBox #searchForm button:hover {
+ 	 background-color: dodgerblue;
+}
+#header #headerCenter #searchBox #searchForm button img {
+ 	 width: 28px;
+ 	 height: 28px;
+}
+#header #headerRight ol {
+	margin: 8px 0;
+}
+#header #headerRight nav ol li a {
      text-decoration: none;
      color: black;
- }
- #nav #navBox {
+     vertical-align: middle;
+}
+#nav {
+ 	 padding: 0;
+}
+#nav #navBox {
      display: flex;
      background-color: dodgerblue;
      justify-content: space-around;
- }
- #nav #navBox a {
-     display: inline-block;
+}
+#nav #navBox a {
      text-decoration: none;
-     padding: 15px;
+     padding: 10px;
      color: white;
- }
- .vLine {
+}
+#nav #navBox .dropdown {
+     display: inline-block;
+     position: relative;
+}
+#nav #navBox .dropdown .dropdown-btn {
+     width: 200px;
+     padding: 18px;
+     font-size: 18px;
+     color: #fff;
+     border: none;
+     cursor: pointer;
+     background-color: dodgerblue;
+}
+#nav #navBox .dropdown .dropdown-btn a {
+	 text-decoration: none;
+	 color: black;
+}
+#nav #navBox .dropdown .dropdown-submenu {
+     width: 200px;
+     display: none;
+     position: absolute;
+     z-index: 10;
+}
+#nav #navBox .dropdown .dropdown-submenu a {
+     display: block;
+     padding: 7px;
+     text-align: center;
+     background-color: dodgerblue;
+}
+#nav #navBox .dropdown .dropdown-submenu a:hover {
+     background-color: #0dcaf0;
+}
+#nav #navBox .dropdown:hover .dropdown-submenu {
+     display: block;
+}
+.vLine {
      width: 1px;
      background-color: #e3e3e3;
      margin: 0 15px;
- }
+}

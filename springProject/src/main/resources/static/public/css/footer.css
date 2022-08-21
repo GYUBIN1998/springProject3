@@ -1,10 +1,8 @@
 #footer {
-    background-color: skyblue;
+    background-color: #0dcaf0;
 }
 #footer #footerTop {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 10px;
+    padding: 5px 10px;
     background-color: dodgerblue;
 }
 #footer #footerTop a {
@@ -15,23 +13,20 @@
     font-size: 13px;
 }
 #footer #footerCenter ul {
-    margin-top: 40px;
-}
-#footer #footerCenter li {
-    list-style: none;
-    margin-bottom: 5px;
+    margin: 40px 0 20px 0;
+    padding-left: 32px;
 }
 #footer #footerCenter a {
     color: dodgerblue;
 }
-#footer #copyRight {
-    display: flex;      
+#footer #footerBottom div {
+    margin: 20px 20px 20px 32px;
 }
-#footer #copyRight div {
-    margin: 20px;
+#footer #footerBottom div a {
+	font-size: 20px;
+    color: dodgerblue;
 }
-.vLine {
-    width: 1px;
-    background-color: #e3e3e3;
-    margin: 0 15px;
+#footer #footerBottom p {
+	margin: 0;
+	font-size: 13px;
 }

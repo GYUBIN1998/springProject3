@@ -1,10 +1,26 @@
-nav {
+#path {
+    display: flex;
+    margin: 20px 0;
+}
+#path ol {
+    margin-left: auto;      
+}
+#path ol li a {   
+    text-decoration: none;
+    vertical-align: middle;
+}
+#filter {
 	display: flex;
 	justify-content: center;
-	margin: 20px 0;
+	margin: 30px 0;
+}
+#filterNav {
+	display: flex;
+	justify-content: center;
+	margin: 30px 0;
 }
 #productContainer {
-	margin: 40px 0;
+	margin: 30px 0;
     padding: 0;
 }
 #productContainer li {

@@ -1,15 +1,7 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 #filterArea {
-    width: 1225px;
-    height: 680px;
     font-size: 12px;
     padding: 0;
     margin: 0;
-    margin-bottom: 40px;
 }
 #filterArea article {
     display: flex;
@@ -20,7 +12,7 @@ body {
 }
 #filterArea .filterGroup {
     width: 210px;
-    background-color: #444b57;
+    background-color: #6c757d;
     box-sizing: border-box;
     padding-top: 18px;
     padding-left: 16px;
@@ -31,7 +23,7 @@ body {
     color: white;
 }
 #filterArea .filterList {
-    width: 1016px;
+    width: 1086px;
     padding-top: 16px;
     padding-left: 15px;
     margin: 0;
@@ -74,7 +66,7 @@ body {
     cursor: pointer;
 }
 #filterArea .propertyClickArea {
-    background-color: #f8f8f8;
+    background-color: #f8f9fa;
     min-height: 45px;
     border: 1px solid #d2d2d2;
     border-top: 0;

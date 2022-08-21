@@ -1,46 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="/public/css/header.css">
-    <link rel="stylesheet" href="/bootstrap-5.2.0-dist/css/bootstrap.css">
-	<script src="/bootstrap-5.2.0-dist/js/bootstrap.bundle.js"></script>
+<meta charset="UTF-8">
+<title>Header</title>
+<link rel="stylesheet" href="/public/css/header.css">
+<link rel="stylesheet" href="/bootstrap-5.2.0-dist/css/bootstrap.css">
+<script src="/bootstrap-5.2.0-dist/js/bootstrap.bundle.js"></script>
+<script src="/public/js/header.js" defer="defer"></script>
 </head>
 <body>
     <div id="header">
         <div id="headerLeft">
-            <h1>Project_3.com</h1>
+            <h1>
+            	<a href="/">Project_3.com</a>	
+            </h1>
         </div>
         <div id="headerCenter">
-            <div id="searchBox">
-                <form action="#" id="searchForm" name="searchForm" method="get">
-                    <label>
-                        <input type="text" name="searchInput" id="searchInput" value minlength="2" maxlength="50">
-                        <input type="image" value="검색" name="searchIcon" id="searchIcon" 
-                               src="https://cdn.icoda.co.kr/asset/img/usr/main/search_btn.jpg">
-                    </label>
-                </form>
-            </div>
+        	<div class="container-fluid" id="searchBox">
+			  <form class="d-flex" role="search" action="#" id="searchForm" name="searchForm" method="get">
+			    <input class="form-control me-2" name="searchInput" id="searchInput" type="search" aria-label="Search" value minlength="2" maxlength="50">
+			    <button class="btn" type="submit" style="">
+			    	<img alt="" src="/public/img/pngegg.png">
+			    </button>
+			  </form>
+			</div>
         </div>
         <div id="headerRight">
-            <ul>
-                <li><a href="#">로그인</a></li>
-                <div class="vLine"></div>
-                <li><a href="#">회원가입</a></li>
-                <div class="vLine"></div>
-                <li><a href="#">장바구니</a></li>
-            </ul>
+	        <nav style="--bs-breadcrumb-divider: '|';" aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a href="#">로그인</a></li>
+			    <li class="breadcrumb-item"><a href="#">회원가입</a></li>
+			    <li class="breadcrumb-item"><a href="#">장바구니</a></li>
+			  </ol>
+			</nav>  
         </div>
     </div>
-    <div id="nav">
-        <div id="navBox">
-            <a href="#">카테고리</a>
-            <a href="#">노트북/데스크탑</a>
-            <a href="#">주변 기기</a>
-            <a href="#">조립형 PC</a>
-            <a href="#">고객 센터</a>
-        </div>
-    </div>
+	<nav id="nav" class="navbar navbar-dark" style="background-color: dodgerblue;">
+	  <div id="navBox" class="container-fluid align-items-start" style="display: flex; justify-content: space-around">
+	    <button id="toggleBtn" style="margin: 11.5px 0;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	  	<div class="dropdown" id="dropdown1">
+	        <button class="dropdown-btn">노트북/데스크탑</button>
+	        <div class="dropdown-submenu">
+	            <a href="#none">노트북</a>
+	            <a href="#none">데스크탑</a>
+	        </div>
+    	</div>
+        <div class="dropdown" id="dropdown2">
+	        <button class="dropdown-btn">주변 기기</button>
+	        <div class="dropdown-submenu">
+	            <a href="#none">키보드/마우스</a>
+	            <a href="#none">음향 기기</a>
+	            <a href="#none">케이스/보호필름</a>
+	        </div>
+	   	</div>
+	   	<div class="dropdown" id="dropdown3">
+	        <button class="dropdown-btn">조립형 PC</button>
+	        <div class="dropdown-submenu">
+	            <a href="#none">조립 견적</a>
+	            <a href="#none">추천 조립</a>
+	        </div>
+    	</div>
+    	<div class="dropdown" id="dropdown4">
+	        <button class="dropdown-btn">고객 센터</button>
+	        <div class="dropdown-submenu">
+	            <a href="#none">공지 사항</a>
+	            <a href="#none">FAQ</a>
+	            <a href="#none">Q&A</a>
+	        </div>
+    	</div>
+	  </div>
+	</nav>
+    <div class="collapse" id="navbarToggleExternalContent">
+	  <div class="p-4" style="background-color: dodgerblue;"></div>
+	</div>
 </body>
 </html>

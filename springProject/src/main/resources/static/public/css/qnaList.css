@@ -1,15 +1,9 @@
 #path {
     display: flex;
-    margin-top: 20px;
+    margin: 20px 0;
 }
- #path ol {
+#path ol {
     margin-left: auto;      
-}
-#path ol li {
-    height: 27px;
-    line-height: 25px;
-    padding: 0 0 0 12px;
-    margin: 0 0 0 8px;
 }
 #path ol li a {   
     text-decoration: none;

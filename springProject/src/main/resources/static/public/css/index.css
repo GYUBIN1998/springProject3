@@ -2,43 +2,43 @@ body {
 	margin: 0;
 	padding: 0;
 }
-#swiperMain {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 60px;
-}
-#swiperSub {
+#subImgContainer {
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 60px;
+    margin: 80px 0;
 }
-#swiperSub .swiperSubImg{
+#subImgContainer .SubImg{
     text-align: center;
+    margin-bottom: 10px;
 }
-#swiperSub .swiperSubImg img {
+#subImgContainer .SubImg img {
     width: 100px;
     height: 100px;
 }
-#swiperSub h3{
+#subImgContainer h3{
     text-align: center;
+    margin-bottom: 10px;
+}
+#subImgContainer h3 a {
+    text-decoration: none;
+    color: black;
 }
 #promotion {
     display: flex;
     justify-content: center;
-    margin-bottom: 60px;
+    align-items: center;
+    margin: 80px 0;
 }
 #promotion #promotionImg {
-    margin-right: 120px;
+    margin-right: 100px;
 }
 #promotion #promotionImg img {
     width: 500px;
     height: 300px;
 }
+#promotion h1, #promotion h2 {
+	margin-bottom: 10px;
+}
 #promotion a {
-    display: inline-block;
     background-color: dodgerblue;
-    text-decoration: none;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
 }
