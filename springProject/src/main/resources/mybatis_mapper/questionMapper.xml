@@ -24,4 +24,10 @@
 	<select id="selectQnaFindOne" resultMap="QnaBoardMap">
 		SELECT * FROM QNABOARD WHERE qnaboard_no=#{qnaboardNo}
 	</select>
+	<select id="selectFaqCategory" resultType="FaqBoard">
+		SELECT * FROM FAQBOARD WHERE faq_devision_no = #{faq_devision_no} LIMIT #{startRow}, #{row}
+	</select>
+	<select id="selectFaqCategoryCount" resultType="int">
+		SELECT COUNT(*) FROM FAQBOARD WHERE faq_devision_no = #{faq_devision_no}
+	</select>
 </mapper>

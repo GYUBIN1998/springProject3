@@ -1,6 +1,7 @@
 #path {
     display: flex;
     margin: 20px 0;
+    min-width: 1200px;
 }
 #path ol {
     margin-left: auto;      
@@ -31,6 +32,8 @@
     display: flex;
     list-style: none;
     padding: 15px;
+    width: 896px;
+    min-width: 896px;
 }
 #productContainer .thumbnail {
     width: 130px;

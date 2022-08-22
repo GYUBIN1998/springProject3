@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item" th:classappend="${(pageFaqCategory.isFirst) ? '' : 'disabled'}">
+      <a class="page-link" th:href="@{{url}{page}/{faq_devision_no}(url=${pageFaqCategory.url}, page=${pageFaqCategory.firstPage}, faq_devision_no = ${faq_devision_no})}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item" th:classappend="${(pageFaqCategory.isPrevious) ? '' : 'disabled'}">
+      <a class="page-link" th:href="@{{url}{page}/{faq_devision_no}(url=${pageFaqCategory.url}, page=${pageFaqCategory.previousPage}, faq_devision_no = ${faq_devision_no})}">
+        Prev
+      </a>
+    </li>
+    <th:block th:each="n : ${#numbers.sequence(pageFaqCategory.start, pageFaqCategory.end)}">
+	    <li class="page-item" th:classappend="${(pageFaqCategory.page == n) ? 'active' : ''}">
+	    	<a class="page-link" th:href="@{{url}{page}/{faq_devision_no}(url=${pageFaqCategory.url}, page=${n}, faq_devision_no = ${faq_devision_no})}" th:text="${n}"></a>
+	    </li>  
+    </th:block>
+    <li class="page-item" th:classappend="${(pageFaqCategory.isNext) ? '' : 'disabled'}">
+      <a class="page-link" th:href="@{{url}{page}/{faq_devision_no}(url=${pageFaqCategory.url}, page=${pageFaqCategory.nextPage}, faq_devision_no = ${faq_devision_no})}">
+        Next
+      </a>
+    </li>
+    <li class="page-item" th:classappend="${(pageFaqCategory.isLast) ? '' : 'disabled'}">
+      <a class="page-link" th:href="@{{url}{page}/{faq_devision_no}(url=${pageFaqCategory.url}, page=${pageFaqCategory.lastPage}, faq_devision_no = ${faq_devision_no})}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</html>

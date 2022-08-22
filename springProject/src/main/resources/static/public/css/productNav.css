@@ -1,7 +1,8 @@
 #productNav {
     display: flex;
     justify-content: space-between;
-    width: 900px;
+    min-width: 896px;
+    width: 896px;
 }
 .vLine {
     width: 1px;

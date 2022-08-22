@@ -3,6 +3,7 @@
      justify-content: space-around;
      align-items: center;
      padding: 30px;
+     min-width: 1200px;
 }
 #header #headerLeft h1 a {
 	text-decoration: none;
@@ -42,8 +43,9 @@
 }
 #nav #navBox {
      display: flex;
-     background-color: dodgerblue;
      justify-content: space-around;
+     background-color: dodgerblue;
+     min-width: 1200px;
 }
 #nav #navBox a {
      text-decoration: none;

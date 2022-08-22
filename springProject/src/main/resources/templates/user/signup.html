@@ -4,34 +4,28 @@
     <meta charset="UTF-8">
     <title>Document</title>
 	<link rel="stylesheet" href="/public/css/signup.css">
+	<script src="/public/js/signup.js" defer="defer"></script>
 </head>
 <body>
 	<header th:insert="/header"></header>
-	<main class="container">
+	<main class="container-fluid">
+	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" id="path">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="/">홈</a></li>
+	    <li class="breadcrumb-item" aria-current="page"><a href="/user/signup" class="breadcrumb-item active">회원가입</a></li>
+	  </ol>
+	</nav>
     <div id="container">
         <div id="subContainer">
             <div id="signupBox">
                 <div id="signupLogo">회원가입</div>
-                 <form action="#" name="signupForm" id="signupForm" method="post">
-				    <div class="row g-3 align-items-center">
-					  <div class="col-auto signupInputBox">
-					    <input type="text" name="inputName" class="form-control signupInput" placeholder="이름 2자 이상" value minlength="2" maxlength="16" required>
-					  </div>
-					  <div class="col-auto">
-					  <span class="form-text">사용 가능합니다.</span>
-						 <span class="valid-feedback">
-						   사용 가능합니다.
-						 </span>
-						 <span class="invalid-feedback">
-						   2자 이상 입력하세요.
-						 </span> 
-						</div>
-					</div>
+                 <form action="/user/signup.do" name="signupForm" id="signupForm" method="post">
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="text" name="inputId" class="form-control signupInput" placeholder="ID 4 ~ 16자" value minlength="4" maxlength="16" required>
+					    <input type="text" name="user_id" class="form-control signupInput" aria-describedby="idHelp"  minlength="4" maxlength="16" placeholder="ID 4 ~ 16자">
 					  </div>
 					  <div class="col-auto">
+					  <span id="idHelp" class="form-text"></span>
 						 <span class="valid-feedback">
 						   사용 가능한 아이디입니다.
 						 </span>
@@ -42,22 +36,24 @@
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="password" name="inputPw" class="form-control signupInput" placeholder="비밀번호 8 ~ 16자" value minlength="8" maxlength="16" required>
+					    <input type="password" name="user_pw" class="form-control signupInput" placeholder="비밀번호 4 ~ 16자" minlength="4" maxlength="16">
 					  </div>
 					  <div class="col-auto">
+					  <span id="pwHelp" class="form-text"></span>
 						 <span class="valid-feedback">
-						   사용 가능한 비밀번호입니다.
+						   사용 가능합니다.
 						 </span>
 						 <span class="invalid-feedback">
-						   이미 사용 중인 비밀번호입니다.
+						   사용 불가능합니다.
 						 </span> 
 						</div>
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="password" name="inputPwCheck" class="form-control signupInput" placeholder="비밀번호 확인" value minlength="8" maxlength="16" required>
+					    <input type="password" name="pwCheck" class="form-control signupInput" placeholder="비밀번호 확인" minlength="4" maxlength="16">
 					  </div>
 					  <div class="col-auto">
+					  <span id="pwCheckHelp" class="form-text"></span>
 						 <span class="valid-feedback">
 						   일치합니다.
 						 </span>
@@ -68,9 +64,10 @@
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="email" name="inputEmail" class="form-control signupInput" placeholder="이메일 주소" value required>
+					    <input type="email" name="user_email" class="form-control signupInput" placeholder="이메일">
 					  </div>
 					  <div class="col-auto">
+					  <span id="emailHelp" class="form-text"></span>
 						 <span class="valid-feedback">
 						   사용 가능한 이메일입니다.
 						 </span>
@@ -81,9 +78,10 @@
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="text" name="inputPhone" class="form-control signupInput" placeholder="휴대폰 번호('-' 제외하고 숫자만 입력)" value minlength="10" maxlength="12" required>
+					    <input type="text" name="user_phone" class="form-control signupInput" placeholder="휴대폰 번호" minlength="10" maxlength="16">
 					  </div>
 					  <div class="col-auto">
+					  <span id="phoneHelp" class="form-text"></span>
 						 <span class="valid-feedback">
 						   사용 가능한 전화번호입니다.
 						 </span>
@@ -91,6 +89,11 @@
 						   이미 사용 중인 전화번호입니다.
 						 </span> 
 						</div>
+					</div> 
+					<div class="row g-3 align-items-center">
+					  <div class="col-auto signupInputBox">
+					    <input type="text" name="user_adress" class="form-control signupInput" placeholder="주소">
+					  </div>
 					</div> 
 				  <button class="btn btn-primary">가입하기</button>
 				</form>

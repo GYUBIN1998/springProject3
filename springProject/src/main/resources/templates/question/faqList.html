@@ -7,34 +7,34 @@
 </head>
 <body>
 	<header th:insert="/header"></header>
-	<main class="container">
+	<main class="container-fluid">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" id="path">
 	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="#">홈</a></li>
+	    <li class="breadcrumb-item"><a href="/">홈</a></li>
 	    <li class="breadcrumb-item"><a href="#">고객 센터</a></li>
-	    <li class="breadcrumb-item" aria-current="page"><a href="#" class="breadcrumb-item active">자주 하는 질문(FAQ)</a></li>
+	    <li class="breadcrumb-item" aria-current="page"><a href="/question/faqList/1/0" class="breadcrumb-item active">자주 하는 질문(FAQ)</a></li>
 	  </ol>
 	</nav>
     <h2>자주 하는 질문(FAQ)</h2>
 	<ul class="nav nav-tabs nav-fill" id="category">
 	  <li class="nav-item">
-	    <a class="nav-link active" aria-current="page" href="#">전체</a>
+	    <a class="nav-link" th:classappend="${(faq_devision_no == 0) ? 'active' : ''}" aria-current="page" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 0)}">전체</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="#">회원</a>
+	    <a class="nav-link" th:classappend="${(faq_devision_no == 1) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 1)}">상품</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="#">주문/결제</a>
+	    <a class="nav-link" th:classappend="${(faq_devision_no == 2) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 2)}">주문/결제</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="#">배송</a>
+	    <a class="nav-link" th:classappend="${(faq_devision_no == 3) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 3)}">배송</a>
 	  </li>
- 		  <li class="nav-item">
-	    <a class="nav-link" href="#">취소/반품/교환</a>
-	  </li>  
- 		  <li class="nav-item">
-	    <a class="nav-link" href="#">기타</a>
-	  </li> 
+ 	  <li class="nav-item">
+	    <a class="nav-link" th:classappend="${(faq_devision_no == 4) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 4)}">취소/환불/교환</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" th:classappend="${(faq_devision_no == 5) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 5)}">회원</a>
+	  </li>
 	</ul>
     <div id="table">
         <table id="tableList" class="table table-striped table-hover">
@@ -44,7 +44,7 @@
                     <th>제목</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody th:if="${faq_devision_no == 0}">
                 <tr th:each="faq : ${faqList}">
                     <th:block th:if="${faq.faq_devision_no == 1}">
 	                    <td>상품</td>                    
@@ -64,9 +64,44 @@
                     <td th:text="${faq.faqboard_title}"></td>
                 </tr>
             </tbody>
+            <tbody th:if="${faq_devision_no == 1}">
+            	<tr th:each="faqCat : ${faqCategoryList}">
+	                <td>상품</td>  
+                    <td th:text="${faqCat.faqboard_title}"></td>
+                </tr>
+            </tbody>
+            <tbody th:if="${faq_devision_no == 2}">
+            	<tr th:each="faqCat : ${faqCategoryList}">
+	                <td>주문/결제</td>  
+                    <td th:text="${faqCat.faqboard_title}"></td>
+                </tr>
+            </tbody>
+            <tbody th:if="${faq_devision_no == 3}">
+            	<tr th:each="faqCat : ${faqCategoryList}">
+	                <td>배송</td>  
+                    <td th:text="${faqCat.faqboard_title}"></td>
+                </tr>
+            </tbody>
+            <tbody th:if="${faq_devision_no == 4}">
+            	<tr th:each="faqCat : ${faqCategoryList}">
+	                <td>취소/환불/교환</td>  
+                    <td th:text="${faqCat.faqboard_title}"></td>
+                </tr>
+            </tbody>
+            <tbody th:if="${faq_devision_no == 5}">
+            	<tr th:each="faqCat : ${faqCategoryList}">
+	                <td>회원</td>  
+                    <td th:text="${faqCat.faqboard_title}"></td>
+                </tr>
+            </tbody>
         </table>
     </div>
-    <div class="d-flex justify-content-center" th:insert="/paging"></div>
+    <th:block th:if="${faq_devision_no == 0}">
+    	<div class="d-flex justify-content-center" th:insert="/pagination/pageFaqAll"></div>
+    </th:block>
+    <th:block th:unless="${faq_devision_no == 0}">
+    	<div class="d-flex justify-content-center" th:insert="/pagination/pageFaqCategory"></div>
+    </th:block>
     <div id="searchArea">
     <form action="#" method="get" enctype="multipart/form-data">
             <select name="searchDate" id="searchDate" class="form-select form-select-sm">
@@ -78,7 +113,6 @@
             <select name="searchKey" id="searchKey" class="form-select form-select-sm">
                 <option value="subject">제목</option>
                 <option value="content">내용</option>
-                <option value="writerName">작성자 이름</option>
                 <option value="memberId">작성자 아이디</option>
             </select>
             <input type="search" name="search" id="search" class="form-control">

@@ -1,9 +1,21 @@
 * {
     box-sizing: border-box;
 }
+#path {
+    display: flex;
+    margin: 20px 0;
+    min-width: 1200px;
+}
+#path ol {
+    margin-left: auto;      
+}
+#path ol li a {   
+    text-decoration: none;
+    vertical-align: middle;
+}
 #container {
-    padding: 80px 0;
-    width: 60%;
+    padding: 30px 0 50px 0;
+    min-width: 1200px;
     margin: 0 auto;
 }
 #container #subContainer {
@@ -38,4 +50,5 @@
 	margin-top: 20px;
 	height: 50px;
 	width: 454px;    	
+	background-color: dodgerblue;
 }

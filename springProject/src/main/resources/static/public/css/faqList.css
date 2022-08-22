@@ -1,6 +1,7 @@
 #path {
     display: flex;
     margin: 20px 0;
+    min-width: 1200px;
 }
 #path ol {
     margin-left: auto;      
@@ -16,11 +17,13 @@ h2 {
 }
 #category {
     margin: 40px 0;
+    min-width: 1200px;
 }
 #table {
     display: flex;
     justify-content: center;
     margin: 20px 0 60px 0;
+    min-width: 1200px;
 } 
 #table #tableList th, td {
     text-align: center;
