@@ -10,4 +10,5 @@ public interface QuestionMapper {
 	public int selectQnaAllCount();
 	public List<FaqBoard> selectFaqAll(int startRow, int row);
 	public int selectFaqAllCount();
+	public QnaBoard selectQnaFindOne(int qnaboardNo);
 }

@@ -48,4 +48,13 @@ public class QuestionController {
 		System.out.println(faqList);
 		return "/question/faqList";	
 	}
+	
+	@GetMapping("/qnaDetail/{qnaboardNo}")
+	public String qnaDetail(@PathVariable int qnaboardNo, Model model) {
+		//System.out.println(qnaboardNo);
+		QnaBoard qnaBoard=questionMapper.selectQnaFindOne(qnaboardNo);
+		model.addAttribute(qnaBoard);
+		System.out.println(qnaBoard);
+		return "/question/qnaDetail";
+	}
 }
