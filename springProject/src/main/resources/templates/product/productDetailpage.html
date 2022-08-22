@@ -4,74 +4,16 @@
 <meta charset="UTF-8">
 <title>상품 상세 페이지</title>
 </head>
-<style>
-#fixedSection{
-width:100%; border:1px solid black; text-align: center; line-height: 200px;
-}
-#pageBody{
-margin: 50px 300px;
-}
-h1{
-text-align: center;
-}
-#imgHeader{
-display:flex; justify-content: center;
-}
-#imgBox{
-width:500px; border:1px solid black; text-align: center; line-height: 502px;
-}
-#pageBodyDetail{
-width:500px; margin-left: 100px;
-}
-#payDetail{
-float:right;
-}
-#detailSection{
-display:flex; justify-content: space-around; margin-top: 25px;
 
-}
-#prodDetailImg{
-display:flex; justify-content: center;
-}
-#prodDetailImgBox{
-width:800px; height: 1000px; border:1px solid black; text-align: center; line-height: 100px; margin-bottom: 100px;
-}
-#tableStyle{
-display:flex; justify-content: center;
-}
-#detailLabel{
-margin:100px;
-}
-#tableRegular {
-margin:25px; width: 100%; border-top:1px solid lightgrey; border-collapse: collapse; text-align: center;
-}
-th{
-background-color: rgb(232,232,232);
-}
-#tableRegular th, #tableRegular td{
-border-bottom:1px solid lightgrey; padding: 10px;
-}
-
-#qnaSection{
-display:flex;
-}
-#colTable{
-margin:25px; padding:100px; width: 100%; border:1px solid lightgrey; border-collapse: collapse; text-align:inherit;
-}
-#colTable{
-border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
-}
-</style>
 <body>
 	<header th:insert="/header"></header>
-	<div id="pageBody">
-		<h1 th:text="${product.prod_name}"></h1>
+	<main class="container"></main>
+	<div class="container">
+		<h1 class="text-center mt-5 p-3" th:text="${product.prod_name}"></h1>
 		<br>
-			<div id="imgHeader">
-				<div id="imgBox">
-					이미지부분
-				</div>
-				<div id="pageBodyDetail">
+			<div class="d-flex justify-content-evenly">
+				<img src="/public/img/15536087_2.jpg" class="col-md-4 p-2 rounded img-thumbnail" alt="이미지부분">
+				<div class="w-25">
 				<p>판매가 <strong th:text="${#numbers.formatInteger(product.prod_price, 3, 'COMMA')+'원'}"></strong></p>
 				<hr>
 				<p>상품평</p>
@@ -86,41 +28,67 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 				<hr>
 					<div id="payDetail">
 					<p>총 합계 금액 <strong th:text="${#numbers.formatInteger(product.prod_price, 3, 'COMMA')+'원'}"></strong></p>
-					<button>좋아요</button>
-					<button>장바구니</button>
-					<button>구매하기</button>
+						<div class="btn-group w-100 container-fluid" role="group" aria-label="Default button group">
+						  <button type="button" class="btn btn-outline-dark col-6" style="border-radius: 0;">좋아요</button>
+						  <button type="button" class="btn btn-outline-dark col-8" style="border-radius: 0;">장바구니</button>
+						  <button type="button" class="btn btn-outline-dark col-10" style="border-radius: 0;">구매하기</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		<br>
-		<div id="detailSection">
-		<p style="font-weight: bold; background-color: lightgrey;"> 상세정보</p>
-		<p> 구매후기</p>
-		<p> Q&A</p>
-		<p> 배송/교환/환불</p>
+		<hr>
+		<ul class="nav nav-tabs nav-justified">
+		  <li class="nav-item">
+		    <a class="nav-link active" aria-current="page" href="#">상세정보</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">구매후기</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">Q&A</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link">배송/교환/환불</a>
+		  </li>
+		</ul>
+		<div class="position-relative">
+		<div class="collapse" id="detailImgCollapse">
+			<img src="/public/img/20211027155013612_SDZGJY94.jpg" class="rounded mt-5 mx-auto d-block" alt="상세이미지">
+		</div>
+		<div class="row mb-3 g-3 d-flex justify-content-center">
+			<button class="w-75 btn btn-outline-primary mt-5 p-3" type="button"
+				data-bs-toggle="collapse" data-bs-target="#detailImgCollapse" aria-expanded="false">
+				<span>상품이미지 상세보기</span>
+				</button>
+		</div>
 		</div>
 		<hr>
-		<div id="prodDetailImg">
-		<div id="prodDetailImgBox">
-		제품상세이미지
-		</div>
-		</div>
-		<div id="detailSection">
-		<p> 상세정보</p>
-		<p style="font-weight: bold; background-color: lightgrey;"> 구매후기</p>
-		<p> Q&A</p>
-		<p> 배송/교환/환불</p>
-		</div>
-		<hr>
-		<label id="detailLabel">
-			<div>
-			<span>전체(2) |</span> 
-			<input type="radio"> 최신순
-			<input type="radio"> 평점순
-			<input type="radio"> 추천순
+		<ul class="nav nav-tabs nav-justified">
+		  <li class="nav-item">
+		    <a class="nav-link "  href="#">상세정보</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link active" aria-current="page" href="#">구매후기</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">Q&A</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link">배송/교환/환불</a>
+		  </li>
+		</ul>
+			<div class="d-flex justify-content-start mt-3" >
+				<p class="mx-3">전체(2) | </p>
+				<div>
+				<input type="radio" name="categories"> 최신순
+				<input type="radio" name="categories"> 평점순
+				<input type="radio" name="categories"> 추천순
+				</div>
 			</div>
-			<div id="tableStyle">
-			<table id="tableRegular">
+			<div>
+			<table class="table">
+				<thead class="table-light">
 				  <tr>
 				    <th>번호</th>
 				    <th>별점</th>
@@ -129,6 +97,7 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 				    <th>작성일</th>
 				    <th>추천</th>
 				  </tr>
+				</thead>
 				  <tr>
 				    <td>1</td>
 				    <td>4.5/5.0</td>
@@ -147,23 +116,34 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 				  </tr>
 				</table>
 			</div>
-		</label>
-		<div id="detailSection">
-		<p> 상세정보</p>
-		<p> 구매후기</p>
-		<p style="font-weight: bold; background-color: lightgrey;"> Q&A</p>
-		<p> 배송/교환/환불</p>
-		</div>
 		<hr>
-		<label id="detailLabel">
-			<div id="qnaSection">
-			<span>전체(3) |</span> 
-			<span>답변완료(2) |</span> 
-			<span>답변대기(1)</span> 
-			<button style="margin-left: auto;">Q&A작성하기</button>
+		<ul class="nav nav-tabs nav-justified">
+		  <li class="nav-item">
+		    <a class="nav-link "  href="#">상세정보</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">구매후기</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link active" aria-current="page" href="#">Q&A</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link">배송/교환/환불</a>
+		  </li>
+		</ul>
+			<div class="d-flex justify-content-between mt-3">
+			<div>
+				<span>전체(3) |</span> 
+				<span>답변완료(2) |</span> 
+				<span>답변대기(1)</span>
+			</div>
+			<div> 
+				<button type="button" class="btn btn-outline-secondary btn-sm me-md-2">Q&A작성하기</button>
+			</div>
 			</div>
 			<div id="tableStyle">
-			<table id="tableRegular">
+			<table class="table">
+				<thead class="table-light">
 				  <tr>
 				    <th>문의유형</th>
 				    <th>답변상태</th>
@@ -171,6 +151,7 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 				    <th>작성자</th>
 				    <th>작성일</th>
 				  </tr>
+				</thead>
 				  <tr>
 				    <td>상품</td>
 				    <td>답변대기</td>
@@ -192,22 +173,28 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 				  </tr>
 				</table>
 			</div>
-		</label>
-		<div id="detailSection">
-		<p> 상세정보</p>
-		<p> 구매후기</p>
-		<p> Q&A</p>
-		<p style="font-weight: bold; background-color: lightgrey;"> 배송/교환/환불</p>
-		</div>
 		<hr>
-		<label id="detailLabel">
-			<div id="tableStyle">
-			<colgroup>
-				<col width="30%">
-			</colgroup>
-			<table id="colTable">
+		<ul class="nav nav-tabs nav-justified">
+		  <li class="nav-item">
+		    <a class="nav-link "  href="#">상세정보</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">구매후기</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">Q&A</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link active" aria-current="page">배송/교환/환불</a>
+		  </li>
+		</ul>
+			<div class="mt-5 mb-5 w-75 mx-auto">
+			<table class="table">
+				<colgroup>
+					<col width="15%">
+				</colgroup>
 		 		<tr>
-				    <th>배송</th>
+				    <th class="table-light">배송</th>
 				    <td>
 				    	<ul>
 				    	<li>결제 마감시간 전에 입금하시면 당일 발송됩니다</li>
@@ -217,7 +204,7 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 				    </td>
 				</tr>
 		 		<tr>
-				    <th>교환 / 환불</th>
+				    <th class="table-light">교환 / 환불</th>
 				    <td>
 				    	<ul>
 				    	<li>제품 수령 후 7일 이내에 교환/반품을 신청하실 수 있습니다.</li>
@@ -228,8 +215,8 @@ border-bottom:1px solid lightgrey; padding: 10px; font-size: 20px;
 				</tr>
 			</table>
 			</div>
-		</label>
 	</div>
 	<footer th:insert="/footer"></footer>
+
 </body>
 </html>
