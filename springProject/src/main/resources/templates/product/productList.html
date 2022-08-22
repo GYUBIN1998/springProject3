@@ -7,16 +7,16 @@
 </head>
 <body>
 	<header th:insert="/header"></header>
-	<main class="container">
+	<main class="container-fluid">
 	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" id="path">
 	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="#">홈</a></li>
-	    <li class="breadcrumb-item" aria-current="page"><a href="#" class="breadcrumb-item active">노트북</a></li>
+	    <li class="breadcrumb-item"><a href="/">홈</a></li>
+	    <li class="breadcrumb-item" aria-current="page"><a href="/product/productList/1" class="breadcrumb-item active">노트북</a></li>
 	  </ol>
 	</nav>
 	<div th:insert="/product/filter" id="filter"></div>
 	<nav class="sticky-top" id="filterNav" th:insert="/product/productNav"></nav>
-    <ul id="productContainer">
+	<ul id="productContainer">
         <li th:each="product : ${products}">
           <div class="productList border">
             <div class="thumbnail border">이미지 영역</div>
@@ -74,7 +74,7 @@
           </div>
         </li>
     </ul>
-    <div class="d-flex justify-content-center" th:insert="/paging" style="margin-bottom: 14px;"></div>
+    <div class="d-flex justify-content-center" th:insert="/pagination/pageProductAll" style="margin-bottom: 14px;"></div>
     </main>
     <footer th:insert="/footer"></footer>
 </body>

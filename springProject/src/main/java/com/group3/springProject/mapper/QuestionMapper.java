@@ -10,4 +10,6 @@ public interface QuestionMapper {
 	public int selectQnaAllCount();
 	public List<FaqBoard> selectFaqAll(int startRow, int row);
 	public int selectFaqAllCount();
+	public List<FaqBoard> selectFaqCategory(int faq_devision_no, int startRow, int row);
+	public int selectFaqCategoryCount(int faq_devision_no);
 }
