@@ -11,6 +11,7 @@ USE PROJECT3;
 CREATE TABLE user (
   user_id varchar(255) NOT NULL,
   user_pw varchar(255) NOT NULL,
+  user_name varchar(255) NOT NULL,
   user_phone varchar(255) NOT NULL,
   user_email varchar(255) NOT NULL,
   user_adress varchar(255) NOT NULL,
@@ -18,17 +19,17 @@ CREATE TABLE user (
   CONSTRAINT UNIQUE KEY (user_phone),
   CONSTRAINT UNIQUE KEY (user_email)
 );
-INSERT INTO USER(user_id,user_pw,user_phone,user_email,user_adress)
-values ('user1','u1234','010-0000-0001','user1@gamil.com','서울시 마포구 양화로 122'),
-('user2','u1234','010-0000-0002','user2@gamil.com','서울시 마포구 양화로 122'),
-('user3','u1234','010-0000-0003','user3@gamil.com','서울시 마포구 양화로 122'),
-('user4','u1234','010-0000-0004','user4@gamil.com','서울시 마포구 양화로 122'),
-('user5','u1234','010-0000-0005','user5@gamil.com','서울시 마포구 양화로 122'),
-('user6','u1234','010-0000-0006','user6@gamil.com','서울시 마포구 양화로 122'),
-('user7','u1234','010-0000-0007','user7@gamil.com','서울시 마포구 양화로 122'),
-('user8','u1234','010-0000-0008','user8@gamil.com','서울시 마포구 양화로 122'),
-('user9','u1234','010-0000-0009','user9@gamil.com','서울시 마포구 양화로 122'),
-('user10','u1234','010-0000-0010','user10@gamil.com','서울시 마포구 양화로 122');
+INSERT INTO USER(user_id,user_pw,user_name,user_phone,user_email,user_adress)
+values ('user001','u1234','김유저','010-0000-0001','user1@gamil.com','서울시 마포구 양화로 122'),
+('user002','u1234','이유저','010-0000-0002','user2@gamil.com','서울시 마포구 양화로 122'),
+('user003','u1234','박유저','010-0000-0003','user3@gamil.com','서울시 마포구 양화로 122'),
+('user004','u1234','한유저','010-0000-0004','user4@gamil.com','서울시 마포구 양화로 122'),
+('user005','u1234','안유저','010-0000-0005','user5@gamil.com','서울시 마포구 양화로 122'),
+('user006','u1234','강유저','010-0000-0006','user6@gamil.com','서울시 마포구 양화로 122'),
+('user007','u1234','최유저','010-0000-0007','user7@gamil.com','서울시 마포구 양화로 122'),
+('user008','u1234','류유저','010-0000-0008','user8@gamil.com','서울시 마포구 양화로 122'),
+('user009','u1234','양유저','010-0000-0009','user9@gamil.com','서울시 마포구 양화로 122'),
+('user010','u1234','정유저','010-0000-0010','user10@gamil.com','서울시 마포구 양화로 122');
 
 CREATE TABLE category (
   category_no int NOT NULL,
@@ -148,11 +149,11 @@ CREATE TABLE ordersheet (
 );
 
 INSERT INTO ordersheet (order_no, user_id, order_type, order_time) 
-values (001, 'user1', 'card', '2022-01-31 22:59:59'),
-(002, 'user2', 'depositor', '2022-01-31 21:59:59'),
-(003, 'user3', 'depositor', '2022-01-31 20:59:59'),
-(004, 'user4', 'card', '2022-01-31 19:59:59'),
-(005, 'user5', 'card', '2022-01-31 18:59:59');
+values (001, 'user001', 'card', '2022-01-31 22:59:59'),
+(002, 'user002', 'depositor', '2022-01-31 21:59:59'),
+(003, 'user003', 'depositor', '2022-01-31 20:59:59'),
+(004, 'user004', 'card', '2022-01-31 19:59:59'),
+(005, 'user005', 'card', '2022-01-31 18:59:59');
 
 
 CREATE TABLE orderlist (
@@ -191,12 +192,12 @@ CREATE TABLE review (
 );
 
 INSERT INTO review (review_no, prod_id, user_id, review_title, review_content, review_score, review_time)
-values (1, 'product01', 'user1', 'user1가 쓴 1번 리뷰입니다.', '리뷰내용입니다.', 5, '2022-01-30 23:59:59'),
-(2, 'product02', 'user2', 'user2가 쓴 2번 리뷰입니다.', '리뷰내용입니다.', 4, '2022-01-29 23:59:59'),
-(3, 'product03', 'user3', 'user3가 쓴 3번 리뷰입니다.', '리뷰내용입니다.', 3, '2022-01-28 23:59:59'),
-(4, 'product04', 'user4', 'user4가 쓴 4번 리뷰입니다.', '리뷰내용입니다.', 2, '2022-01-27 23:59:59'),
-(5, 'product05', 'user5', 'user5가 쓴 5번 리뷰입니다.', '리뷰내용입니다.', 5, '2022-01-26 23:59:59'),
-(6, 'product01', 'user1', 'user1가 쓴 6번 리뷰입니다.', '리뷰내용입니다.', 5, '2022-01-30 23:59:59');
+values (1, 'product01', 'user001', 'user1가 쓴 1번 리뷰입니다.', '리뷰내용입니다.', 5, '2022-01-30 23:59:59'),
+(2, 'product02', 'user002', 'user2가 쓴 2번 리뷰입니다.', '리뷰내용입니다.', 4, '2022-01-29 23:59:59'),
+(3, 'product03', 'user003', 'user3가 쓴 3번 리뷰입니다.', '리뷰내용입니다.', 3, '2022-01-28 23:59:59'),
+(4, 'product04', 'user004', 'user4가 쓴 4번 리뷰입니다.', '리뷰내용입니다.', 2, '2022-01-27 23:59:59'),
+(5, 'product05', 'user005', 'user5가 쓴 5번 리뷰입니다.', '리뷰내용입니다.', 5, '2022-01-26 23:59:59'),
+(6, 'product01', 'user001', 'user1가 쓴 6번 리뷰입니다.', '리뷰내용입니다.', 5, '2022-01-30 23:59:59');
 
 
 CREATE TABLE basket (
@@ -211,11 +212,11 @@ CREATE TABLE basket (
 );
 
 INSERT INTO basket(basket_no, user_id, prod_id)
-values (1, 'user1', 'product01'),
-(2, 'user2', 'product02'),
-(3, 'user3', 'product03'),
-(4, 'user4', 'product04'),
-(5, 'user5', 'product05');
+values (1, 'user001', 'product01'),
+(2, 'user002', 'product02'),
+(3, 'user003', 'product03'),
+(4, 'user004', 'product04'),
+(5, 'user005', 'product05');
 
 CREATE TABLE qnaboard (
   qnaboard_no int AUTO_INCREMENT,
@@ -228,16 +229,16 @@ CREATE TABLE qnaboard (
  ON UPDATE CASCADE ON DELETE CASCADE
 );
 INSERT INTO QNABOARD (qnaboard_title,qnaboard_content,user_id) VALUES 
-('user1 가 쓴 1번 글입니다.','글내용입니다.','user1'),
-('user1 가 쓴 2번 글입니다.','글내용입니다.','user1'),
-('user1 가 쓴 3번 글입니다.','글내용입니다.','user1'),
-('user1 가 쓴 4번 글입니다.','글내용입니다.','user1'),
-('user1 가 쓴 5번 글입니다.','글내용입니다.','user1'),
-('user2 가 쓴 7번 글입니다.','글내용입니다.','user2'),
-('user2 가 쓴 8번 글입니다.','글내용입니다.','user2'),
-('user3 가 쓴 9번 글입니다.','글내용입니다.','user3'),
-('user4 가 쓴 10번 글입니다.','글내용입니다.','user4'),
-('user5 가 쓴 11번 글입니다.','글내용입니다.','user5');
+('user1 가 쓴 1번 글입니다.','글내용입니다.','user001'),
+('user1 가 쓴 2번 글입니다.','글내용입니다.','user001'),
+('user1 가 쓴 3번 글입니다.','글내용입니다.','user001'),
+('user1 가 쓴 4번 글입니다.','글내용입니다.','user001'),
+('user1 가 쓴 5번 글입니다.','글내용입니다.','user001'),
+('user2 가 쓴 7번 글입니다.','글내용입니다.','user002'),
+('user2 가 쓴 8번 글입니다.','글내용입니다.','user002'),
+('user3 가 쓴 9번 글입니다.','글내용입니다.','user003'),
+('user4 가 쓴 10번 글입니다.','글내용입니다.','user004'),
+('user5 가 쓴 11번 글입니다.','글내용입니다.','user005');
 
 CREATE TABLE faqboard (
   faqboard_no int AUTO_INCREMENT,

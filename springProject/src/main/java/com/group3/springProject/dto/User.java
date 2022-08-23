@@ -10,6 +10,7 @@ import lombok.Data;
 +-------------+--------------+------+-----+---------+-------+
 | user_id     | varchar(255) | NO   | PRI | NULL    |       |
 | user_pw     | varchar(255) | NO   |     | NULL    |       |
+| user_name   | varchar(255) | NO   |     | NULL    |       |
 | user_phone  | varchar(255) | NO   | UNI | NULL    |       |
 | user_email  | varchar(255) | NO   | UNI | NULL    |       |
 | user_adress | varchar(255) | NO   |     | NULL    |       |
@@ -20,6 +21,7 @@ import lombok.Data;
 public class User {
 	private String user_id;
 	private String user_pw;
+	private String user_name;
 	private String user_phone;
 	private String user_email;
 	private String user_adress;
