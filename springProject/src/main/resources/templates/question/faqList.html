@@ -18,22 +18,22 @@
     <h2>자주 하는 질문(FAQ)</h2>
 	<ul class="nav nav-tabs nav-fill" id="category">
 	  <li class="nav-item">
-	    <a class="nav-link" th:classappend="${(faq_devision_no == 0) ? 'active' : ''}" aria-current="page" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 0)}">전체</a>
+	    <a class="nav-link" th:classappend="${(faq_division_no == 0) ? 'active' : ''}" aria-current="page" th:href="@{/question/faqList/1/{faq_division_no}(faq_division_no = 0)}">전체</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" th:classappend="${(faq_devision_no == 1) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 1)}">상품</a>
+	    <a class="nav-link" th:classappend="${(faq_division_no == 1) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_division_no}(faq_division_no = 1)}">상품</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" th:classappend="${(faq_devision_no == 2) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 2)}">주문/결제</a>
+	    <a class="nav-link" th:classappend="${(faq_division_no == 2) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_division_no}(faq_division_no = 2)}">주문/결제</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" th:classappend="${(faq_devision_no == 3) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 3)}">배송</a>
+	    <a class="nav-link" th:classappend="${(faq_division_no == 3) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_division_no}(faq_division_no = 3)}">배송</a>
 	  </li>
  	  <li class="nav-item">
-	    <a class="nav-link" th:classappend="${(faq_devision_no == 4) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 4)}">취소/환불/교환</a>
+	    <a class="nav-link" th:classappend="${(faq_division_no == 4) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_division_no}(faq_division_no = 4)}">취소/환불/교환</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" th:classappend="${(faq_devision_no == 5) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_devision_no}(faq_devision_no = 5)}">회원</a>
+	    <a class="nav-link" th:classappend="${(faq_division_no == 5) ? 'active' : ''}" th:href="@{/question/faqList/1/{faq_division_no}(faq_division_no = 5)}">회원</a>
 	  </li>
 	</ul>
     <div id="table">
@@ -46,49 +46,49 @@
             </thead>
             <tbody th:if="${faq_devision_no == 0}">
                 <tr th:each="faq : ${faqList}">
-                    <th:block th:if="${faq.faq_devision_no == 1}">
+                    <th:block th:if="${faq.faq_division_no == 1}">
 	                    <td>상품</td>                    
                     </th:block>
-                    <th:block th:if="${faq.faq_devision_no == 2}">
+                    <th:block th:if="${faq.faq_division_no == 2}">
 	                    <td>주문/결제</td>                    
                     </th:block>
-                    <th:block th:if="${faq.faq_devision_no == 3}">
+                    <th:block th:if="${faq.faq_division_no == 3}">
 	                    <td>배송</td>                    
                     </th:block>
-                    <th:block th:if="${faq.faq_devision_no == 4}">
+                    <th:block th:if="${faq.faq_division_no == 4}">
 	                    <td>취소/환불/교환</td>                    
                     </th:block>
-                    <th:block th:if="${faq.faq_devision_no == 5}">
+                    <th:block th:if="${faq.faq_division_no == 5}">
 	                    <td>회원</td>                    
                     </th:block>
                     <td th:text="${faq.faqboard_title}"></td>
                 </tr>
             </tbody>
-            <tbody th:if="${faq_devision_no == 1}">
+            <tbody th:if="${faq_division_no == 1}">
             	<tr th:each="faqCat : ${faqCategoryList}">
 	                <td>상품</td>  
                     <td th:text="${faqCat.faqboard_title}"></td>
                 </tr>
             </tbody>
-            <tbody th:if="${faq_devision_no == 2}">
+            <tbody th:if="${faq_division_no == 2}">
             	<tr th:each="faqCat : ${faqCategoryList}">
 	                <td>주문/결제</td>  
                     <td th:text="${faqCat.faqboard_title}"></td>
                 </tr>
             </tbody>
-            <tbody th:if="${faq_devision_no == 3}">
+            <tbody th:if="${faq_division_no == 3}">
             	<tr th:each="faqCat : ${faqCategoryList}">
 	                <td>배송</td>  
                     <td th:text="${faqCat.faqboard_title}"></td>
                 </tr>
             </tbody>
-            <tbody th:if="${faq_devision_no == 4}">
+            <tbody th:if="${faq_division_no == 4}">
             	<tr th:each="faqCat : ${faqCategoryList}">
 	                <td>취소/환불/교환</td>  
                     <td th:text="${faqCat.faqboard_title}"></td>
                 </tr>
             </tbody>
-            <tbody th:if="${faq_devision_no == 5}">
+            <tbody th:if="${faq_division_no == 5}">
             	<tr th:each="faqCat : ${faqCategoryList}">
 	                <td>회원</td>  
                     <td th:text="${faqCat.faqboard_title}"></td>
@@ -96,14 +96,14 @@
             </tbody>
         </table>
     </div>
-    <th:block th:if="${faq_devision_no == 0}">
+    <th:block th:if="${faq_division_no == 0}">
     	<div class="d-flex justify-content-center" th:insert="/pagination/pageFaqAll"></div>
     </th:block>
-    <th:block th:unless="${faq_devision_no == 0}">
+    <th:block th:unless="${faq_division_no == 0}">
     	<div class="d-flex justify-content-center" th:insert="/pagination/pageFaqCategory"></div>
     </th:block>
     <div id="searchArea">
-    <form action="#" method="get" enctype="multipart/form-data">
+    <form action="#" method="get" enctype="multipart/form-data" name="faqSerach">
             <select name="searchDate" id="searchDate" class="form-select form-select-sm">
                 <option value="week">일주일</option>
                 <option value="month">1개월</option>

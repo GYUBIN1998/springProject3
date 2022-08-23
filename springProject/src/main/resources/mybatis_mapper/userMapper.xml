@@ -12,7 +12,7 @@
 	SELECT * FROM USER WHERE user_phone = #{user_phone}
 </select>
 <insert id="userSignup" parameterType="User">
-	INSERT INTO USER (user_id, user_pw, user_phone, user_email, user_adress) 
-		VALUES (#{user_id}, #{user_pw}, #{user_phone}, #{user_email}, #{user_adress})
+	INSERT INTO USER (user_id, user_pw, user_name, user_phone, user_email, user_adress) 
+		VALUES (#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_email}, #{user_adress})
 </insert>
 </mapper>

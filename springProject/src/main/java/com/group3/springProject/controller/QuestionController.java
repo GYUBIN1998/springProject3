@@ -36,23 +36,23 @@ public class QuestionController {
 		return "/question/qnaList";	
 	};
 	
-	@GetMapping("/faqList/{page}/{faq_devision_no}")
+	@GetMapping("/faqList/{page}/{faq_division_no}")
 	public String faqList(
 			@PathVariable int page, 
-			@PathVariable int faq_devision_no,
+			@PathVariable int faq_division_no,
 			Model model
 			) {
 		int row = 5;
 		int startRow = (page - 1) * row;
 		
 		int rowCount = questionMapper.selectFaqAllCount();
-		int categoryCount = questionMapper.selectFaqCategoryCount(faq_devision_no);
+		int categoryCount = questionMapper.selectFaqCategoryCount(faq_division_no);
 		
 		Paging pageFaqAll = new Paging(page, rowCount, "/question/faqList/", row);
 		Paging pageFaqCategory = new Paging(page, categoryCount, "/question/faqList/", row);
 		
 		List<FaqBoard> faqList = questionMapper.selectFaqAll(startRow, row);
-		List<FaqBoard> faqCategoryList = questionMapper.selectFaqCategory(faq_devision_no, startRow, row);
+		List<FaqBoard> faqCategoryList = questionMapper.selectFaqCategory(faq_division_no, startRow, row);
 		
 		model.addAttribute("faqList", faqList);
 		model.addAttribute("faqCategoryList", faqCategoryList);
@@ -62,7 +62,7 @@ public class QuestionController {
 		model.addAttribute("page", page);
 		model.addAttribute("pageFaqAll", pageFaqAll);
 		model.addAttribute("pageFaqCategory", pageFaqCategory);
-		model.addAttribute("faq_devision_no", faq_devision_no);
+		model.addAttribute("faq_devision_no", faq_division_no);
 		
 		System.out.println(faqList);
 		System.out.println(faqCategoryList);

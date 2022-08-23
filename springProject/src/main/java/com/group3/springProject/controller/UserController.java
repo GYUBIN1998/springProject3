@@ -70,8 +70,8 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("회원가입 성공 : " + signup);
 		System.out.println(user);
+		System.out.println("회원가입 성공 : " + signup);
 		if(signup > 0) {
 			return "redirect:/";
 		} else {		

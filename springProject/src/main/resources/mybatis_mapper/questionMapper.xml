@@ -25,9 +25,9 @@
 		SELECT * FROM QNABOARD WHERE qnaboard_no=#{qnaboardNo}
 	</select>
 	<select id="selectFaqCategory" resultType="FaqBoard">
-		SELECT * FROM FAQBOARD WHERE faq_devision_no = #{faq_devision_no} LIMIT #{startRow}, #{row}
+		SELECT * FROM FAQBOARD WHERE faq_division_no = #{faq_division_no} LIMIT #{startRow}, #{row}
 	</select>
 	<select id="selectFaqCategoryCount" resultType="int">
-		SELECT COUNT(*) FROM FAQBOARD WHERE faq_devision_no = #{faq_devision_no}
+		SELECT COUNT(*) FROM FAQBOARD WHERE faq_division_no = #{faq_division_no}
 	</select>
 </mapper>
