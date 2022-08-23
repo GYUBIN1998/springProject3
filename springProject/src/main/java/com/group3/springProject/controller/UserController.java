@@ -2,6 +2,7 @@ package com.group3.springProject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,8 +23,26 @@ public class UserController {
 	@Autowired
 	private UserMapper userMapper;
 	
-	@GetMapping("/userUpdate")
-	public void detail() {};
+	//회원정보 디테일
+	@GetMapping("/detail/{user_id}")
+	public String detail(@PathVariable String user_id, Model model) {
+		User user=userMapper.selectUserId(user_id);
+		model.addAttribute(user);
+		System.out.println(user);
+		
+		return "/user/detail";
+	};
+	
+	@PostMapping("/update.do")
+	public String update(User user) {
+		int update=0;
+		update=userMapper.updateOne(user);
+		if(update>0) {
+			return "redirect:/";
+		} else {
+			return "redirect:/user/detail/"+user.getUser_id();
+		}
+	};
 	
 //	회원가입
 	@GetMapping("/signup")

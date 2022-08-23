@@ -11,4 +11,7 @@ public interface UserMapper {
 	public User selectUserEmail(String user_email);
 	public User selectUserPhone(String user_phone);
 	public int userSignup(User user);
+	
+	User selectOne(String user_id);
+	public int updateOne(User user);
 }
