@@ -16,7 +16,9 @@ import lombok.Data;
 @Data
 public class OrderList {
 	private int orderlist_no;
-	private int order_no;
-	private String prod_id;
 	private int order_qty;
+	
+	//join
+	private Product product;
+	private OrderSheet orderSheet;
 }

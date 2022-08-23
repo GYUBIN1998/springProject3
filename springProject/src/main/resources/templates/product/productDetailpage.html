@@ -7,7 +7,7 @@
 
 <body>
 	<header th:insert="/header"></header>
-	<main class="container"></main>
+	<main class="container">
 	<div class="container">
 		<h1 class="text-center mt-5 p-3" th:text="${product.prod_name}"></h1>
 		<br>
@@ -17,8 +17,6 @@
 				<p>판매가 <strong th:text="${#numbers.formatInteger(product.prod_price, 3, 'COMMA')+'원'}"></strong></p>
 				<hr>
 				<p>상품평</p>
-				<hr>
-				<p>적립금</p>
 				<hr>
 				<p>카드혜택</p>
 				<hr>
@@ -216,6 +214,7 @@
 			</table>
 			</div>
 	</div>
+	</main>
 	<footer th:insert="/footer"></footer>
 
 </body>
