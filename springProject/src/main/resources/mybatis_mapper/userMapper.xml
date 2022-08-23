@@ -2,17 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.group3.springProject.mapper.UserMapper">
-<select id="selectUserId" resultType="User" parameterType="String">
-	SELECT * FROM USER WHERE user_id = #{user_id}
-</select>
-<select id="selectUserEmail" resultType="User" parameterType="String">
-	SELECT * FROM USER WHERE user_email = #{user_email}
-</select>
-<select id="selectUserPhone" resultType="User" parameterType="String">
-	SELECT * FROM USER WHERE user_phone = #{user_phone}
-</select>
-<insert id="userSignup" parameterType="User">
-	INSERT INTO USER (user_id, user_pw, user_phone, user_email, user_adress) 
-		VALUES (#{user_id}, #{user_pw}, #{user_phone}, #{user_email}, #{user_adress})
-</insert>
+	<!-- <resultMap type="User" id="UserMap">
+		<id column="user_id" property="user_id"/>
+		<result column="user_pw" property="user_pw"/>
+		<result column="user_phone" property="user_phone"/>
+		<result column="user_email" property="user_email"/>
+		<result column="user_adress" property="user_adress"/>
+	</resultMap>
+	<select id="selectOne" resultMap="UserMap">
+		SELECT * FROM USER WHERE user_id=#{user_id}
+	</select> -->
+	
+	<update id="updateOne" parameterType="User">
+		UPDATE USER SET
+			user_pw=#{user_pw},
+			user_phone=#{user_phone},
+			user_email=#{user_email},
+			user_adress=#{user_adress}
+		WHERE user_id=#{user_id}
+	</update>
+
+	<select id="selectUserId" resultType="User" parameterType="String">
+		SELECT * FROM USER WHERE user_id = #{user_id}
+	</select>
+	<select id="selectUserEmail" resultType="User" parameterType="String">
+		SELECT * FROM USER WHERE user_email = #{user_email}
+	</select>
+	<select id="selectUserPhone" resultType="User" parameterType="String">
+		SELECT * FROM USER WHERE user_phone = #{user_phone}
+	</select>
+	<insert id="userSignup" parameterType="User">
+		INSERT INTO USER (user_id, user_pw, user_phone, user_email, user_adress) 
+			VALUES (#{user_id}, #{user_pw}, #{user_phone}, #{user_email}, #{user_adress})
+	</insert>
 </mapper>
