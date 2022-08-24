@@ -5,15 +5,16 @@
 <title>결제 페이지</title>
 </head>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script th:src="@{/public/js/adressApi.js}" defer="defer">
-</script>
+<script th:src="@{/public/js/adressApi.js}" defer="defer"></script>
+<script th:src="@{/public/js/orderPage.js}" defer="defer"></script>
 <body>
 	<header th:insert="/header"></header>
-	<main class="container">
+	<main class="container mb-5">
 	<h1 class="text-center my-5">결제 페이지</h1>
 	<!-- <p th:text="${ordersheet.user.user_id}"></p> -->
-		<div class="d-flex flex-column align-items-center">
-		<div class="w-50">
+		<div class="d-flex justify-content-evenly">
+		
+		<div class="d-flex flex-column w-50">
 		<h2>주문 정보</h2>
 		<p class="text-left mx-3">*표는 필수표시 항목입니다.</p>
 		<hr>
@@ -22,7 +23,7 @@
 				    <label class="visually-hidden" for="inlineFormInputGroupUsername">주문자</label>
 				    <div class="input-group">
 				      <div class="input-group-text">주문자 *</div>
-				      <input type="text" class="form-control" id="inlineFormInputGroupUsername" th:value="${ordersheet.user.user_name}">
+				      <input type="text" class="form-control" id="inputtedUsername" th:value="${ordersheet.user.user_name}" readonly>
 				    </div>
 				  </div>
 			  </form>
@@ -31,15 +32,15 @@
 				    <label class="visually-hidden" for="inlineFormInputGroupUserEmail">이메일</label>
 				    <div class="input-group">
 				      <div class="input-group-text">이메일 *</div>
-				      <input type="text" class="form-control" id="inlineFormInputGroupUserEmail" th:value="${userEmailId}">
-				      <input type="text" class="form-control" id="inlineFormInputGroupUserEmail" th:value="'@'+${userEmailAdr}">
+				      <input type="text" class="form-control" th:value="${userEmailId}" id="inputtedUserEmailId"  readonly>
+				      <input type="text" class="form-control" th:value="'@'+${userEmailAdr}" id="inputtedUserEmailAdr"  readonly>
 				    </div>
 				  </div>
 				
 				  <div class="col-12">
 				    <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-				    <select class="form-select" id="inlineFormSelectPref">
-				      <option selected>@직접입력</option>
+				    <select class="form-select" id="inlineFormSelectPref" disabled>
+				      <option selected >@직접입력</option>
 				      <option value="1">@gmail.com</option>
 				      <option value="2">@naver.com</option>
 				      <option value="3">@daum.net</option>
@@ -50,7 +51,7 @@
 					<div class="input-group">
 						<span class="input-group-text" id="inputGroup-sizing-default">전화번호 *</span>
 						<button class="btn btn-outline-secondary dropdown-toggle" type="button"
-								data-bs-toggle="dropdown" aria-expanded="false">010</button>
+								data-bs-toggle="dropdown" aria-expanded="false" disabled>010</button>
 						  <ul class="dropdown-menu dropdown-menu-end">
 						    <li><a class="dropdown-item">010</a></li>
 						    <li><a class="dropdown-item">02</a></li>
@@ -58,10 +59,10 @@
 						    <li><a class="dropdown-item">032</a></li>
 						  </ul>
 						  <div class="d-flex ">
-					  <input type="text" th:value="${userPhoneMid}"
-					  	class="form-control" aria-label="Username">
-					  <input type="text" th:value="${userPhoneLast}"
-					  	class="form-control"aria-label="Server">
+					  <input type="text" th:value="${userPhoneMid}" id="inputtedPhoneMid"
+					  	class="form-control" aria-label="Username" readonly>
+					  <input type="text" th:value="${userPhoneLast}" id="inputtedPhoneLast"
+					  	class="form-control"aria-label="Server" readonly>
 						  </div>
 					</div>
 			  </form>
@@ -72,43 +73,47 @@
 			  </div>
 			  <div class="col-auto">
 			    <label for="inputPassword2" class="visually-hidden">우편번호</label>
-			    <input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
+			    <input type="text" class="form-control" id="sample6_postcode_inputted" th:value="${ordersheet.user.user_addr_postcode}" readonly>
 			  </div>
 			  <div class="col-auto">
-				<input class="btn btn-outline-dark"type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+				<input class="btn btn-outline-dark"type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" disabled><br>
 			  </div>
 			</form>
-			<div class="col-5">
-			<input class="form-control col-3" type="text" id="sample6_address" placeholder="주소">
-			<input class="form-control col-3" type="text" id="sample6_detailAddress" placeholder="상세주소">
-			<input class="form-control col-3" type="text" id="sample6_extraAddress" placeholder="참고항목">
+			<div class="d-flex col-4 my-1">
+			<input class="form-control col-3" type="text" id="sample6_address_inputted" th:value="${ordersheet.user.user_addr_main}"  readonly>
+			<input class="form-control col-3" type="text" id="sample6_detailAddress_inputted" placeholder="(층,동,호수 반드시 기입)" th:value="${ordersheet.user.user_addr_detail}" readonly>
+			<th:block th:if="${ordersheet.user.user_addr_extra !=null || ordersheet.user.user_addr_extra !=''}">
+			<input class="form-control col-3" type="text" id="sample6_extraAddress_inputted" placeholder="참고항목" th:value="${ordersheet.user.user_addr_extra}" readonly>
+			</th:block>
+			<th:block th:unless="${ordersheet.user.user_addr_extra !=null || ordersheet.user.user_addr_extra !=''}">
+			<input class="form-control col-3" type="text" id="sample6_extraAddress_inputted" placeholder="참고항목" value=" " readonly>
+			</th:block>
 			</div>
-		</div>
 		
-		<div class="w-50 mb-50">
-		<h2>배송지</h2>
+		
+		<h2 class="mt-5">배송지</h2>
 		<p class="text-left mx-3">*표는 필수표시 항목입니다.</p>
 		<hr>
 			<div class="d-flex">
-			<div class="form-check">
-				  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-				  <label class="form-check-label" for="flexRadioDefault1">
+			<div class="form-check me-3 mb-3">
+				  <input class="form-check-input" type="radio" name="adressRadio" id="adressRadioSame">
+				  <label class="form-check-label" for="adressRadioSame">
 				    주문자의 정보와 동일
 				  </label>
 				</div>
 				<div class="form-check">
-				  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-				  <label class="form-check-label" for="flexRadioDefault2">
+				  <input class="form-check-input" type="radio" name="adressRadio" id="adressRadioNew" checked>
+				  <label class="form-check-label" for="adressRadioNew">
 				    새로운 배송지 입력
 				  </label>
 				</div>
 			</div>
-			<form class="row row-cols-lg-auto g-3 align-items-center mb-3">
+			<form class="row row-cols-lg-auto g-3 align-items-center mb-3" name="nameForm">
 				  <div class="col-12">
 				    <label class="visually-hidden" for="inlineFormInputGroupUsername">주문자</label>
 				    <div class="input-group">
 				      <div class="input-group-text">주문자 *</div>
-				      <input type="text" class="form-control" id="inlineFormInputGroupUsername">
+				      <input type="text" class="form-control" id="inputUsername" name="name" placeholder="이름을입력하세요">
 				    </div>
 				  </div>
 			  </form>
@@ -117,8 +122,8 @@
 				    <label class="visually-hidden" for="inlineFormInputGroupUserEmail">이메일</label>
 				    <div class="input-group">
 				      <div class="input-group-text">이메일 *</div>
-				      <input type="text" class="form-control" id="inlineFormInputGroupUserEmail">
-				      <input type="text" class="form-control" id="inlineFormInputGroupUserEmail">
+				      <input type="text" class="form-control" id="inputUserEmailId">
+				      <input type="text" class="form-control" id="inputUserEmailAdr">
 				    </div>
 				  </div>
 				
@@ -144,8 +149,8 @@
 						    <li><a class="dropdown-item">032</a></li>
 						  </ul>
 						  <div class="d-flex ">
-					  <input type="text" class="form-control" aria-label="Username">
-					  <input type="text" class="form-control"aria-label="Server">
+					  <input type="text" class="form-control" aria-label="Username" id="inputPhoneMid">
+					  <input type="text" class="form-control"aria-label="Server" id="inputPhoneLast">
 						  </div>
 					</div>
 			  </form>
@@ -159,23 +164,22 @@
 			    <input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
 			  </div>
 			  <div class="col-auto">
-				<input class="btn btn-outline-dark"type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+				<input class="btn btn-outline-dark"type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>
 			  </div>
 			</form>
-			<div class="col-5">
-			<input class="form-control col-3" type="text" id="sample6_address" placeholder="주소">
-			<input class="form-control col-3" type="text" id="sample6_detailAddress" placeholder="상세주소">
-			<input class="form-control col-3" type="text" id="sample6_extraAddress" placeholder="참고항목">
+			<div class="d-flex col-4 my-1">
+			<input class="form-control col-1" type="text" id="sample6_address" placeholder="주소">
+			<input class="form-control col-1" type="text" id="sample6_detailAddress" placeholder="(층,동,호수 반드시 기입)">
+			<input class="form-control col-1" type="text" id="sample6_extraAddress" placeholder="참고항목">
 			</div>
-		</div>
-		</div>
-		<div class="d-flex flex-column align-items-center">
-		<div class="w-50">
+		</div>	
+		
+		<div class="d-flex flex-column w-25 m-50">
 		<h2>결제수단</h2>
 		<hr>
 			<fieldset>
 			<legend>결제 수단 선택</legend>
-				<div class="d-flex">
+				<div class="d-flex flex-column">
 				<div class="form-check me-4">
 				  <input class="form-check-input" type="radio" name="paymentRadio" id="paymentRadio1">
 				  <label class="form-check-label" for="paymentRadio1">
@@ -202,15 +206,14 @@
 				</div>
 				</div>
 			</fieldset>
-		</div>
-		<div class="w-50">
-		<h2>결제정보</h2>
+		
+		<h2 class="mt-5">결제정보</h2>
 		<hr>
-		<table class="table">
+		<table class="table text-end">
 			  <tbody>
 			    <tr>
 			      <th scope="row">주문상품</th>
-			      <td><strong>839,000</strong></td>
+			      <td><strong>0</strong></td>
 			    </tr>
 			    <tr>
 			      <th scope="row">배송비</th>
@@ -218,10 +221,13 @@
 			    </tr>
 			    <tr>
 			      <th scope="row">결제금액</th>
-			      <td colspan="2"><strong>839,000 원</strong></td>
+			      <td colspan="2"><strong>0 원</strong></td>
 			    </tr>
 			  </tbody>
 			</table>
+			<div class="d-grid gap-2 col-10 mx-auto mt-5">
+			<button class="btn btn-lg btn-outline-primary ">결제하기</button>
+			</div>
 		</div>
 		</div>
 	</main>
