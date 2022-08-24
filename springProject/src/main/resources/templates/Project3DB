@@ -14,22 +14,25 @@ CREATE TABLE user (
   user_name varchar(255) NOT NULL,
   user_phone varchar(255) NOT NULL,
   user_email varchar(255) NOT NULL,
-  user_adress varchar(255) NOT NULL,
+  user_addr_postcode varchar(255) NOT NULL,
+  user_addr_main varchar(255) NOT NULL,
+  user_addr_detail varchar(255) NOT NULL,
+  user_addr_extra varchar(255) NOT NULL,
   CONSTRAINT PRIMARY KEY (user_id),
   CONSTRAINT UNIQUE KEY (user_phone),
   CONSTRAINT UNIQUE KEY (user_email)
 );
-INSERT INTO USER(user_id,user_pw,user_name,user_phone,user_email,user_adress)
-values ('user001','u1234','김유저','010-0000-0001','user1@gamil.com','서울시 마포구 양화로 122'),
-('user002','u1234','이유저','010-0000-0002','user2@gamil.com','서울시 마포구 양화로 122'),
-('user003','u1234','박유저','010-0000-0003','user3@gamil.com','서울시 마포구 양화로 122'),
-('user004','u1234','한유저','010-0000-0004','user4@gamil.com','서울시 마포구 양화로 122'),
-('user005','u1234','안유저','010-0000-0005','user5@gamil.com','서울시 마포구 양화로 122'),
-('user006','u1234','강유저','010-0000-0006','user6@gamil.com','서울시 마포구 양화로 122'),
-('user007','u1234','최유저','010-0000-0007','user7@gamil.com','서울시 마포구 양화로 122'),
-('user008','u1234','류유저','010-0000-0008','user8@gamil.com','서울시 마포구 양화로 122'),
-('user009','u1234','양유저','010-0000-0009','user9@gamil.com','서울시 마포구 양화로 122'),
-('user010','u1234','정유저','010-0000-0010','user10@gamil.com','서울시 마포구 양화로 122');
+INSERT INTO USER(user_id,user_pw,user_name,user_phone,user_email,user_addr_postcode,user_addr_main,user_addr_detail,user_addr_extra)
+values ('user001','u1234','김유저','010-1111-0001','user1@gmail.com','04038','서울시 마포구 양화로 122','B1층','(서교동)'),
+('user002','u1234','이유저','010-2222-0002','user2@gmail.com','04038','서울시 마포구 양화로 122','1층','(서교동)'),
+('user003','u1234','박유저','010-3333-0003','user3@gmail.com','04038','서울시 마포구 양화로 122','2층','(서교동)'),
+('user004','u1234','한유저','010-4444-0004','user4@gmail.com','04038','서울시 마포구 양화로 122','3층','(서교동)'),
+('user005','u1234','안유저','010-5555-0005','user5@kakao.com','04038','서울시 마포구 양화로 122','4층','(서교동)'),
+('user006','u1234','강유저','010-6666-0006','user6@naver.com','04038','서울시 마포구 양화로 122','5층','(서교동)'),
+('user007','u1234','최유저','010-7777-0007','user7@naver.com','04038','서울시 마포구 양화로 122','6층','(서교동)'),
+('user008','u1234','류유저','010-8888-0008','user8@naver.com','04038','서울시 마포구 양화로 122','7층','(서교동)'),
+('user009','u1234','양유저','010-9999-0009','user9@naver.com','04038','서울시 마포구 양화로 122','8층','(서교동)'),
+('user010','u1234','정유저','010-1010-0010','user10@daum.net','04038','서울시 마포구 양화로 122','9층','(서교동)');
 
 CREATE TABLE category (
   category_no int NOT NULL,
