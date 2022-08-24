@@ -1,5 +1,7 @@
 package com.group3.springProject.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+<<<<<<< HEAD
+=======
+import org.springframework.web.bind.annotation.RequestParam;
+>>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.group3.springProject.dto.IdCheck;
@@ -97,4 +103,36 @@ public class UserController {
 			return "redirect:/user/signup";
 		}		
 	}
+<<<<<<< HEAD
 }
+=======
+	
+	@GetMapping("/login.do")
+	public void login() {}
+	@PostMapping("/login.do")
+	public String login(
+			@RequestParam(value = "user_id")String user_id,
+			@RequestParam(value = "user_pw")String user_pw,
+			HttpSession session
+			) {
+		User user = null;
+		try {
+			user=userMapper.selectPwOne(user_id, user_pw);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(user);
+		if(user != null) {
+			session.setAttribute("loginUser", user);
+			return "redirect:/";
+		}else {
+			return "redirect:/user/login.do";
+		}
+	}
+	@GetMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.removeAttribute("loginUser");
+		return "redirect:/";
+	}
+}
+>>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066

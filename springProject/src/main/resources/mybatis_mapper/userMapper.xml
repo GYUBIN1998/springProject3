@@ -33,4 +33,7 @@
 			user_adress=#{user_adress}
 		WHERE user_id=#{user_id}
 	</update>
+	<select id="selectPwOne" resultType="User">
+		SELECT * FROM USER WHERE user_id = #{user_id} AND user_pw = #{user_pw}
+	</select>
 </mapper>

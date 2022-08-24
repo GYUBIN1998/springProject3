@@ -31,4 +31,8 @@ public class User {
 	private String user_addr_main;
 	private String user_addr_detail;
 	private String user_addr_extra;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066

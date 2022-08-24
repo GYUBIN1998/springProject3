@@ -21,7 +21,10 @@ public class OrderController {
 	@Autowired
 	OrderMapper orderMapper;
 
+<<<<<<< HEAD
 	//결제페이지 회원 정보 불러오기
+=======
+>>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066
 	@GetMapping("/orderPage/{userId}")
 	public String orderPageDetail(@PathVariable String userId, Model model) {
 		//System.out.println(userId);
@@ -41,4 +44,8 @@ public class OrderController {
 		//System.out.println(userPhoneLast);
 		return"/order/orderPage";
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066
