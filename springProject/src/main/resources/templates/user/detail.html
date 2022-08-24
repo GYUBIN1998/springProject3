@@ -15,9 +15,6 @@
 		padding: 10px;
 		display: inline-block;
 	}
-	.verti{
-		display: block;
-	}
 	.wd250{
 		width: 250px;
 	}
@@ -28,7 +25,7 @@
 		width: 50px;
 	}
 	.userInfo>div>div>input{
-		width: 150px;
+		width: 250px;
 	}
 	.userInfoBtns>div{
 		display: inline-block;
@@ -56,8 +53,14 @@
 	#userAddressInput>div{
 		vertical-align: top;
 	}
-	#userAddressInput>div>div>input{
+	#userAddressInput>div>div{
 		margin-bottom: 10px;
+	}
+	#userAddressInput>div>div>div{
+		display: inline-block;
+	}
+	#userAddressInput>div>div>div>input{
+		width: 250px;
 	}
 </style>
 
@@ -75,47 +78,51 @@
 					<div>
 						<div class="wd100">아이디</div>
 						<div>
-							<input name="userId" readonly>
+							<input class="form-control" name="user_id" th:value="${user.user_id}" readonly>
 						</div>
 					</div>
 					<div>
 						<div class="wd100">비밀번호</div>
 						<div>
-							<input name="userPw">
+							<input class="form-control" name="user_pw" th:value="${user.user_pw}">
 						</div>
 					</div>
-					<div>
+					<!-- <div>
 						<div class="wd100">비밀번호확인</div>
 						<div>
-							<input name="userPw">
+							<input name="user_pw_chk">
 						</div>
-					</div>
+					</div> -->
 					<br>
 					<div>
 						<div class="wd100">핸드폰번호</div>
 						<div>
-							<input name="userPhone">
+							<input class="form-control" name="user_phone" th:value="${user.user_phone}">
 						</div>
 					</div>
 					<div>
 						<div class="wd100">email</div>
 						<div>
-							<input name="userEmail">
+							<input class="form-control" name="user_email" th:value="${user.user_email}">
 						</div>
 					</div>
 					<br>
 					<div id="userAddressInput">
 						<div class="wd100">주소</div>
 						<div>
-							<div class="verti">
-								<input name="userAddress" class="wd100">
-								<button type="button">주소검색</button>
+							<div>
+								<div>
+									<input class="form-control">
+								</div>
+								<div>
+									<button class="btn btn-secondary btn-sm" type="button">주소검색</button>
+								</div>
 							</div>
 							<div>
-								<input class="wd250">
+								<input name="user_adress" th:value="${user.user_adress}" class="form-control">
 							</div>
 							<div>
-								<input class="wd250">
+								<input class="form-control">
 							</div>
 						</div>
 					</div>
@@ -123,10 +130,10 @@
 			
 				<div class="userInfoBtns">
 					<div>
-						<button type="reset" >초기화</button>
+						<button class="btn btn-outline-secondary" type="reset" >초기화</button>
 					</div>	
 					<div>
-						<button type="submit">수정</button>
+						<button class="btn btn-primary" type="submit">수정</button>
 					</div>	
 				</div>
 			</div>

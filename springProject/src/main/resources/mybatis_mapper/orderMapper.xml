@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group3.springProject.mapper.OrderMapper">
+	<resultMap type="OrderSheet" id="OrderSheetMap">
+	<id column="order_no" property="order_no"/>
+	<result column="order_type" property="order_type"/>
+	<result column="order_time" property="order_time"/>
+		<association property="user" javaType="User" foreignColumn="user_id">
+			<id column="user_id" property="user_id"/>
+			<result column="user_name" property="user_name"/>	
+			<result column="user_phone" property="user_phone"/>	
+			<result column="user_email" property="user_email"/>	
+			<result column="user_addr_postcode" property="user_addr_postcode"/>	
+			<result column="user_addr_main" property="user_addr_main"/>	
+			<result column="user_addr_detail" property="user_addr_detail"/>	
+			<result column="user_addr_extra" property="user_addr_extra"/>	
+		</association>
+	</resultMap>
+	
+	<select id="selectByUserId" resultMap="OrderSheetMap">
+	SELECT * FROM ORDERSHEET o LEFT JOIN USER u ON o.user_id=u.user_id WHERE o.user_id=#{userId}
+	</select>
+
+</mapper>

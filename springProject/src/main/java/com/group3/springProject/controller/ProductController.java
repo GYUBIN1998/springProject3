@@ -22,13 +22,13 @@ public class ProductController {
 		int row = 5;
 		int startRow = (page - 1) * row;
 		int rowCount = productMapper.selectAllCount();
-		Paging paging = new Paging(page, rowCount, "/product/productList/", row);
+		Paging pageProductAll = new Paging(page, rowCount, "/product/productList/", row);
 		List<Product> products = productMapper.selectAll(startRow, row);
 		model.addAttribute("products", products);
 		model.addAttribute("row", row);
 		model.addAttribute("rowCount", rowCount);
 		model.addAttribute("page", page);
-		model.addAttribute("paging", paging);
+		model.addAttribute("pageProductAll", pageProductAll);
 		System.out.println(products);
 		return "/product/productList";	
 	}

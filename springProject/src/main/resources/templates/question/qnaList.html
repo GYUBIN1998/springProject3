@@ -7,15 +7,15 @@
 </head>
 <body>
 	<header th:insert="/header"></header>
-	<main class="container">
+	<main class="container-fluid">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" id="path">
 	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="#">홈</a></li>
+	    <li class="breadcrumb-item"><a href="/">홈</a></li>
 	    <li class="breadcrumb-item"><a href="#">고객 센터</a></li>
-	    <li class="breadcrumb-item" aria-current="page"><a href="#" class="breadcrumb-item active">상품 Q&A</a></li>
+	    <li class="breadcrumb-item" aria-current="page"><a href="/question/qnaList/1" class="breadcrumb-item active">상품 Q&A</a></li>
 	  </ol>
 	</nav>
-        <h2>상품 Q&A</h2>
+    <h2>상품 Q&A</h2>
     <div id="table">
         <table id="tableList" class="table table-striped table-hover">
             <thead>
@@ -36,9 +36,9 @@
             </tbody>
         </table>
     </div>
-    <div class="d-flex justify-content-center" th:insert="/paging"></div>
+    <div class="d-flex justify-content-center" th:insert="/pagination/pageQnaAll"></div>
     <div id="searchArea">
-    <form action="#" method="get" enctype="multipart/form-data">
+    <form action="#" method="get" enctype="multipart/form-data" name="qnaSearch">
            <select name="searchDate" id="searchDate" class="form-select form-select-sm">
                <option value="week">일주일</option>
                <option value="month">1개월</option>
@@ -48,7 +48,6 @@
            <select name="searchKey" id="searchKey" class="form-select form-select-sm">
                 <option value="subject">제목</option>
                 <option value="content">내용</option>
-                <option value="writerName">작성자 이름</option>
                 <option value="memberId">작성자 아이디</option>
             </select>
             <input type="search" name="search" id="search" class="form-control">

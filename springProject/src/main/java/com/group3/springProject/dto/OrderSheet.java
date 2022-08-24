@@ -18,7 +18,9 @@ import lombok.Data;
 @Data
 public class OrderSheet {
 	private int order_no;
-	private String user_id;
 	private String order_type;
 	private Date order_time;
+	
+	//join
+	private User user;
 }
