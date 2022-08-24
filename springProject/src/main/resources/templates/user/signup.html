@@ -5,6 +5,8 @@
     <title>Document</title>
 	<link rel="stylesheet" href="/public/css/signup.css">
 	<script src="/public/js/signup.js" defer="defer"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script th:src="@{/public/js/adressApi.js}" defer="defer"></script>
 </head>
 <body>
 <header th:insert="/header"></header>
@@ -19,11 +21,10 @@
         <div id="subContainer">
             <div id="signupBox">
                 <div id="signupLogo">회원가입</div>
-                 <form action="/user/signup.do" name="signupForm" id="signupForm" method="post">
+                 <form action="/user/signup.do" name="signupForm" id="signupForm" method="post" class="needs-validation" novalidate>
                     <div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="text" name="user_name" class="form-control signupInput" placeholder="이름 : 2 ~ 20자의 영문 또는 한글" 
-					    	    minlength="2" maxlength="20" required>
+					    <input type="text" name="user_name" class="form-control signupInput" placeholder="이름 : 2 ~ 20자의 영문 또는 한글" maxlength="20">
 					  </div>
 					  <div class="col-auto mt-0">
 					     <span id="nameHelp" class="form-text"></span>
@@ -35,8 +36,7 @@
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="text" name="user_id" class="form-control signupInput" placeholder="ID : 6 ~ 20자의 영문으로 시작하는 영문 또는 숫자" 
-					    	   minlength="6" maxlength="20" required>
+					    <input type="text" name="user_id" class="form-control signupInput" placeholder="ID : 6 ~ 20자의 영문 또는 숫자의 조합" maxlength="20">
 					  </div>
 					  <div class="col-auto mt-0">
 					     <span id="idHelp" class="form-text"></span>
@@ -48,21 +48,17 @@
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="password" name="user_pw" class="form-control signupInput" placeholder="비밀번호 : 8 ~ 16자의 영문, 숫자, 특수 문자를 최소 한 가지씩 조합" 
-					    		minlength="8" maxlength="16" required>
+					    <input type="password" name="user_pw" class="form-control signupInput" placeholder="비밀번호 : 8 ~ 16자의 영문 대소문자, 숫자, 특수 문자를 조합" maxlength="16">
 					  </div>
 					  <div class="col-auto mt-0">
 					     <span id="pwHelp" class="form-text"></span>
-						 <span class="valid-feedback">
-						   사용 가능한 비밀번호입니다.
-						 </span>
-						 <span id="pwHelpInvalid" class="invalid-feedback"></span> 
+						 <span id="pwHelpValid" class="valid-feedback"></span>
+						 <span id="pwHelpInvalid" class="border-warning invalid-feedback"></span> 
 						</div>
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="password" name="pwCheck" class="form-control signupInput" placeholder="비밀번호 확인" 
-					    		minlength="8" maxlength="16" required>
+					    <input type="password" name="pwCheck" class="form-control signupInput" placeholder="비밀번호 확인" maxlength="16">
 					  </div>
 					  <div class="col-auto mt-0">
 					     <span id="pwCheckHelp" class="form-text"></span>
@@ -74,8 +70,7 @@
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="email" name="user_email" class="form-control signupInput" placeholder="이메일 : id@domain (Kevin@example.com) 형식" 
-					    		required>
+					    <input type="email" name="user_email" class="form-control signupInput" placeholder="이메일 : id@domain (Kevin@example.com) 형식">
 					  </div>
 					  <div class="col-auto mt-0">
 					     <span id="emailHelp" class="form-text"></span>
@@ -87,8 +82,7 @@
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="text" name="user_phone" class="form-control signupInput" placeholder="휴대폰 : ###-####-#### 형식" 
-					    		minlength="10" maxlength="16" required>
+					    <input type="tel" name="user_phone" class="form-control signupInput" oninput="phoneAutoComplete(this)" placeholder="휴대폰 : ###-####-#### 형식" maxlength="13">
 					  </div>
 					  <div class="col-auto mt-0">
 					  <span id="phoneHelp" class="form-text"></span>
@@ -99,17 +93,30 @@
 					  </div>
 					</div> 
 					<div class="row g-3 align-items-center">
-					  <div class="col-auto signupInputBox">
-					    <input type="text" name="user_adress" class="form-control signupInput" placeholder="주소"
-					    		required>
-					  </div>
-					  <div class="col-auto mt-0">
-					  <span id="adressHelp" class="form-text"></span>
-						 <span class="valid-feedback"></span>
-						 <span id="adressHelpInvalid" class="invalid-feedback"></span> 
-					  </div>
+					    <div class="col-auto signupInputBox" style="width: 335px;">
+						   <input type="text" class="form-control signupInput" id="sample6_postcode" placeholder="우편번호" readonly>
+						</div>
+					    <div class="col-auto mt-0 p-0">
+						   <input class="btn btn-secondary" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="height: 50px;">
+			  		    </div>
 					</div> 
-				  <button class="btn btn-primary">가입하기</button>
+					<div class="row g-3 align-items-center">
+					    <div class="col-auto signupInputBox">
+						   <input class="form-control signupInput" type="text" id="sample6_address" placeholder="주소" readonly>
+						</div>
+					</div> 
+					<div class="row g-3 align-items-center">
+					    <div class="col-auto signupInputBox">
+						   <input class="form-control signupInput" type="text" name="user_detail_adress" id="sample6_detailAddress" placeholder="상세 주소">
+						</div>
+					</div> 
+					<div class="row g-3 align-items-center">
+						<div class="col-auto signupInputBox">
+						   <input class="form-control signupInput" type="text" id="sample6_extraAddress" placeholder="참고 항목" readonly>
+						</div>
+					</div>
+				    <button class="btn btn-primary">가입하기</button>
+				    <input type="hidden" name="user_adress" id="user_adress">
 				</form>
             </div>
         </div>
