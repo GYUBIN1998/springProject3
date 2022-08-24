@@ -1,30 +1,21 @@
 package com.group3.springProject.controller;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.group3.springProject.dto.OrderSheet;
 import com.group3.springProject.dto.User;
 import com.group3.springProject.mapper.OrderMapper;
-
 import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
-
 @Controller
 @RequestMapping("/order")
 public class OrderController {
 	@Autowired
 	OrderMapper orderMapper;
-
-<<<<<<< HEAD
 	//결제페이지 회원 정보 불러오기
-=======
->>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066
 	@GetMapping("/orderPage/{userId}")
 	public String orderPageDetail(@PathVariable String userId, Model model) {
 		//System.out.println(userId);
@@ -44,8 +35,4 @@ public class OrderController {
 		//System.out.println(userPhoneLast);
 		return"/order/orderPage";
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066

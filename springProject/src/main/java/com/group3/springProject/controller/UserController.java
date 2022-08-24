@@ -1,7 +1,5 @@
 package com.group3.springProject.controller;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,19 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-<<<<<<< HEAD
-=======
 import org.springframework.web.bind.annotation.RequestParam;
->>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.group3.springProject.dto.IdCheck;
 import com.group3.springProject.dto.PhoneCheck;
 import com.group3.springProject.dto.EmailCheck;
 import com.group3.springProject.dto.User;
 import com.group3.springProject.dto.IdCheck;
 import com.group3.springProject.mapper.UserMapper;
-
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -103,9 +96,6 @@ public class UserController {
 			return "redirect:/user/signup";
 		}		
 	}
-<<<<<<< HEAD
-}
-=======
 	
 	@GetMapping("/login.do")
 	public void login() {}
@@ -135,4 +125,3 @@ public class UserController {
 		return "redirect:/";
 	}
 }
->>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066

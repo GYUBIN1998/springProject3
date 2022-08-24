@@ -79,8 +79,6 @@ public class QuestionController {
 		System.out.println(qnaBoard);
 		return "/question/qnaDetail";
 	}
-<<<<<<< HEAD
-	
 //	@GetMapping("/qnaForm")
 //	public void newQna() {}
 	
@@ -97,6 +95,3 @@ public class QuestionController {
 		}
 	}
 }
-=======
-}
->>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066

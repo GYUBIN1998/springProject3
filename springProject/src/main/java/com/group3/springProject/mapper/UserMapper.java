@@ -14,10 +14,5 @@ public interface UserMapper {
 	
 	User selectOne(String user_id);
 	public int updateOne(User user);
-<<<<<<< HEAD
-}
-=======
-	
 	User selectPwOne(String user_id, String user_pw);
 }
->>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066

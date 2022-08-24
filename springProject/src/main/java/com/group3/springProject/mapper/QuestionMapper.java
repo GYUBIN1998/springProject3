@@ -13,9 +13,5 @@ public interface QuestionMapper {
 	public QnaBoard selectQnaFindOne(int qnaboardNo);
 	public List<FaqBoard> selectFaqCategory(int faq_division_no, int startRow, int row);
 	public int selectFaqCategoryCount(int faq_division_no);
-<<<<<<< HEAD
 	public int insertQnaOne(QnaBoard qnaBoard);
 }
-=======
-}
->>>>>>> 622b62f97a5300333d0d1db9ad415eccda9e0066
