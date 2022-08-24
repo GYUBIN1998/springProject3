@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -77,5 +78,21 @@ public class QuestionController {
 		model.addAttribute(qnaBoard);
 		System.out.println(qnaBoard);
 		return "/question/qnaDetail";
+	}
+	
+//	@GetMapping("/qnaForm")
+//	public void newQna() {}
+	
+	@GetMapping("/insertQna.do")
+	public void insertQna() {}
+	@PostMapping("/insertQna.do")
+	public String insertQna(QnaBoard qnaboard) {
+		int insert=0;
+		insert=questionMapper.insertQnaOne(qnaboard);
+		if(insert>0) {
+			return "redirect:/question/qnaList/1";
+		} else {
+			return "redirect:/question/insertQna.do";
+		}
 	}
 }

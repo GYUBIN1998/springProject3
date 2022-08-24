@@ -30,4 +30,9 @@
 	<select id="selectFaqCategoryCount" resultType="int">
 		SELECT COUNT(*) FROM FAQBOARD WHERE faq_division_no = #{faq_division_no}
 	</select>
+	
+	<insert id="insertQnaOne" parameterType="QnaBoard">
+		INSERT INTO QNABOARD (qnaboard_title,qnaboard_content,user_id)
+			VALUES (#{qnaboard_title},#{qnaboard_content},"user002")
+	</insert>
 </mapper>

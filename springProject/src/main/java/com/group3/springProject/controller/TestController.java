@@ -13,11 +13,5 @@ public class TestController {
 
 	@Autowired
 	private TestMapper testMapper;
-	
-	@GetMapping("/userUpdate")
-	public void detail() {}
-	
-	@GetMapping("/qnaForm")
-	public void newQna() {}
 
 }
