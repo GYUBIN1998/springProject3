@@ -11,7 +11,10 @@
 			<result column="user_name" property="user_name"/>	
 			<result column="user_phone" property="user_phone"/>	
 			<result column="user_email" property="user_email"/>	
-			<result column="user_adress" property="user_adress"/>	
+			<result column="user_addr_postcode" property="user_addr_postcode"/>	
+			<result column="user_addr_main" property="user_addr_main"/>	
+			<result column="user_addr_detail" property="user_addr_detail"/>	
+			<result column="user_addr_extra" property="user_addr_extra"/>	
 		</association>
 	</resultMap>
 	

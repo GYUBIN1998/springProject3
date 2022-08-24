@@ -35,17 +35,4 @@
 		WHERE user_id=#{user_id}
 	</update>
 
-	<select id="selectUserId" resultType="User" parameterType="String">
-		SELECT * FROM USER WHERE user_id = #{user_id}
-	</select>
-	<select id="selectUserEmail" resultType="User" parameterType="String">
-		SELECT * FROM USER WHERE user_email = #{user_email}
-	</select>
-	<select id="selectUserPhone" resultType="User" parameterType="String">
-		SELECT * FROM USER WHERE user_phone = #{user_phone}
-	</select>
-	<insert id="userSignup" parameterType="User">
-		INSERT INTO USER (user_id, user_pw, user_phone, user_email, user_adress) 
-			VALUES (#{user_id}, #{user_pw}, #{user_phone}, #{user_email}, #{user_adress})
-	</insert>
 </mapper>

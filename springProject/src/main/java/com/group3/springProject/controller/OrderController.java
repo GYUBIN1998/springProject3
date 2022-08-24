@@ -21,6 +21,7 @@ public class OrderController {
 	@Autowired
 	OrderMapper orderMapper;
 
+	//결제페이지 회원 정보 불러오기
 	@GetMapping("/orderPage/{userId}")
 	public String orderPageDetail(@PathVariable String userId, Model model) {
 		//System.out.println(userId);
