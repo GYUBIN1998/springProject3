@@ -12,7 +12,6 @@
 	<select id="selectOne" resultMap="UserMap">
 		SELECT * FROM USER WHERE user_id=#{user_id}
 	</select>
-	
 	<select id="selectUserId" resultType="User" parameterType="String">
 		SELECT * FROM USER WHERE user_id = #{user_id}
 	</select>
@@ -25,7 +24,7 @@
 	<insert id="userSignup" parameterType="User">
 		INSERT INTO USER (user_id, user_pw, user_name, user_phone, user_email, user_adress) 
 			VALUES (#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_email}, #{user_adress})
-	</insert>
+	</insert>	
 	<update id="updateOne" parameterType="User">
 		UPDATE USER SET
 			user_pw=#{user_pw},
@@ -34,4 +33,7 @@
 			user_adress=#{user_adress}
 		WHERE user_id=#{user_id}
 	</update>
+	<select id="selectPwOne" resultType="User">
+		SELECT * FROM USER WHERE user_id = #{user_id} AND user_pw = #{user_pw}
+	</select>
 </mapper>

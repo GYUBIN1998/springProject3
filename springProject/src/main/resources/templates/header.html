@@ -30,6 +30,17 @@
 			  <ol class="breadcrumb">
 			    <li class="breadcrumb-item"><a href="#">로그인</a></li>
 			    <li class="breadcrumb-item"><a href="/user/signup">회원가입</a></li>
+			  	<th:block th:if="${session.loginUser==null}">
+			    	<li class="breadcrumb-item"><a href="/user/login.do">로그인</a></li>
+			    	<li class="breadcrumb-item"><a href="/user/signup">회원가입</a></li>
+			    </th:block>
+			    <th:block th:unless="${session.loginUser==null}">
+     				<a th:href="@{/user/detail/{user_id}(user_id=${session.loginUser.user_id})}" class="btn btn-sm btn-outline-secondary">					
+     				<span th:text="${session.loginUser.user_name}"></span>
+					(<span th:text="${session.loginUser.user_id}"></span>)
+					</a> / 
+					<a href="/user/logout.do" class="btn btn-sm btn-danger">로그아웃</a>
+     			</th:block>
 			    <li class="breadcrumb-item"><a href="#">장바구니</a></li>
 			  </ol>
 			</nav>  

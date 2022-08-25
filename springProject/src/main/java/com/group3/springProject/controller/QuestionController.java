@@ -79,7 +79,6 @@ public class QuestionController {
 		System.out.println(qnaBoard);
 		return "/question/qnaDetail";
 	}
-	
 //	@GetMapping("/qnaForm")
 //	public void newQna() {}
 	
