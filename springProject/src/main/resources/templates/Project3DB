@@ -17,7 +17,7 @@ CREATE TABLE user (
   user_addr_postcode varchar(255) NOT NULL,
   user_addr_main varchar(255) NOT NULL,
   user_addr_detail varchar(255) NOT NULL,
-  user_addr_extra varchar(255) NOT NULL,
+  user_addr_extra varchar(255) NOT NULL DEFAULT '(없음)',
   CONSTRAINT PRIMARY KEY (user_id),
   CONSTRAINT UNIQUE KEY (user_phone),
   CONSTRAINT UNIQUE KEY (user_email)
