@@ -17,7 +17,7 @@ CREATE TABLE user (
   user_addr_postcode varchar(255) NOT NULL,
   user_addr_main varchar(255) NOT NULL,
   user_addr_detail varchar(255) NOT NULL,
-  user_addr_extra varchar(255) NOT NULL,
+  user_addr_extra varchar(255) NOT NULL DEFAULT '(없음)',
   CONSTRAINT PRIMARY KEY (user_id),
   CONSTRAINT UNIQUE KEY (user_phone),
   CONSTRAINT UNIQUE KEY (user_email)
@@ -32,12 +32,6 @@ values ('user001','u1234','김유저','010-1111-0001','user1@gmail.com','04038',
 ('user007','u1234','강유저','010-7777-0007','user7@naver.com','04038','서울시 마포구 양화로 122','6층','(서교동)'),
 ('user008','u1234','양유저','010-8888-0008','user8@naver.com','04038','서울시 마포구 양화로 122','7층','(서교동)'),
 ('user009','u1234','류유저','010-9999-0009','user9@naver.com','04038','서울시 마포구 양화로 122','8층','(서교동)'),
-('user004','u1234','한유저','010-4444-0004','user4@gmail.com','04038','서울시 마포구 양화로 122','3층','(서교동)'),
-('user005','u1234','안유저','010-5555-0005','user5@kakao.com','04038','서울시 마포구 양화로 122','4층','(서교동)'),
-('user006','u1234','강유저','010-6666-0006','user6@naver.com','04038','서울시 마포구 양화로 122','5층','(서교동)'),
-('user007','u1234','최유저','010-7777-0007','user7@naver.com','04038','서울시 마포구 양화로 122','6층','(서교동)'),
-('user008','u1234','류유저','010-8888-0008','user8@naver.com','04038','서울시 마포구 양화로 122','7층','(서교동)'),
-('user009','u1234','양유저','010-9999-0009','user9@naver.com','04038','서울시 마포구 양화로 122','8층','(서교동)'),
 ('user010','u1234','정유저','010-1010-0010','user10@daum.net','04038','서울시 마포구 양화로 122','9층','(서교동)');
 
 CREATE TABLE category (
@@ -168,10 +162,6 @@ values (001, 'user001', 'card', '2022-01-31 22:59:59'),
 (008, 'user008', 'card', '2022-01-25 18:59:59'),
 (009, 'user009', 'card', '2022-01-24 18:59:59'),
 (010, 'user010', 'card', '2022-01-23 18:59:59');
-(002, 'user002', 'depositor', '2022-01-31 21:59:59'),
-(003, 'user003', 'depositor', '2022-01-31 20:59:59'),
-(004, 'user004', 'card', '2022-01-31 19:59:59'),
-(005, 'user005', 'card', '2022-01-31 18:59:59');
 
 CREATE TABLE orderlist (
   orderlist_no int NOT NULL,

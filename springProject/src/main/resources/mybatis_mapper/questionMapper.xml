@@ -9,26 +9,50 @@
 	<result column="user_id" property="user_id"/>
 	<result column="post_time" property="post_time"/>
 	</resultMap>
-	<select id="selectQnaAll" resultType="QnaBoard">
-		SELECT * FROM QNABOARD LIMIT #{startRow}, #{row}
+	<select id="selectQnaAll" resultType="QnaBoard"> <!-- qna 전체 검색 -->
+		SELECT * FROM QNABOARD 
+		<if test="field != null">
+			WHERE ${field} LIKE CONCAT('%', #{search}, '%')
+		</if>
+		LIMIT #{startRow}, #{row}
 	</select>
-	<select id="selectQnaAllCount" resultType="int">
+	<select id="selectQnaAllCount" resultType="int"> <!-- qna 전체 검색 및 페이징 -->
 		SELECT COUNT(*) FROM QNABOARD
+		<if test="field != null">
+			WHERE ${field} LIKE CONCAT('%', #{search}, '%')
+		</if>
 	</select>
-	<select id="selectFaqAll" resultType="FaqBoard">
-		SELECT * FROM FAQBOARD LIMIT #{startRow}, #{row}
+	<select id="selectFaqAll" resultType="FaqBoard"> <!-- faq 전체 검색 -->
+		SELECT * FROM FAQBOARD 
+		<if test="field != null">
+			WHERE ${field} LIKE CONCAT('%', #{search}, '%')
+		</if>
+		LIMIT #{startRow}, #{row}
 	</select>
-	<select id="selectFaqAllCount" resultType="int">
+	<select id="selectFaqAllCount" resultType="int"> <!-- faq 전체 검색 및 페이징 -->
 		SELECT COUNT(*) FROM FAQBOARD
+		<if test="field != null">
+			WHERE ${field} LIKE CONCAT('%', #{search}, '%')
+		</if>
 	</select>
 	<select id="selectQnaFindOne" resultMap="QnaBoardMap">
-		SELECT * FROM QNABOARD WHERE qnaboard_no=#{qnaboardNo}
+		SELECT * FROM QNABOARD 
+			WHERE qnaboard_no=#{qnaboardNo}
 	</select>
-	<select id="selectFaqCategory" resultType="FaqBoard">
-		SELECT * FROM FAQBOARD WHERE faq_division_no = #{faq_division_no} LIMIT #{startRow}, #{row}
+	<select id="selectFaqCategory" resultType="FaqBoard"> <!-- faq navbar에서 카테고리 선택 후 검색 -->
+		SELECT * FROM FAQBOARD 
+			WHERE faq_division_no = #{faq_division_no} 
+			<if test="field != null">
+				AND ${field} LIKE CONCAT('%', #{search}, '%')
+			</if>
+			LIMIT #{startRow}, #{row}
 	</select>
-	<select id="selectFaqCategoryCount" resultType="int">
-		SELECT COUNT(*) FROM FAQBOARD WHERE faq_division_no = #{faq_division_no}
+	<select id="selectFaqCategoryCount" resultType="int"> <!-- faq navbar에서 카테고리 선택 후 검색 및 페이징 -->
+		SELECT COUNT(*) FROM FAQBOARD 
+			WHERE faq_division_no = #{faq_division_no}
+			<if test="field != null">
+				AND ${field} LIKE CONCAT('%', #{search}, '%')
+			</if>
 	</select>
 	<insert id="insertQnaOne" parameterType="QnaBoard">
 		INSERT INTO QNABOARD (qnaboard_title,qnaboard_content,user_id)

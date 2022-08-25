@@ -22,12 +22,21 @@ public class QuestionController {
 	@GetMapping("/qnaList/{page}")
 	public String qnaList(
 			@PathVariable int page,
+			@RequestParam(required = false) String field,
+			@RequestParam(required = false) String search,
 			Model model) {
 		int row = 5;
 		int startRow = (page - 1) * row;
-		int rowCount = questionMapper.selectQnaAllCount();
+		int rowCount = 0;
+		List<QnaBoard> qnaList = null;
+		if(field != null && !field.equals("")) {
+			qnaList = questionMapper.selectQnaAll(startRow, row, field, search);	
+			rowCount = questionMapper.selectQnaAllCount(field, search);
+		} else {
+			qnaList = questionMapper.selectQnaAll(startRow, row, null, null);
+			rowCount = questionMapper.selectQnaAllCount(null, null);
+		}
 		Paging pageQnaAll = new Paging(page, rowCount, "/question/qnaList/", row);
-		List<QnaBoard> qnaList = questionMapper.selectQnaAll(startRow, row);
 		model.addAttribute("qnaList", qnaList);
 		model.addAttribute("row", row);
 		model.addAttribute("rowCount", rowCount);
@@ -41,19 +50,33 @@ public class QuestionController {
 	public String faqList(
 			@PathVariable int page, 
 			@PathVariable int faq_division_no,
+			@RequestParam(required = false) String field,
+			@RequestParam(required = false) String search,
 			Model model
 			) {
 		int row = 5;
 		int startRow = (page - 1) * row;
 		
-		int rowCount = questionMapper.selectFaqAllCount();
-		int categoryCount = questionMapper.selectFaqCategoryCount(faq_division_no);
+		int rowCount = 0;
+		int categoryCount = 0;
+		
+		List<FaqBoard> faqList = null; 
+		List<FaqBoard> faqCategoryList = null;
+		
+		if(field != null && !field.equals("")) {
+			faqList = questionMapper.selectFaqAll(startRow, row, field, search);
+			faqCategoryList = questionMapper.selectFaqCategory(faq_division_no, startRow, row, field, search);
+			rowCount = questionMapper.selectFaqAllCount(field, search);
+			categoryCount = questionMapper.selectFaqCategoryCount(faq_division_no, field, search);
+		} else {
+			faqList = questionMapper.selectFaqAll(startRow, row, null, null);
+			faqCategoryList = questionMapper.selectFaqCategory(faq_division_no, startRow, row, null, null);
+			rowCount = questionMapper.selectFaqAllCount(null, null);
+			categoryCount = questionMapper.selectFaqCategoryCount(faq_division_no, null, null);
+		}
 		
 		Paging pageFaqAll = new Paging(page, rowCount, "/question/faqList/", row);
 		Paging pageFaqCategory = new Paging(page, categoryCount, "/question/faqList/", row);
-		
-		List<FaqBoard> faqList = questionMapper.selectFaqAll(startRow, row);
-		List<FaqBoard> faqCategoryList = questionMapper.selectFaqCategory(faq_division_no, startRow, row);
 		
 		model.addAttribute("faqList", faqList);
 		model.addAttribute("faqCategoryList", faqCategoryList);

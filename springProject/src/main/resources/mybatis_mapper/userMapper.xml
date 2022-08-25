@@ -22,8 +22,8 @@
 		SELECT * FROM USER WHERE user_phone = #{user_phone}
 	</select>
 	<insert id="userSignup" parameterType="User">
-		INSERT INTO USER (user_id, user_pw, user_name, user_phone, user_email, user_adress) 
-			VALUES (#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_email}, #{user_adress})
+		INSERT INTO USER (user_id, user_pw, user_name, user_phone, user_email, user_addr_postcode, user_addr_main, user_addr_detail, user_addr_extra) 
+			VALUES (#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_email}, #{user_addr_postcode}, #{user_addr_main}, #{user_addr_detail}, #{user_addr_extra})
 	</insert>	
 	<update id="updateOne" parameterType="User">
 		UPDATE USER SET
