@@ -26,11 +26,6 @@
 		</if>
 		LIMIT #{startRow}, #{row}
 	</select>
-	<select id="selectQnaAll" resultType="QnaBoard">
-		SELECT * FROM QNABOARD
-			ORDER BY qnaboard_no
-			DESC LIMIT #{startRow}, #{row}
-	</select>
 	<select id="selectQnaAllCount" resultType="int"> <!-- qna 전체 검색 및 페이징 -->
 		SELECT COUNT(*) FROM QNABOARD
 		<if test="field != null">
@@ -43,9 +38,6 @@
 			WHERE ${field} LIKE CONCAT('%', #{search}, '%')
 		</if>
 		LIMIT #{startRow}, #{row}
-	</select>
-	<select id="selectFaqAll" resultType="FaqBoard">
-		SELECT * FROM FAQBOARD LIMIT #{startRow}, #{row}
 	</select>
 	<select id="selectFaqAllCount" resultType="int"> <!-- faq 전체 검색 및 페이징 -->
 		SELECT COUNT(*) FROM FAQBOARD
@@ -83,6 +75,6 @@
 		WHERE qnaboard_no=#{qnaboard_no}
 	</update>
 	<delete id="deleteQnaOne">
-		DELETE FROM QNABOARD WHERE qnaboard_no=#{qnaboard_no}
+		DELETE FROM QNABOARD WHERE qnaboard_no=#{qnaboard_no} 
 	</delete>
 </mapper>
