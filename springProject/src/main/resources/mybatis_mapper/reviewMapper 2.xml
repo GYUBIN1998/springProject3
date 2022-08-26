@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group3.springProject.mapper.ReviewMapper">
+	<resultMap type="Review" id="ReviewMap">
+		<id column="review_no" property="review_no"/>
+		<result column="prod_id" property="prod_id"/>
+		<result column="user_id" property="user_id"/>
+		<result column="review_title" property="review_title"/>
+		<result column="review_content" property="review_content"/>
+		<result column="review_img" property="review_img"/>
+		<result column="review_score" property="review_score"/>
+		<result column="review_time" property="review_time"/>
+	</resultMap>
+	<select id="selectAll" resultType="Review">
+		SELECT * FROM REVIEW
+	</select>
+	<select id="selectByUserId" resultMap="ReviewMap">
+		SELECT *, (select count(*) from review where user_id=#{userId})AS review_count FROM REVIEW WHERE user_id=#{userId}
+	</select>
+</mapper>

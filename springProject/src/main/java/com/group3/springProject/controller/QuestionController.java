@@ -1,5 +1,8 @@
 package com.group3.springProject.controller;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.group3.springProject.dto.FaqBoard;
 import com.group3.springProject.dto.Paging;
 import com.group3.springProject.dto.QnaBoard;
+import com.group3.springProject.dto.User;
 import com.group3.springProject.mapper.QuestionMapper;
 @Controller
 @RequestMapping("/question")
@@ -71,6 +76,7 @@ public class QuestionController {
 		return "/question/faqList";	
 	}
 	
+	//qna detail : 문의 내용 확인
 	@GetMapping("/qnaDetail/{qnaboardNo}")
 	public String qnaDetail(@PathVariable int qnaboardNo, Model model) {
 		//System.out.println(qnaboardNo);
@@ -79,19 +85,92 @@ public class QuestionController {
 		System.out.println(qnaBoard);
 		return "/question/qnaDetail";
 	}
-//	@GetMapping("/qnaForm")
-//	public void newQna() {}
 	
+	//qna insert : 문의 등록
 	@GetMapping("/insertQna.do")
-	public void insertQna() {}
+	public String insertQna(HttpSession session) {
+		if(session.getAttribute("loginUser")!=null) {
+			return "/question/insertQna";
+		}else {
+			return "redirect:/user/login.do";
+		}
+	}
 	@PostMapping("/insertQna.do")
-	public String insertQna(QnaBoard qnaboard) {
+	public String insertQna(
+			QnaBoard qnaBoard, 
+			HttpSession session) {
 		int insert=0;
-		insert=questionMapper.insertQnaOne(qnaboard);
-		if(insert>0) {
+		if(session.getAttribute("loginUser")!=null) {
+			try {
+				insert=questionMapper.insertQnaOne(qnaBoard);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if(insert>0) {
+				return "redirect:/question/qnaList/1";
+			} else {
+				return "redirect:/question/insertQna.do";
+			}
+		} else {
+			return "redirect:/user/login.do";
+			
+		}
+	}
+	
+	//qna update : 문의 수정
+	@GetMapping("/updateQna/{qnaboardNo}")
+	public String updateQna(
+			@PathVariable int qnaboardNo, 
+			Model model, 
+			HttpSession session) {
+		QnaBoard qnaBoard=questionMapper.selectQnaFindOne(qnaboardNo);
+		Object loginUser_obj=session.getAttribute("loginUser");
+		if(loginUser_obj!=null && ((User)loginUser_obj).getUser_id().equals(qnaBoard.getUser().getUser_id())) {
+			model.addAttribute(qnaBoard);
+			System.out.println(qnaBoard);
+			return "/question/updateQna";
+		} else {
+			return "redirect:/user/login.do";
+		}
+	}
+	@PostMapping("updateQna.do")
+	public String updateQna(
+			QnaBoard qnaBoard, 
+			HttpSession session) {
+		int update=0;
+		Object loginUser_obj=session.getAttribute("loginUser");
+		if(loginUser_obj!=null && ((User)loginUser_obj).getUser_id().equals(qnaBoard.getUser().getUser_id())) {
+			try {
+				update=questionMapper.updateQnaOne(qnaBoard);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if(update>0) {
+				return "redirect:/question/qnaDetail/"+qnaBoard.getQnaboard_no();
+			} else {
+				return "redirect:/question/updateQna/"+qnaBoard.getQnaboard_no();
+			}
+		} else {
+			return "redirect:/user/login.do";
+		}
+	}
+	
+	//qna delete : 문의 삭제
+	@GetMapping("/deleteQna/{qnaboardNo}/{userId}")
+	public String delete(
+			@PathVariable int qnaboardNo, 
+			@PathVariable String userId, 
+			@SessionAttribute(name = "loginUser",required = false) User loginUser) {
+		int delete=0;
+		if(loginUser!=null && loginUser.getUser_id().equals(userId)) {
+			try {
+				delete=questionMapper.deleteQnaOne(qnaboardNo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			return "redirect:/question/qnaList/1";
 		} else {
-			return "redirect:/question/insertQna.do";
+			return "redirect:/user/login.do";
 		}
 	}
 }

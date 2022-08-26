@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #footer {
+            background-color: skyblue;
+        }
+        #footer #footerTop {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 10px;
+            background-color: dodgerblue;
+        }
+        #footer #footerTop a {
+            text-decoration: none;
+            color: white;
+        }
+        #footer #footerCenter {
+            font-size: 13px;
+        }
+        #footer #footerCenter ul {
+            margin-top: 40px;
+        }
+        #footer #footerCenter li {
+            list-style: none;
+            margin-bottom: 5px;
+        }
+        #footer #footerCenter a {
+            color: dodgerblue;
+        }
+        #footer #copyRight {
+            display: flex;      
+        }
+        #footer #copyRight div {
+            margin: 20px;
+        }
+        .vLine {
+            width: 1px;
+            background-color: #e3e3e3;
+        }
+    </style>
+</head>
+<body>
+    <div id="footer">
+        <div id="footerTop">
+            <a href="#">회사 소개</a>
+            <div class="vLine"></div>
+            <a href="#">이용 약관</a>
+            <div class="vLine"></div>
+            <a href="#">개인정보 처리방침</a>
+            <div class="vLine"></div>
+            <a href="#">입점 문의</a>
+            <div class="vLine"></div>
+            <a href="#">찾아오시는 길</a>
+            <div class="vLine"></div>
+            <a href="#">Top</a>
+        </div>
+        <div id="footerCenter">
+            <ul>
+                <li>(주) 프로젝트쓰리닷컴 대표이사 : 김프로 | 사업자 등록번호 : 123-45-67890 <a href="#">사업자 정보 확인</a></li>
+                <li>서울 마포구 양화로 122  | E-mail : p3com_help@projectthree.com   | 개인정보 책임관리자 : 김프로</li>
+                <li>통신 판매업 신고 : 마포 제 00123호 | 분쟁 조정 기관 : 소비자 보호원, 전자거래 분쟁중재위원회| 에스크로 구매안전 서비스 이용 가능 <a href="#">자세히 보기</a></li>
+                <li>[방문상담·구매·A/S] 서울 마포구 양화로 122</li>
+                <li>[택배 A/S 접수] 서울 마포구 양화로 122 | [고객 센터] 1234-5678 (팩스 번호 02-123-4567)</li>
+            </ul>
+            <div id="copyRight">
+                <div>
+                    Project_3.com
+                </div>
+                <div>
+                    Copyright @2022 Project_3.com All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

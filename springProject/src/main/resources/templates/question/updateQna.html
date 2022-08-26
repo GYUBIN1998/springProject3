@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>문의하기</title>
+<title>문의수정하기</title>
 </head>
 
 <style>
@@ -47,20 +47,23 @@
 <body>
 	<header th:insert="/header"></header>
 
-	<h1 class="title">문의하기</h1>
+	<h1 class="title">문의 수정 하기</h1>
 	<hr>
 	<br>
 	
 	<div class="container">
-		<form action="insertQna.do" method="post">
+		<form action="/question/updateQna.do" method="post">
+			<div hidden="true">
+				<input name="qnaboard_no" id="qnaBoardNo" class="form-control" type="text" th:value="${qnaBoard.qnaboard_no}"></input>
+			</div>
 			<div class="wd1000 mb10">
-				<input name="qnaboard_title" id="qnaTitle" class="form-control" type="text" autofocus="autofocus" placeholder="제목을 입력하세요.">
+				<input name="qnaboard_title" id="qnaTitle" class="form-control" type="text" autofocus="autofocus" th:value="${qnaBoard.qnaboard_title}" placeholder="제목을 입력하세요.">
 			</div>
 			<div class="mb10" hidden="true">
 				<input name="user.user_id" class="form-control" type="text" readonly th:value="${session.loginUser.user_id}">
 			</div>
 			<div>
-				<textarea name="qnaboard_content" id="qnaContent" class="form-control" rows="10" maxlength="1000" placeholder="문의하실 내용을 입력하세요." style="resize: none;"></textarea>
+				<textarea name="qnaboard_content" id="qnaContent" class="form-control" rows="10" maxlength="1000" th:text="${qnaBoard.qnaboard_content}" placeholder="문의하실 내용을 입력하세요." style="resize: none;"></textarea>
 			</div>
 			<div>
 				<input type="checkbox" id="secretYn">
@@ -72,7 +75,7 @@
 					<button class="btn btn-outline-secondary" type="button">이전</button>
 				</div>	
 				<div>
-					<button class="btn btn-primary" type="submit">등록</button>
+					<button class="btn btn-primary" type="submit">수정</button>
 				</div>	
 			</div>
 		</form>
