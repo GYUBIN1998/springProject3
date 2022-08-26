@@ -32,7 +32,8 @@ function idCheck(v) {
 }
 
 function passwordCheck(v) {
-	let pw_pattern = /^((?=.*[a-zA-Z])(?=.*[0-9]))|((?=.*[a-zA-Z])(?=.*[0-9])(?=.*\\W)).{8,16}$/;
+
+	let pw_pattern = /^((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W)).{8,16}$/;
  
  	if(pw_pattern.test(v) === true) {
 		return true;
@@ -62,16 +63,20 @@ function checkEmail(v) {
 }
 
 function passwordChanged(password) {
-        let strongRegex = new RegExp("^(?=.{14,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-        let mediumRegex = new RegExp("^(?=.{8,})(((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W))).*$", "g");
+
+        let strongRegex = new RegExp("^(?=.{13,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+        let mediumRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+
 		if (strongRegex.test(password)) {
             pwHelpValid.innerHTML = '<span style="color:#198754">안전한 비밀번호입니다. (사용 가능 - 보안에 강한 비밀번호입니다.)</span>';
             return true;
         } else if(mediumRegex.test(password)) {
-            pwHelpValid.innerHTML = '<span style="color:#ffc107">괜찮은 비밀번호입니다. (사용 가능 - 특수 문자를 포함하여 14자를 넘기면 보안이 강화됩니다.)</span>';
+
+            pwHelpValid.innerHTML = '<span style="color:#ffc107">괜찮은 비밀번호입니다. (사용 가능 - 13자를 넘기면 보안이 강화됩니다.)</span>';
             return true;
         } else {
-            pwHelpInvalid.innerHTML = '<span style="color:#dc3545">위험한 비밀번호입니다. (사용 불가 - 영문 대문자를 포함하세요.)</span>';
+            pwHelpInvalid.innerHTML = '<span style="color:#dc3545">위험한 비밀번호입니다. (사용 불가 - 특수 문자를 포함하세요.)</span>';
+
             return false; 
         }
 }
@@ -172,7 +177,8 @@ signupForm["user_id"].addEventListener("input", (event) => {
 					}
 				});
 		} else {
-			idHelpInvalid.innerText="유효하지 않은 형식입니다. (6 ~ 20자의 영문 또는 숫자의 조합)";
+
+			idHelpInvalid.innerText="유효하지 않은 형식입니다. (영문 또는 영문 + 숫자)";
 			signupForm["user_id"].classList.remove("is-valid");
 			signupForm["user_id"].classList.add("is-invalid");
 			idHelp.classList.remove("is-valid");
@@ -215,7 +221,7 @@ signupForm["user_pw"].addEventListener("input", (event) => {
 				pwSubmit = true;		
 			}
 		} else {
-			pwHelpInvalid.innerText = "유효하지 않은 형식입니다. (8 ~ 16자의 영문 대소문자, 숫자, 특수 문자를 조합)";
+			pwHelpInvalid.innerText = "유효하지 않은 형식입니다. (대문자 + 소문자 + 숫자 + 특수 문자)";
 			signupForm["user_pw"].classList.remove("is-valid");
 			signupForm["user_pw"].classList.add("is-invalid");
 			pwHelp.classList.remove("is-valid");
@@ -316,7 +322,7 @@ signupForm["user_email"].addEventListener("input", (event) => {
 						}
 					});
 			} else {
-				emailHelpInvalid.innerText = "유효하지 않은 형식입니다. (id@domain (Kevin@example.com) 형식)";
+				emailHelpInvalid.innerText = "유효하지 않은 형식입니다. 예시) Kevin@example.com";
 				signupForm["user_email"].classList.remove("is-valid");
 				signupForm["user_email"].classList.add("is-invalid");
 				emailHelp.classList.remove("is-valid");
@@ -364,7 +370,7 @@ signupForm["user_phone"].addEventListener("input", (event) => {
 					}
 				});
 		} else {
-			phoneHelpInvalid.innerText = "유효하지 않은 형식입니다. (01[0|1|6|7|8|9]-####-#### 형식)";
+			phoneHelpInvalid.innerText = "유효하지 않은 형식입니다. (01[0|1|6|7|8|9]-1234-1234 형식)";
 			signupForm["user_phone"].classList.remove("is-valid");
 			signupForm["user_phone"].classList.add("is-invalid");
 			phoneHelp.classList.remove("is-valid");
@@ -416,6 +422,6 @@ signupForm.addEventListener("submit", (event) => {
 			signupForm["pwCheck"].classList.add("is-invalid");
 			pwCheckHelp.classList.remove("is-valid");
 			pwCheckHelp.classList.add("is-invalid");
-		}	
+		}		
 	}
 });
