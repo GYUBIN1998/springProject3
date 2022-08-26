@@ -38,6 +38,10 @@
      color: black;
      vertical-align: middle;
 }
+#header #headerRight nav ol li a:hover {
+     color: dodgerblue;
+     text-decoration: underline;
+}
 #nav {
  	 padding: 0;
 }

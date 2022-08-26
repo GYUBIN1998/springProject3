@@ -14,10 +14,35 @@
 	<result column="shipping_id" property="shipping_id"/>
 	</resultMap>
 	<select id="selectAll" resultType="Product">
-		SELECT * FROM PRODUCT LIMIT #{startRow}, #{row}
+		SELECT * FROM PRODUCT 
+		<if test="search != null">
+			WHERE prod_name LIKE CONCAT('%', #{search}, '%')
+		</if>
+		<if test="sort != null">
+			ORDER BY ${sort} 
+		</if>
+		<if test="direct != null">
+			<choose>
+				<when test="direct.equals('desc')">desc</when>
+				<otherwise>asc</otherwise>
+			</choose>
+		</if>
+		LIMIT #{startRow}, #{row}
 	</select>
 	<select id="selectAllCount" resultType="int">
 		SELECT COUNT(*) FROM PRODUCT
+		<if test="search != null">
+			WHERE prod_name LIKE CONCAT('%', #{search}, '%')
+		</if>
+		<if test="sort != null">
+			ORDER BY ${sort} 
+		</if>
+		<if test="direct != null">
+			<choose>
+				<when test="direct.equals('desc')">desc</when>
+				<otherwise>asc</otherwise>
+			</choose>
+		</if>
 	</select>
 	<select id="selectFindOne" resultMap="ProductMap">
 		SELECT * FROM PRODUCT WHERE prod_id=#{prodId}

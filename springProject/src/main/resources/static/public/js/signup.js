@@ -114,17 +114,32 @@ function phoneAutoComplete(e) {
         e.value = phone;
 }
 
+document.querySelectorAll("input").forEach((input) => {
+	input.addEventListener("cut", (event) => {
+		event.preventDefault();
+		alert("잘라 낼 수 없습니다.");
+	});
+	input.addEventListener("copy", (event) => {
+		event.preventDefault();
+		alert("복사할 수 없습니다.");
+	});
+	input.addEventListener("paste", (event) =>{
+		event.preventDefault();
+		alert("붙여 넣을 수 없습니다.");
+	});
+});
+
 signupForm["user_name"].addEventListener("input", (event) => {
 	let value = event.target.value;
-	if(value && value.length > 1) {
-		if(value.trim() && nameCheck(value)) {
+	if(value && value.trim() && value.length > 1) {
+		if(nameCheck(value)) {
 			signupForm["user_name"].classList.remove("is-invalid");
 			signupForm["user_name"].classList.add("is-valid");
 			nameHelp.classList.remove("is-invalid");
 			nameHelp.classList.add("is-valid");
 			nameSubmit = true;
 		} else {
-			nameHelpInvalid.innerText = "유효하지 않은 형식입니다. (2 ~ 20자의 영문 또는 한글)";
+			nameHelpInvalid.innerText = "유효하지 않은 형식입니다. (영문 또는 한글)";
 			signupForm["user_name"].classList.remove("is-valid");
 			signupForm["user_name"].classList.add("is-invalid");
 			nameHelp.classList.remove("is-valid");
@@ -132,7 +147,7 @@ signupForm["user_name"].addEventListener("input", (event) => {
 			nameSubmit = false;
 		}		
 	} else {
-			nameHelpInvalid.innerText = "2 ~ 20자로 입력하세요.";
+			nameHelpInvalid.innerText = "2 ~ 20자의 영문 또는 한글로 입력하세요.";
 			signupForm["user_name"].classList.remove("is-valid");
 			signupForm["user_name"].classList.add("is-invalid");
 			nameHelp.classList.remove("is-valid");
@@ -151,8 +166,8 @@ signupForm["user_name"].addEventListener("keydown", (event) => {
 
 signupForm["user_id"].addEventListener("input", (event) => {
 	let value = event.target.value;	
-	if(value && value.length > 5) {
-		if(value.trim() && isNaN(value) && idCheck(value)) {
+	if(value && value.trim() && value.length > 5) {
+		if(idCheck(value) && isNaN(value)) {
 			fetch(ajaxIdUrl + value)
 				.then(response => response.json())
 				.then((json) => {
@@ -180,12 +195,12 @@ signupForm["user_id"].addEventListener("input", (event) => {
 			idSubmit = false;
 		}	
 	} else {
-			idHelpInvalid.innerText="6 ~ 20자로 입력하세요.";
-			signupForm["user_id"].classList.remove("is-valid");
-			signupForm["user_id"].classList.add("is-invalid");
-			idHelp.classList.remove("is-valid");
-			idHelp.classList.add("is-invalid");
-			idSubmit = false;
+		idHelpInvalid.innerText="6 ~ 20자의 (영문 또는 영문 + 숫자) 형식으로 입력하세요.";
+		signupForm["user_id"].classList.remove("is-valid");
+		signupForm["user_id"].classList.add("is-invalid");
+		idHelp.classList.remove("is-valid");
+		idHelp.classList.add("is-invalid");
+		idSubmit = false;
 	}
 	return idSubmit;
 });
@@ -199,8 +214,8 @@ signupForm["user_id"].addEventListener("keydown", (event) => {
 
 signupForm["user_pw"].addEventListener("input", (event) => {
 	let value = event.target.value;
-	if(value && value.length > 7) {		
-		if(value.trim() && isNaN(value) && passwordCheck(value)) {
+	if(value && value.trim() && value.length > 7) {		
+		if(passwordCheck(value) && isNaN(value)) {
 			if(passwordChanged(value) === false) {
 				signupForm["user_pw"].classList.remove("is-valid");
 				signupForm["user_pw"].classList.add("is-invalid");
@@ -223,7 +238,7 @@ signupForm["user_pw"].addEventListener("input", (event) => {
 			pwSubmit = false;
 		}	
 	} else {
-			pwHelpInvalid.innerText = "8 ~ 16자로 입력하세요.";
+			pwHelpInvalid.innerText = "8 ~ 16자의 (대문자 + 소문자 + 숫자 + 특수 문자) 형식으로 입력하세요.";
 			signupForm["user_pw"].classList.remove("is-valid");
 			signupForm["user_pw"].classList.add("is-invalid");
 			pwHelp.classList.remove("is-valid");
@@ -241,29 +256,45 @@ signupForm["user_pw"].addEventListener("keydown", (event) => {
 });
 
 signupForm["user_pw"].addEventListener("keyup", (event) => {
-	if(event.target.value && signupForm["pwCheck"].value) {
-		if(event.target.value != signupForm["pwCheck"].value) {
-			pwHelpInvalidCheck.innerText = "비밀번호가 불일치합니다.";
+	if(pwSubmit) {
+		signupForm["pwCheck"].removeAttribute("disabled");
+		signupForm["pwCheck"].classList.remove("is-invalid");
+		pwCheckHelp.classList.remove("is-invalid");
+  		if(event.target.value && signupForm["pwCheck"].value) {
+			if(event.target.value != signupForm["pwCheck"].value) {
+				pwHelpInvalidCheck.innerText = "비밀번호가 불일치합니다.";
+				signupForm["pwCheck"].classList.remove("is-valid");
+				signupForm["pwCheck"].classList.add("is-invalid");
+				pwCheckHelp.classList.remove("is-valid");
+				pwCheckHelp.classList.add("is-invalid");
+				pwCheckSubmit = false;
+			} else {
+				signupForm["pwCheck"].classList.remove("is-invalid");
+				signupForm["pwCheck"].classList.add("is-valid");
+				pwCheckHelp.classList.remove("is-invalid");
+				pwCheckHelp.classList.add("is-valid");
+				pwCheckSubmit = true;
+			}			
+		}
+	} else {
+		if(event.target.value) {
+			signupForm["pwCheck"].setAttribute("disabled", "disabled");
+			pwHelpInvalidCheck.innerText = "비밀번호가 조건에 맞지 않아 입력하거나 수정할 수 없습니다.";
 			signupForm["pwCheck"].classList.remove("is-valid");
 			signupForm["pwCheck"].classList.add("is-invalid");
 			pwCheckHelp.classList.remove("is-valid");
 			pwCheckHelp.classList.add("is-invalid");
 			pwCheckSubmit = false;
 		} else {
-			signupForm["pwCheck"].classList.remove("is-invalid");
-			signupForm["pwCheck"].classList.add("is-valid");
-			pwCheckHelp.classList.remove("is-invalid");
-			pwCheckHelp.classList.add("is-valid");
-			pwCheckSubmit = true;
-		}		
-	} else if(!(event.target.value) && signupForm["pwCheck"].value) {
-		pwHelpInvalidCheck.innerText = "비밀번호가 불일치합니다.";
-		signupForm["pwCheck"].classList.remove("is-valid");
-		signupForm["pwCheck"].classList.add("is-invalid");
-		pwCheckHelp.classList.remove("is-valid");
-		pwCheckHelp.classList.add("is-invalid");
-		pwCheckSubmit = false;
-	}
+			signupForm["pwCheck"].setAttribute("disabled", "disabled");
+			pwHelpInvalidCheck.innerText = "먼저 비밀번호를 입력하세요.";
+			signupForm["pwCheck"].classList.remove("is-valid");
+			signupForm["pwCheck"].classList.add("is-invalid");
+			pwCheckHelp.classList.remove("is-valid");
+			pwCheckHelp.classList.add("is-invalid");
+			pwCheckSubmit = false;
+		}
+	} 
 	return pwCheckSubmit;
 });
 
@@ -295,8 +326,8 @@ signupForm["pwCheck"].addEventListener("keydown", (event) => {
 
 signupForm["user_email"].addEventListener("input", (event) => {
 	let value = event.target.value;
-	if(value) {
-		if(value.trim() && isNaN(value) && checkEmail(value)) {
+	if(value && value.trim()) {
+		if(checkEmail(value) && isNaN(value)) {
 				fetch(ajaxEmailUrl + value)
 					.then(response => response.json())
 					.then((json) => {
@@ -343,8 +374,8 @@ signupForm["user_email"].addEventListener("keydown", (event) => {
 
 signupForm["user_phone"].addEventListener("input", (event) => {
 	let value = event.target.value;
-	if(value) {
-		if(value.trim() && checkPhone(value)) {
+	if(value && value.trim()) {
+		if(checkPhone(value)) {
 			fetch(ajaxPhoneUrl + value)
 				.then(response => response.json())
 				.then((json) => {
@@ -388,6 +419,12 @@ signupForm["user_phone"].addEventListener("keydown", (event) => {
 		event.preventDefault();
 	}	
 });
+
+signupForm["user_addr_detail"].addEventListener("mouseover", (event) => {
+	if(signupForm["user_addr_main"].value || signupForm["user_addr_postcode"].value) {
+		event.target.removeAttribute("readonly");
+	}
+}); 
 
 signupForm["user_addr_detail"].addEventListener("input", (event) => {
 	let value = event.target.value;

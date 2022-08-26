@@ -27,8 +27,10 @@ public class QuestionController {
 			Model model) {
 		int row = 5;
 		int startRow = (page - 1) * row;
+		
 		int rowCount = 0;
 		List<QnaBoard> qnaList = null;
+		
 		if(field != null && !field.equals("")) {
 			qnaList = questionMapper.selectQnaAll(startRow, row, field, search);	
 			rowCount = questionMapper.selectQnaAllCount(field, search);
@@ -36,7 +38,9 @@ public class QuestionController {
 			qnaList = questionMapper.selectQnaAll(startRow, row, null, null);
 			rowCount = questionMapper.selectQnaAllCount(null, null);
 		}
+		
 		Paging pageQnaAll = new Paging(page, rowCount, "/question/qnaList/", row);
+		
 		model.addAttribute("qnaList", qnaList);
 		model.addAttribute("row", row);
 		model.addAttribute("rowCount", rowCount);

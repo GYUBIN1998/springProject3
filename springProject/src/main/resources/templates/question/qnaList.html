@@ -42,7 +42,7 @@
     <div class="d-flex justify-content-center" th:insert="/pagination/pageQnaAll"></div>
     <nav class="navbar mt-5 mb-4" style="min-width: 1200px;">
 	  <div class="container-fluid">
-	    <form th:action="@{./1}" class="d-flex" role="search">
+	    <form th:action="@{./1}" class="d-flex" role="search" name="qnaSearchForm">
 	      <select class="form-select me-2" name="field" id="searchKey" style="width: 100px; border: 1px solid #6c757d">
                <option th:selected="${#strings.equals(param.field, 'qnaboard_no')}" value="qnaboard_no">글 번호</option>
 	      	   <option th:selected="${#strings.equals(param.field, 'qnaboard_title')}" value="qnaboard_title">제목</option>
@@ -59,5 +59,13 @@
 	</nav>
     </main>
     <footer th:insert="/footer"></footer>
+    <script>
+		const qnaSearchForm = document.forms.qnaSearchForm;
+		qnaSearchForm.addEventListener("submit", (event) => {
+			if(!faqSearchForm.search.value || !faqSearchForm.search.value.trim()) {
+				event.preventDefault();		
+			}
+		});
+	</script>
 </body>
 </html>

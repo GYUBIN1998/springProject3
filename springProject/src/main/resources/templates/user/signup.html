@@ -54,11 +54,11 @@
 					     <span id="pwHelp" class="form-text"></span>
 						 <span id="pwHelpValid" class="valid-feedback"></span>
 						 <span id="pwHelpInvalid" class="invalid-feedback"></span> 
-						</div>
+					  </div>
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="password" name="pwCheck" class="form-control signupInput" placeholder="비밀번호 확인(필수) : 비밀번호를 형식에 맞게 입력한 후에 입력" maxlength="16">
+					    <input type="password" name="pwCheck" class="form-control signupInput" placeholder="비밀번호 확인(필수) : 비밀번호가 형식에 맞아야 입력 가능" maxlength="16" disabled>
 					  </div>
 					  <div class="col-auto mt-0">
 					     <span id="pwCheckHelp" class="form-text"></span>
@@ -66,7 +66,7 @@
 						   비밀번호가 일치합니다.
 						 </span>
 						 <span id="pwHelpInvalidCheck" class="invalid-feedback"></span> 
-						</div>
+					  </div>
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
@@ -101,13 +101,13 @@
 			  		    </div>
 					</div> 
 					<div class="row g-3 align-items-center">
-				      <div class="col-auto signupInputBox">
-					    <input class="form-control signupInput" type="text" name="user_addr_main" id="sample6_address" placeholder="주소(필수)" readonly>
-					  </div>
+					    <div class="col-auto signupInputBox">
+						  <input class="form-control signupInput" type="text" name="user_addr_main" id="sample6_address" placeholder="주소(필수)" readonly>
+						</div>
 					</div> 
 					<div class="row g-3 align-items-center">
 					    <div class="col-auto signupInputBox">
-						   <input class="form-control signupInput" type="text" name="user_addr_detail" id="sample6_detailAddress" placeholder="상세 주소(필수) : 우편번호를 찾은 후에 입력">
+						   <input class="form-control signupInput" type="text" name="user_addr_detail" id="sample6_detailAddress" placeholder="상세 주소(필수) : 우편번호를 찾은 후에 마우스를 올리면 입력 가능" readonly>
 						</div>
 					</div> 
 					<div class="row g-3 align-items-center">
