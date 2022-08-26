@@ -32,10 +32,15 @@ public class UserController {
 		return "/user/detail";
 	};
 	
+	//회원정보 수정
 	@PostMapping("/update.do")
 	public String update(User user) {
 		int update=0;
-		update=userMapper.updateOne(user);
+		try {
+			update=userMapper.updateOne(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if(update>0) {
 			return "redirect:/";
 		} else {

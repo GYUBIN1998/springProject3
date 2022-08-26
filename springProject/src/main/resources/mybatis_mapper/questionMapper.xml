@@ -3,11 +3,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.group3.springProject.mapper.QuestionMapper">
 	<resultMap type="QnaBoard" id="QnaBoardMap">
-	<id column="qnaboard_no" property="qnaboard_no"/>
-	<result column="qnaboard_title" property="qnaboard_title"/>
-	<result column="qnaboard_content" property="qnaboard_content"/>
-	<result column="user_id" property="user_id"/>
-	<result column="post_time" property="post_time"/>
+		<id column="qnaboard_no" property="qnaboard_no"/>
+		<result column="qnaboard_title" property="qnaboard_title"/>
+		<result column="qnaboard_content" property="qnaboard_content"/>
+		<result column="user_id" property="user_id"/>
+		<result column="post_time" property="post_time"/>
+		<association property="user" javaType="User" foreignColumn="user_id">
+			<id column="user_id" property="user_id"/>
+			<result column="user_pw" property="user_pw"/>
+			<result column="user_phone" property="user_phone"/>
+			<result column="user_email" property="user_email"/>
+			<result column="user_addr_postcode" property="user_addr_postcode"/>
+			<result column="user_addr_main" property="user_addr_main"/>
+			<result column="user_addr_detail" property="user_addr_detail"/>
+			<result column="user_addr_extra" property="user_addr_extra"/>
+		</association>
 	</resultMap>
 	<select id="selectQnaAll" resultType="QnaBoard"> <!-- qna 전체 검색 -->
 		SELECT * FROM QNABOARD 
@@ -15,6 +25,11 @@
 			WHERE ${field} LIKE CONCAT('%', #{search}, '%')
 		</if>
 		LIMIT #{startRow}, #{row}
+	</select>
+	<select id="selectQnaAll" resultType="QnaBoard">
+		SELECT * FROM QNABOARD
+			ORDER BY qnaboard_no
+			DESC LIMIT #{startRow}, #{row}
 	</select>
 	<select id="selectQnaAllCount" resultType="int"> <!-- qna 전체 검색 및 페이징 -->
 		SELECT COUNT(*) FROM QNABOARD
@@ -28,6 +43,9 @@
 			WHERE ${field} LIKE CONCAT('%', #{search}, '%')
 		</if>
 		LIMIT #{startRow}, #{row}
+	</select>
+	<select id="selectFaqAll" resultType="FaqBoard">
+		SELECT * FROM FAQBOARD LIMIT #{startRow}, #{row}
 	</select>
 	<select id="selectFaqAllCount" resultType="int"> <!-- faq 전체 검색 및 페이징 -->
 		SELECT COUNT(*) FROM FAQBOARD
@@ -54,8 +72,17 @@
 				AND ${field} LIKE CONCAT('%', #{search}, '%')
 			</if>
 	</select>
-	<insert id="insertQnaOne" parameterType="QnaBoard">
+	<insert id="insertQnaOne" parameterType="QnaBoard" useGeneratedKeys="true" keyProperty="qnaboard_no">
 		INSERT INTO QNABOARD (qnaboard_title,qnaboard_content,user_id)
-			VALUES (#{qnaboard_title},#{qnaboard_content},"user002")
+			VALUES (#{qnaboard_title},#{qnaboard_content},#{user.user_id})
 	</insert>
+	<update id="updateQnaOne" parameterType="QnaBoard">
+		UPDATE QNABOARD SET
+			qnaboard_title=#{qnaboard_title},
+			qnaboard_content=#{qnaboard_content}
+		WHERE qnaboard_no=#{qnaboard_no}
+	</update>
+	<delete id="deleteQnaOne">
+		DELETE FROM QNABOARD WHERE qnaboard_no=#{qnaboard_no}
+	</delete>
 </mapper>

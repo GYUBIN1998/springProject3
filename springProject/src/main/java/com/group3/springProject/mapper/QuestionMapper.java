@@ -24,4 +24,6 @@ public interface QuestionMapper {
 	
 	public QnaBoard selectQnaFindOne(int qnaboardNo);
 	public int insertQnaOne(QnaBoard qnaBoard);
+	public int updateQnaOne(QnaBoard qnaBoard);
+	public int deleteQnaOne(int qnaBoardNo);
 }

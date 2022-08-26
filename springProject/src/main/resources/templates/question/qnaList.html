@@ -30,12 +30,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="qna: ${qnaList}">
-                    <td th:text="${qna.qnaboard_no}"></td>
-                    <td th:text="${qna.qnaboard_title}"></td>
-                    <td th:text="${qna.user_id}"></td>
-                    <td th:text="${#dates.format(qna.post_time, 'yyyy-MM-dd')}"></td>
-                </tr>
+                <th:block th:each="qna: ${qnaList}">
+                	<tr th:onclick="location.href='/question/qnaDetail/[[${qna.qnaboard_no}]]'">
+	                    <td th:text="${qna.qnaboard_no}"></td>
+	                    <td th:text="${qna.qnaboard_title}"></td>
+	                    <td th:text="${qna.user_id}"></td>
+	                    <td th:text="${#dates.format(qna.post_time, 'yyyy-MM-dd')}"></td>
+                	</tr>
+                </th:block>
             </tbody>
         </table>
     </div>

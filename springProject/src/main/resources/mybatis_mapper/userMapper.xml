@@ -7,7 +7,10 @@
 		<result column="user_pw" property="user_pw"/>
 		<result column="user_phone" property="user_phone"/>
 		<result column="user_email" property="user_email"/>
-		<result column="user_adress" property="user_adress"/>
+		<result column="user_addr_postcode" property="user_addr_postcode"/>
+		<result column="user_addr_main" property="user_addr_main"/>
+		<result column="user_addr_detail" property="user_addr_detail"/>
+		<result column="user_addr_extra" property="user_addr_extra"/>
 	</resultMap>
 	<select id="selectOne" resultMap="UserMap">
 		SELECT * FROM USER WHERE user_id=#{user_id}
@@ -30,7 +33,10 @@
 			user_pw=#{user_pw},
 			user_phone=#{user_phone},
 			user_email=#{user_email},
-			user_adress=#{user_adress}
+			user_addr_postcode=#{user_addr_postcode},
+			user_addr_main=#{user_addr_main},
+			user_addr_detail=#{user_addr_detail},
+			user_addr_extra=#{user_addr_extra}
 		WHERE user_id=#{user_id}
 	</update>
 	<select id="selectPwOne" resultType="User">
