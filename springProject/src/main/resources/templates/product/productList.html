@@ -22,7 +22,7 @@
             <div class="thumbnail border">이미지 영역</div>
             <div class="listInfo">
                 <div class="title">
-                    <a href="#" th:text="${product.prod_name}"></a>
+                    <a th:href="@{/product/productDetail/{prodId}(prodId=${product.prod_id})}" th:text="${product.prod_name}"></a>
                 </div>
                 <div class="detail border">    
                     제품 설명란        

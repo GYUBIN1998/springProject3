@@ -10,4 +10,5 @@ import com.group3.springProject.dto.OrderSheet;
 @Mapper
 public interface OrderMapper {
 	OrderSheet selectByUserId(String userId);
+	int insertOrderInfo(OrderSheet ordersheet);
 }

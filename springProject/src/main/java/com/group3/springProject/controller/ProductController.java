@@ -62,11 +62,11 @@ public class ProductController {
 		return "/product/productList";	
 	}
 	
-	@GetMapping("/productDetailPage/{prodId}")
+	@GetMapping("/productDetail/{prodId}")
 	public String productDetail(@PathVariable String prodId, Model model) {
 		System.out.println(prodId);
 		Product product=productMapper.selectFindOne(prodId);
 		model.addAttribute(product);
-		return "/product/productDetailPage";
+		return "/product/productDetail";
 	}	
 }

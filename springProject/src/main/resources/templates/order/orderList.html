@@ -1,59 +1,64 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="EUC-KR">
-<title>°áÁ¦ ³»¿ª</title>
+<meta charset="UTF-8">
+<title>ê²°ì œ ë‚´ì—­</title>
 </head>
 
 <body>
 	<header th:insert="/header"></header>
-	<div id="pageBody">
-		<h1 style="text-align: center;">°áÁ¦ ³»¿ª ÆäÀÌÁö ÀÔ´Ï´Ù.(¹è¼ÛÈ®ÀÎ)</h1>
-		<div id="shippingStatus">
-			<div>
-			<p>ÀÔ±ÝÀü</p>
-			<p>0°Ç</p>
-			</div>
-			<div>
-			<p>¹è¼ÛÁØºñÁß</p>
-			<p>0°Ç</p>
-			</div>
-			<div>
-			<p>¹è¼ÛÁß</p>
-			<p>1°Ç</p>
-			</div>
-			<div>
-			<p>¹è¼Û¿Ï·á</p>
-			<p>0°Ç</p>
-			</div>
-			<div>
-			<p>Ãë¼Ò/È¯ºÒ/±³È¯</p>
-			<p>0°Ç</p>
-			</div>
-		</div>
-		<div id="dateSearching">
-			<input type="date"> ~ <input type="date">
-			<select>
-			<option>ÀüÃ¼»óÅÂ</option>
-			<option>¹è¼ÛÁß</option>
-			<option>¹è¼Û¿Ï·á</option>
-			<option>Ãë¼Ò/È¯ºÒ/±³È¯</option>
-			</select>
-			<button>Á¶È¸</button>
-		</div>
+	<main class="container my-5" style="min-width : 1200px;">
+		<h1 class="text-center">ê²°ì œ ë‚´ì—­ íŽ˜ì´ì§€ ìž…ë‹ˆë‹¤.(ë°°ì†¡í™•ì¸)</h1>
+		<table class="table my-5 text-center">
+			 <thead>
+			    <tr>
+			      <th>ìž…ê¸ˆì „</th>
+			      <th>ë°°ì†¡ì¤€ë¹„ì¤‘</th>
+			      <th>ë°°ì†¡ì¤‘</th>
+			      <th>ë°°ì†¡ì™„ë£Œ</th>
+			      <th>ì·¨ì†Œ/í™˜ë¶ˆ/êµí™˜</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>0ê±´</td>
+			      <td>0ê±´</td>
+			      <td>1ê±´</td>
+			      <td>0ê±´</td>
+			      <td>0ê±´</td>
+			    </tr>
+			  </tbody>
+			</table>
+		<nav class="navbar m-3">
+		  <div class="container-fluid justify-content-center">
+		    <form class="d-flex" role="search">
+		    	<input class="form-control me-2" type="date">
+		    	~
+		    	<input class="form-control me-2" type="date">
+		      <select class="form-control me-2" name="field" style="width: 200px">
+		      	<option value="boardNo">ì „ì²´ìƒíƒœ</option>
+		      	<option value="userId">ìž…ê¸ˆì „</option>
+		      	<option value="title">ë°°ì†¡ì¤€ë¹„ì¤‘</option>
+		      	<option value="contents">ë°°ì†¡ì¤‘</option>
+		      	<option value="postTime">ë°°ì†¡ì™„ë£Œ</option>
+		      	<option value="postTime">ì·¨ì†Œ/í™˜ë¶ˆ/êµí™˜</option>
+		      </select>
+		      <button class="btn btn-outline-primary" type="button">Search</button>
+		    </form>
+		  </div>
+		</nav>
 		<hr>
 		<div id="tableContainer">
-			<table>
+			<table class="table align-middle text-center">
 				<tr>
 					<th>
-					ÁÖ¹®ÀÏÀÚ
-					<br>
-					ÁÖ¹®¹øÈ£
+					ì£¼ë¬¸ì¼ìž <br>
+					ì£¼ë¬¸ë²ˆí˜¸
 					</th>
-					<th>»óÇ°Á¤º¸</th>
-					<th>¼ö·®</th>
-					<th>»óÇ°±¸¸Å±Ý¾×</th>
-					<th>ÁÖ¹®Ã³¸®»óÅÂ</th>
+					<th>ìƒí’ˆì •ë³´</th>
+					<th>ìˆ˜ëŸ‰</th>
+					<th>ìƒí’ˆêµ¬ë§¤ê¸ˆì•¡</th>
+					<th>ì£¼ë¬¸ì²˜ë¦¬ìƒíƒœ</th>
 				</tr>
 				<tr>
 					<td>
@@ -61,14 +66,14 @@
 					<br>
 					<a href="#">22020819001</a>
 					</td>
-					<td>ASUS Á¨ºÏ 14X OLED UM5401QA-KN030</td>
-					<td>1°³</td>
-					<td>1,299,000¿ø</td>
-					<td>¹è¼ÛÁß</td>
+					<td>ASUS ì  ë¶ 14X OLED UM5401QA-KN030</td>
+					<td>1ê°œ</td>
+					<td>1,299,000ì›</td>
+					<td>ë°°ì†¡ì¤‘</td>
 				</tr>
 			</table>
 		</div>
-	</div>
+	</main>
 	<footer th:insert="/footer"></footer>
 </body>
 </html>

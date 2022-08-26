@@ -32,6 +32,7 @@ function idCheck(v) {
 }
 
 function passwordCheck(v) {
+
 	let pw_pattern = /^((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W)).{8,16}$/;
  
  	if(pw_pattern.test(v) === true) {
@@ -62,16 +63,20 @@ function checkEmail(v) {
 }
 
 function passwordChanged(password) {
+
         let strongRegex = new RegExp("^(?=.{13,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
         let mediumRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+
 		if (strongRegex.test(password)) {
             pwHelpValid.innerHTML = '<span style="color:#198754">안전한 비밀번호입니다. (사용 가능 - 보안에 강한 비밀번호입니다.)</span>';
             return true;
         } else if(mediumRegex.test(password)) {
+
             pwHelpValid.innerHTML = '<span style="color:#ffc107">괜찮은 비밀번호입니다. (사용 가능 - 13자를 넘기면 보안이 강화됩니다.)</span>';
             return true;
         } else {
             pwHelpInvalid.innerHTML = '<span style="color:#dc3545">위험한 비밀번호입니다. (사용 불가 - 특수 문자를 포함하세요.)</span>';
+
             return false; 
         }
 }
@@ -187,6 +192,7 @@ signupForm["user_id"].addEventListener("input", (event) => {
 					}
 				});
 		} else {
+
 			idHelpInvalid.innerText="유효하지 않은 형식입니다. (영문 또는 영문 + 숫자)";
 			signupForm["user_id"].classList.remove("is-valid");
 			signupForm["user_id"].classList.add("is-invalid");
