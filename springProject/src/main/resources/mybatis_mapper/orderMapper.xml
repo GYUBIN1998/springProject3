@@ -16,27 +16,19 @@
 			<result column="user_addr_detail" property="user_addr_detail"/>	
 			<result column="user_addr_extra" property="user_addr_extra"/>	
 		</association>
-		<association property="product" javaType="Product" foreignColumn="prod_id">
-			<id column="prod_id" property="prod_id"/>
-			<result column="prod_name" property="prod_name"/>
-			<result column="prod_price" property="prod_price"/>
-			<result column="category_code" property="category_code"/>
-			<result column="prod_img" property="prod_img"/>
-			<result column="division_code" property="division_code"/>
-			<result column="shipping_id" property="prod_name"/>
-			<result column="prod_name" property="shipping_id"/>
-		</association>
 	</resultMap>
 	
 	<select id="selectByUserId" resultMap="OrderSheetMap">
-	SELECT o.*, u.*, p.prod_id, p.prod_name
+	SELECT o.*, u.*
+	FROM ORDERSHEET o
 	
-	FROM ORDERSHEET o 
-	
-	LEFT JOIN USER u USING (user_id) 
-	LEFT JOIN PRODUCT p USING (prod_id) 
+	LEFT JOIN USER u USING (user_id)
 	
 	WHERE o.user_id=#{userId}
 	</select>
+	<insert id="insertOrderInfo" parameterType="OrderSheet">
+		INSERT INTO ORDERSHEET (user_id,order_type,order_time,order_name,order_phone,order_email,order_addr_postcode,order_addr_main,order_addr_detail,order_addr_extra) 
+		VALUES (#{userId},#{orderType},#{orderTime},#{name},#{phone},#{email},#{orderAddrPostcode},#{addr_main},#{addr_detail},#{addr_extra})
+	</insert>
 
 </mapper>

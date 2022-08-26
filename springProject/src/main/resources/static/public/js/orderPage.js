@@ -23,7 +23,13 @@ const sample6_address=document.getElementById('sample6_address');
 const sample6_detailAddress=document.getElementById('sample6_detailAddress');
 const sample6_extraAddress=document.getElementById('sample6_extraAddress');
 
-
+let nameForm=document.getElementById('inputUsername');
+let emailAdrSelect=document.getElementById('emailAdrSelect');
+let emailFormId=document.getElementById('inputUserEmailId');
+let emailFormAdr=document.getElementById('inputUserEmailAdr');
+let phoneFormMid=document.getElementById('inputPhoneMid');
+let phoneFormLast=document.getElementById('inputPhoneLast');
+let addrFormDetail=document.getElementById('sample6_detailAddress');
 
 adressRadioNew.addEventListener('click',(e)=>{
 	//adressRadioSame.removeEventListener('click', inputFilled);
@@ -36,16 +42,17 @@ adressRadioNew.addEventListener('click',(e)=>{
 	sample6_address.value="";
 	sample6_detailAddress.value="";
 	sample6_extraAddress.value="";
-	emailForm["emailId"].classList.remove("is-valid");
-	emailForm["emailId"].classList.add("is-invalid");
-	nameForm["name"].classList.remove("is-valid");
-	nameForm["name"].classList.add("is-invalid");
-	emailForm["emailAdr"].classList.remove("is-valid");
-	emailForm["emailAdr"].classList.add("is-invalid");
-	phoneForm['phoneNoMid'].classList.remove("is-valid");
-	phoneForm['phoneNoMid'].classList.add("is-invalid");
-	phoneForm['phoneNoLast'].classList.remove("is-valid");
-	phoneForm['phoneNoLast'].classList.add("is-invalid");
+	nameForm.classList.remove("is-valid");
+	nameForm.classList.add("is-invalid");
+	emailFormId.classList.remove("is-valid");
+	emailFormId.classList.add("is-invalid");
+	emailFormAdr.classList.remove("is-valid");
+	emailFormAdr.classList.add("is-invalid");
+	phoneFormMid.classList.remove("is-valid");
+	phoneFormMid.classList.add("is-invalid");
+	phoneFormLast.classList.remove("is-valid");
+	phoneFormLast.classList.add("is-invalid");
+	addrFormDetail.classList.remove("is-valid");
 
 })
 
@@ -62,21 +69,22 @@ function nameCheck(str) {
 	}	
 }
 //이벤트발생
-nameForm["name"].addEventListener('input', (e)=>{
+
+nameForm.addEventListener('input', (e)=>{
 	let val = e.target.value;
 	if(val.length>=2){
 		if(val && val.trim() && nameCheck(val)){
-		nameForm["name"].classList.add("is-valid");
-		nameForm["name"].classList.remove("is-invalid");
+		nameForm.classList.add("is-valid");
+		nameForm.classList.remove("is-invalid");
 		formCheck=true;
 		}else{
-		nameForm["name"].classList.remove("is-valid");
-		nameForm["name"].classList.add("is-invalid");
+		nameForm.classList.remove("is-valid");
+		nameForm.classList.add("is-invalid");
 		formCheck=false;			
 		}
 	}else{
-		nameForm["name"].classList.remove("is-valid");
-		nameForm["name"].classList.add("is-invalid");
+		nameForm.classList.remove("is-valid");
+		nameForm.classList.add("is-invalid");
 		formCheck=false;
 	}
 	return formCheck;
@@ -104,16 +112,16 @@ function emailAdrCheck(str){
 	}
 }
 //selectbox로 host 입력
-const emailAdrSelect=document.getElementById('emailAdrSelect');
+
 emailAdrSelect.addEventListener('change',(e)=>{
 	const val=e.target.value;
-	inputUserEmailAdr.value=val;
+	emailFormAdr.value=val;
 	if(val.length>=5){
-	emailForm["emailAdr"].classList.add("is-valid");
-	emailForm["emailAdr"].classList.remove("is-invalid");
+	emailFormAdr.classList.add("is-valid");
+	emailFormAdr.classList.remove("is-invalid");
 	}else{
-	emailForm["emailAdr"].classList.remove("is-valid");
-	emailForm["emailAdr"].classList.add("is-invalid");
+	emailFormAdr.classList.remove("is-valid");
+	emailFormAdr.classList.add("is-invalid");
 	}
 	console.log(val);
 });
@@ -123,40 +131,41 @@ emailAdrSelect.addEventListener('change',(e)=>{
 //}
 //이벤트발생
 //id부분
-emailForm["emailId"].addEventListener('input',(e)=>{
+
+emailFormId.addEventListener('input',(e)=>{
 	let val=e.target.value;
 	if(val.length>=3){
 		if(val && val.trim() && emailIdCheck(val)){
-		emailForm["emailId"].classList.add("is-valid");
-		emailForm["emailId"].classList.remove("is-invalid");
+		emailFormId.classList.add("is-valid");
+		emailFormId.classList.remove("is-invalid");
 		formCheck=true;
 		}else{
-		emailForm["emailId"].classList.remove("is-valid");
-		emailForm["emailId"].classList.add("is-invalid");
+		emailFormId.classList.remove("is-valid");
+		emailFormId.classList.add("is-invalid");
 		formCheck=false;			
 		}
 	}else{
-		emailForm["emailId"].classList.remove("is-valid");
-		emailForm["emailId"].classList.add("is-invalid");
+		emailFormId.classList.remove("is-valid");
+		emailFormId.classList.add("is-invalid");
 		formCheck=false;			
 		}
 	});
 //host부분
-emailForm['emailAdr'].addEventListener('input',(e)=>{
+emailFormAdr.addEventListener('input',(e)=>{
 	let val=e.target.value;
 	if(val.length>=3){
 		if(val && val.trim() && emailAdrCheck(val)){
-		emailForm["emailAdr"].classList.add("is-valid");
-		emailForm["emailAdr"].classList.remove("is-invalid");
+		emailFormAdr.classList.add("is-valid");
+		emailFormAdr.classList.remove("is-invalid");
 		formCheck=true;
 		}else{
-		emailForm["emailAdr"].classList.remove("is-valid");
-		emailForm["emailAdr"].classList.add("is-invalid");
+		emailFormAdr.classList.remove("is-valid");
+		emailFormAdr.classList.add("is-invalid");
 		formCheck=false;			
 		}
 	}else{
-		emailForm["emailAdr"].classList.remove("is-valid");
-		emailForm["emailAdr"].classList.add("is-invalid");
+		emailFormAdr.classList.remove("is-valid");
+		emailFormAdr.classList.add("is-invalid");
 		formCheck=false;			
 		}
 })
@@ -181,45 +190,48 @@ function phoneCheck(str) {
 		return false;
 	}	
 }
-phoneForm['phoneNoMid'].addEventListener('input',(e)=>{
+
+phoneFormMid.addEventListener('input',(e)=>{
 	let val=e.target.value;
 	if(val.length>=3 && val.length<=4){
 		if(val && val.trim() && phoneCheck(val)){
-		phoneForm['phoneNoMid'].classList.add("is-valid");
-		phoneForm['phoneNoMid'].classList.remove("is-invalid");
+		phoneFormMid.classList.add("is-valid");
+		phoneFormMid.classList.remove("is-invalid");
 		formCheck=true;
 		}else{
-		phoneForm['phoneNoMid'].classList.remove("is-valid");
-		phoneForm['phoneNoMid'].classList.add("is-invalid");
+		phoneFormMid.classList.remove("is-valid");
+		phoneFormMid.classList.add("is-invalid");
 		formCheck=false;			
 		}
 	}else{
-		phoneForm['phoneNoMid'].classList.remove("is-valid");
-		phoneForm['phoneNoMid'].classList.add("is-invalid");
+		phoneFormMid.classList.remove("is-valid");
+		phoneFormMid.classList.add("is-invalid");
 		formCheck=false;			
 		}
 })
-phoneForm['phoneNoLast'].addEventListener('input',(e)=>{
+
+phoneFormLast.addEventListener('input',(e)=>{
 	let val=e.target.value;
 	if(val.length>=3 && val.length<=4){
 		if(val && val.trim() && phoneCheck(val)){
-		phoneForm['phoneNoLast'].classList.add("is-valid");
-		phoneForm['phoneNoLast'].classList.remove("is-invalid");
+		phoneFormLast.classList.add("is-valid");
+		phoneFormLast.classList.remove("is-invalid");
 		formCheck=true;
 		}else{
-		phoneForm['phoneNoLast'].classList.remove("is-valid");
-		phoneForm['phoneNoLast'].classList.add("is-invalid");
+		phoneFormLast.classList.remove("is-valid");
+		phoneFormLast.classList.add("is-invalid");
 		formCheck=false;			
 		}
 	}else{
-		phoneForm['phoneNoLast'].classList.remove("is-valid");
-		phoneForm['phoneNoLast'].classList.add("is-invalid");
+		phoneFormLast.classList.remove("is-valid");
+		phoneFormLast.classList.add("is-invalid");
 		formCheck=false;			
 		}
 })
 
 //우편번호
-addrForm["addr_detail"].addEventListener("input", (event) => {
+
+addrFormDetail.addEventListener("input", (event) => {
 	let value = event.target.value;
 	if(value && value.trim() && isNaN(value)) {
 		adressSubmit = true;
@@ -229,15 +241,15 @@ addrForm["addr_detail"].addEventListener("input", (event) => {
 	return adressSubmit;
 });
 
-addrForm["addr_detail"].addEventListener("keydown", (e) => {
-	if(!addrForm["addr_postcode"].value || !addrForm["addr_main"].value) {
-		addrForm["addr_detail"].classList.add("is-invalid");
-		addrForm["addr_detail"].classList.remove("is-valid");
+addrFormDetail.addEventListener("keydown", (e) => {
+	if(!orderForm["addr_postcode"].value || !orderForm["addr_main"].value) {
+		addrFormDetail.classList.add("is-invalid");
+		addrFormDetail.classList.remove("is-valid");
 		document.getElementById('sample6_detailAddress').placeholder="우편번호찾기 먼저!"
 		e.preventDefault()
 	}else{
-		addrForm["addr_detail"].classList.remove("is-invalid");
-		addrForm["addr_detail"].classList.add("is-valid");
+		addrFormDetail.classList.remove("is-invalid");
+		addrFormDetail.classList.add("is-valid");
 	}	
 });
 
@@ -252,14 +264,18 @@ adressRadioSame.addEventListener('click', (e)=>{
 	sample6_address.value=sample6_address_inputted.value;
 	sample6_detailAddress.value=sample6_detailAddress_inputted.value;
 	sample6_extraAddress.value=sample6_extraAddress_inputted.value;
-	emailForm["emailId"].classList.add("is-valid");
-	emailForm["emailId"].classList.remove("is-invalid");
-	nameForm["name"].classList.add("is-valid");
-	nameForm["name"].classList.remove("is-invalid");
-	emailForm["emailAdr"].classList.add("is-valid");
-	emailForm["emailAdr"].classList.remove("is-invalid");
-	phoneForm['phoneNoMid'].classList.add("is-valid");
-	phoneForm['phoneNoMid'].classList.remove("is-invalid");
-	phoneForm['phoneNoLast'].classList.add("is-valid");
-	phoneForm['phoneNoLast'].classList.remove("is-invalid");
+	emailFormId.classList.add("is-valid");
+	emailFormId.classList.remove("is-invalid");
+	nameForm.classList.add("is-valid");
+	nameForm.classList.remove("is-invalid");
+	emailFormAdr.classList.add("is-valid");
+	emailFormAdr.classList.remove("is-invalid");
+	phoneFormMid.classList.add("is-valid");
+	phoneFormMid.classList.remove("is-invalid");
+	phoneFormLast.classList.add("is-valid");
+	phoneFormLast.classList.remove("is-invalid");
+	addrFormDetail.classList.add("is-valid");
+	addrFormDetail.classList.remove("is-invalid");
+	
 })
+

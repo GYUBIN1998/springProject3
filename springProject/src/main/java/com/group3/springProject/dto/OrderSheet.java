@@ -38,7 +38,6 @@ public class OrderSheet {
 	private String order_addr_extra;
 	//join
 	private User user;
-
 	private Product product;
 }
 

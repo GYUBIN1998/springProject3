@@ -29,8 +29,8 @@
 						<div class="" role="group" aria-label="Default button group">
 						  <button type="button" class="btn btn-outline-dark" style="border-radius: 0;">좋아요</button>
 						  <button type="button" class="btn btn-outline-dark" style="border-radius: 0;">장바구니</button>
-						  <button type="submit" class="btn btn-outline-dark" style="border-radius: 0;"
-						  		onclick="location.href='/order/orderPage/user001'">구매하기</button>
+						  <a  class="btn btn-outline-dark" style="border-radius: 0;"
+						  		th:href="@{/order/orderPage/{id}(id=${prodId})}">구매하기</a>
 						</div>
 					</div>
 				</div>

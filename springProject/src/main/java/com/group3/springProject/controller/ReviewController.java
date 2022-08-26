@@ -25,5 +25,6 @@ public class ReviewController {
 		model.addAttribute("userId",userId);
 		System.out.println(userId);
 		return"/review/reviewList";
+		
 	}
 }
