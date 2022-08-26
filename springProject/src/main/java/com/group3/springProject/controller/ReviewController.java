@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.group3.springProject.dto.Review;
 import com.group3.springProject.mapper.ReviewMapper;
 @Controller
@@ -16,10 +18,12 @@ public class ReviewController {
 	private ReviewMapper reviewMapper;
 	 
 	@GetMapping("/reviewList/{userId}")
-	public String UserReviewList(@PathVariable String userId , Model model) {
+	public String UserReviewList(@PathVariable String userId, 
+								Model model) {
 		List<Review> reviews=reviewMapper.selectByUserId(userId);
 		model.addAttribute("reviews",reviews);
-		System.out.println(reviews);
+		model.addAttribute("userId",userId);
+		System.out.println(userId);
 		return"/review/reviewList";
 	}
 }

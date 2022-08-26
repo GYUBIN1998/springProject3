@@ -16,10 +16,27 @@
 			<result column="user_addr_detail" property="user_addr_detail"/>	
 			<result column="user_addr_extra" property="user_addr_extra"/>	
 		</association>
+		<association property="product" javaType="Product" foreignColumn="prod_id">
+			<id column="prod_id" property="prod_id"/>
+			<result column="prod_name" property="prod_name"/>
+			<result column="prod_price" property="prod_price"/>
+			<result column="category_code" property="category_code"/>
+			<result column="prod_img" property="prod_img"/>
+			<result column="division_code" property="division_code"/>
+			<result column="shipping_id" property="prod_name"/>
+			<result column="prod_name" property="shipping_id"/>
+		</association>
 	</resultMap>
 	
 	<select id="selectByUserId" resultMap="OrderSheetMap">
-	SELECT * FROM ORDERSHEET o LEFT JOIN USER u ON o.user_id=u.user_id WHERE o.user_id=#{userId}
+	SELECT o.*, u.*, p.prod_id, p.prod_name
+	
+	FROM ORDERSHEET o 
+	
+	LEFT JOIN USER u USING (user_id) 
+	LEFT JOIN PRODUCT p USING (prod_id) 
+	
+	WHERE o.user_id=#{userId}
 	</select>
 
 </mapper>
