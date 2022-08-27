@@ -14,7 +14,9 @@
 	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" id="path">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="/">홈</a></li>
-	    <li class="breadcrumb-item" aria-current="page"><a href="/user/signup" class="breadcrumb-item active">회원가입</a></li>
+	    <li class="breadcrumb-item" aria-current="page">
+	    	<a href="/user/signup" class="breadcrumb-item active">회원가입</a>
+	    </li>
 	  </ol>
 	</nav>
     <div id="container">
@@ -82,7 +84,7 @@
 					</div>
 					<div class="row g-3 align-items-center">
 					  <div class="col-auto signupInputBox">
-					    <input type="tel" name="user_phone" class="form-control signupInput" oninput="phoneAutoComplete(this)" placeholder="휴대폰(필수) : 예시) 010-1234-1234" maxlength="13">
+					    <input type="tel" name="user_phone" class="form-control signupInput" oninput="phoneAutoComplete(this)" onKeyup="this.value=this.value.replace(/[^-0-9]/g,'');" placeholder="휴대폰(필수) : 예시) 010-1234-1234 (하이픈(-)은 자동으로 생성)" maxlength="13">
 					  </div>
 					  <div class="col-auto mt-0">
 					     <span id="phoneHelp" class="form-text"></span>
@@ -97,18 +99,33 @@
 						   <input type="text" class="form-control signupInput" name="user_addr_postcode" id="sample6_postcode" placeholder="우편번호(필수)" readonly>
 						</div>
 					    <div class="col-auto mt-0 p-0">
-						   <input class="btn btn-secondary" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="height: 50px;">
+						   <input class="btn btn-secondary" type="button" name="user_addr_postcode_btn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="height: 50px; margin-right: 8px;">
 			  		    </div>
+			  		    <div class="col-auto mt-0">
+						   <span id="addPostCodeHelp" class="form-text"></span>
+						   <span class="valid-feedback"></span>
+						   <span id="addPostCodeHelpInvalid" class="invalid-feedback"></span> 
+					    </div>
 					</div> 
 					<div class="row g-3 align-items-center">
 					    <div class="col-auto signupInputBox">
-						  <input class="form-control signupInput" type="text" name="user_addr_main" id="sample6_address" placeholder="주소(필수)" readonly>
+						   <input class="form-control signupInput" type="text" name="user_addr_main" id="sample6_address" placeholder="주소(필수)" readonly>
 						</div>
+						<div class="col-auto mt-0">
+						   <span id="addMainHelp" class="form-text"></span>
+						   <span class="valid-feedback"></span>
+						   <span id="addMainHelpInvalid" class="invalid-feedback"></span> 
+					    </div>
 					</div> 
 					<div class="row g-3 align-items-center">
 					    <div class="col-auto signupInputBox">
 						   <input class="form-control signupInput" type="text" name="user_addr_detail" id="sample6_detailAddress" placeholder="상세 주소(필수) : 우편번호를 찾은 후에 마우스를 올리면 입력 가능" readonly>
 						</div>
+						<div class="col-auto mt-0">
+						   <span id="addDetailHelp" class="form-text"></span>
+						   <span class="valid-feedback"></span>
+						   <span id="addDetailHelpInvalid" class="invalid-feedback"></span> 
+					    </div>
 					</div> 
 					<div class="row g-3 align-items-center">
 						<div class="col-auto signupInputBox">
