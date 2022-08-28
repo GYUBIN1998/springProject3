@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/%22%3E
+<head>
+<meta charset="UTF-8">
+<title>마이페이지</title>
+<link rel="stylesheet" href="/public/css/index.css">
+<style>
+    #user_mypage{
+        width: 100%;
+        height: 70%;
+        background-color: rgb(255, 255, 255);
+        float: left;
+        text-align: center;
+        align-items: center;
+        align-self: center;
+        float: center;
+        flex-direction: column;
+    }
+</style>
+</head>
+<body>
+    <!--페이지 상단-->
+    <header th:insert="/header"></header>
+
+    <!--회원 내용-->
+    <div id="user_mypage">
+        <h2>회원 상세 페이지</h2>
+        <div>
+            <p>
+              이름 : <span th:text="${session.loginUser.user_name}"></span>
+            </p>
+            <p>
+              아이디 : <span th:text="${session.loginUser.user_id}"></span>
+            </p>
+            <p>
+              휴대전화 : <span th:text="${session.loginUser.user_phone}"></span>
+            </p>
+            <p>
+              이메일 : <span th:text="${session.loginUser.user_email}"></span>
+            </p>
+        </div>
+        <hr>
+        <div>
+            <button href="#">최근 주문 내역</button>
+            <button href="#">작성한 리뷰 관리</button>
+        </div>
+    </div>
+    <!--페이지 하단-->
+    <footer th:insert="/footer"></footer>
+</body>
+</html>
