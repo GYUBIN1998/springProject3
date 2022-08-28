@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,14 +18,38 @@ public class ReviewController {
 	@Autowired
 	private ReviewMapper reviewMapper;
 	 
-	@GetMapping("/reviewList/{userId}")
-	public String UserReviewList(@PathVariable String userId, 
+	@GetMapping("/userReviewList/{userId}")
+	public String UserReviewList(@PathVariable String userId,
+								Review review,
 								Model model) {
 		List<Review> reviews=reviewMapper.selectByUserId(userId);
 		model.addAttribute("reviews",reviews);
 		model.addAttribute("userId",userId);
-		System.out.println(userId);
-		return"/review/reviewList";
+		return"/review/userReviewList";
 		
 	}
+	@GetMapping("/userReviewUpdate/{reviewNo}")
+	public String UserReviewUpdate(
+			@PathVariable int reviewNo,
+			Review review,
+			Model model
+			) {
+		review=reviewMapper.selectByReviewNo(reviewNo);
+		model.addAttribute(review);
+		return"/review/userReviewUpdate";
+	}
+	@PostMapping("/userReviewUpdate.do")
+	public String UserReviewUpdate(
+			Review review
+			) {
+		int update=0;
+		update=reviewMapper.updateByReviewNo(review);
+		System.out.println(update);
+		if(update>0) {
+			return "redirect:/review/userReviewList/"+review.getUser_id();
+		}else {
+			return "redirect:/review/userReviewUpdate/"+review.getReview_no();
+		}
+	}
+	
 }

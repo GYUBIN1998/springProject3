@@ -16,6 +16,17 @@
 		SELECT * FROM REVIEW
 	</select>
 	<select id="selectByUserId" resultMap="ReviewMap">
-		SELECT *, (select count(*) from review where user_id=#{userId})AS review_count FROM REVIEW WHERE user_id=#{userId}
+		SELECT * FROM REVIEW WHERE user_id=#{userId}
 	</select>
+	<select id="selectByReviewNo" resultMap="ReviewMap">
+		SELECT * FROM REVIEW WHERE review_no=#{reviewNo}
+	</select>
+	<update id="updateByReviewNo" parameterType="Review">
+		UPDATE REVIEW SET
+			user_id=#{user_id},
+			review_title=#{review_title},
+			review_content=#{review_content},
+			review_score=#{review_score}
+			WHERE review_no=#{review_no}
+	</update>
 </mapper>

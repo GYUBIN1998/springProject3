@@ -12,4 +12,7 @@ import com.group3.springProject.dto.Review;
 public interface ReviewMapper {
 	List<Review> selectAll();
 	List<Review> selectByUserId(String userId);
+	Review selectByReviewNo(int reviewNo);
+	int updateByReviewNo(Review review);
+	
 }
