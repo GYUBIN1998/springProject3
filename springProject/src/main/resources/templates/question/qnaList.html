@@ -52,7 +52,7 @@
 	      </select>
 	      <input class="form-control me-2" name="search" id="search" size="20" type="search" placeholder="검색" aria-label="Search" style="border: 1px solid #6c757d">
 	      <button class="btn btn-outline-secondary">
-	      	<img alt="" src="/public/img/pngegg.png" style="width: 28px; height: 28px;">
+	      	<img src="/public/img/pngegg.png" style="width: 28px; height: 28px;">
 	      </button>
 	      <input type="hidden" name="sort" th:value="${param.sort}">
 	      <input type="hidden" name="direct" th:value="${param.direct}">
@@ -64,7 +64,7 @@
     <script>
 		const qnaSearchForm = document.forms.qnaSearchForm;
 		qnaSearchForm.addEventListener("submit", (event) => {
-			if(!faqSearchForm.search.value || !faqSearchForm.search.value.trim()) {
+			if(!qnaSearchForm.search.value || !qnaSearchForm.search.value.trim()) {
 				event.preventDefault();		
 			}
 		});

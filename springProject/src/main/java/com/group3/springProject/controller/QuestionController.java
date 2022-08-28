@@ -55,7 +55,7 @@ public class QuestionController {
 		return "/question/qnaList";	
 	};
 	
-	@GetMapping("/faqList/{page}/{faq_division_no}")
+	@GetMapping("/faqList/{faq_division_no}/{page}")
 	public String faqList(
 			@PathVariable int page, 
 			@PathVariable int faq_division_no,
