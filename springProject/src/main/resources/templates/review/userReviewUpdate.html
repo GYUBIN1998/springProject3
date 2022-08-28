@@ -27,8 +27,8 @@ margin-right: 20px;
 		<h1 class="text-center mt-5">작성한 리뷰 관리(수정)</h1>
 		<form class="d-flex flex-column mt-5" action="/review/userReviewUpdate.do" method="post">
 			<div class="d-flex flex-column" style="margin-left:450px;">
-				<input type="text" name="review_no" th:value="${review.review_no}">
-				<input type="text" name="user_id" th:value="${review.user_id}">
+				<input type="hidden" name="review_no" th:value="${review.review_no}">
+				<input type="hidden" name="user_id" th:value="${review.user_id}">
 			      <input type="text" name="review_title" class="fw-bold w-50" th:value="${review.review_title}"></input>
 					<span>별점 :
 						<input type="number" min="0" step="1" max="5" pattern="[0-5]" name="review_score" th:value="${review.review_score}"></input>

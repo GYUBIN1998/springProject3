@@ -2,25 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>작성한 리뷰(목록)</title>
-</head>
+<title>리뷰 리스트</title>
 <style>
-#pageBody{
-margin: 50px 300px;
-}
-#statusText{
-display:flex; justify-content: flex-end;
-}
-#reviewList{
-border: 1px solid lightgrey;
-}
-#buttons{
-display: flex; justify-content: flex-end; margin-right: 50px;
-}
-#buttons>button{
-margin-right: 20px;
+#title_reviewList{
+    text-align: center;
 }
 </style>
+</head>
 <body>
 	<header th:insert="/header"></header>
 	<main class="container my-5 "style="min-width : 1200px;">
@@ -31,8 +19,8 @@ margin-right: 20px;
 		<ol class="list-group w-50" style="margin-left:300px">
 			<li class="list-group-item d-flex flex-column justify-content-evenly align-items-start" th:each="review : ${reviews}">
 			    <div class="ms-2 me-auto">
-			    	<input type="text" th:value="${review.review_no}">
-			    	<input type="text" th:value="${review.user_id}">
+			    	<input type="hidden" th:value="${review.review_no}">
+			    	<input type="hidden" th:value="${review.user_id}">
 			      <p class="fw-bold" th:text="${review.review_title}"></p>
 					<span>별점 :
 						<span  class="badge bg-primary rounded-pill" >

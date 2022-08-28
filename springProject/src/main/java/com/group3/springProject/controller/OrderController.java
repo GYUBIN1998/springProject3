@@ -69,9 +69,11 @@ public class OrderController {
 			model.addAttribute("orderProdId",orderProdId);
 			LocalDateTime orderTime=LocalDateTime.now();
 			model.addAttribute("orderTime",orderTime);
-			}
-			return"/order/orderPage";
+				}
+			return "/order/orderPage";
+			
 		}
+		
 	//결제정보를 insert
 	@GetMapping("/orderPageInfo")
 	public void orderInsert() {}

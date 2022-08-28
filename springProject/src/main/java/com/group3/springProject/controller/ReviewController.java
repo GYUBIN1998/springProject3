@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.group3.springProject.dto.Review;
+import com.group3.springProject.dto.User;
 import com.group3.springProject.mapper.ReviewMapper;
 @Controller
 @RequestMapping("/review")
@@ -21,10 +23,13 @@ public class ReviewController {
 	@GetMapping("/userReviewList/{userId}")
 	public String UserReviewList(@PathVariable String userId,
 								Review review,
+								@SessionAttribute User loginUser,
 								Model model) {
-		List<Review> reviews=reviewMapper.selectByUserId(userId);
-		model.addAttribute("reviews",reviews);
-		model.addAttribute("userId",userId);
+		if(loginUser!=null) {
+			List<Review> reviews=reviewMapper.selectByUserId(userId);
+			model.addAttribute("reviews",reviews);
+			model.addAttribute("userId",userId);
+		}
 		return"/review/userReviewList";
 		
 	}
@@ -32,10 +37,13 @@ public class ReviewController {
 	public String UserReviewUpdate(
 			@PathVariable int reviewNo,
 			Review review,
-			Model model
+			Model model,
+			@SessionAttribute User loginUser
 			) {
-		review=reviewMapper.selectByReviewNo(reviewNo);
-		model.addAttribute(review);
+		if(loginUser!=null) {
+			review=reviewMapper.selectByReviewNo(reviewNo);
+			model.addAttribute(review);
+		}
 		return"/review/userReviewUpdate";
 	}
 	@PostMapping("/userReviewUpdate.do")
