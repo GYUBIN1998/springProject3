@@ -52,12 +52,25 @@ public class ReviewController {
 			) {
 		int update=0;
 		update=reviewMapper.updateByReviewNo(review);
-		System.out.println(update);
 		if(update>0) {
 			return "redirect:/review/userReviewList/"+review.getUser_id();
 		}else {
 			return "redirect:/review/userReviewUpdate/"+review.getReview_no();
 		}
 	}
-	
+	@GetMapping("/delete/{reviewNo}")
+	public String delete(@PathVariable int reviewNo,
+						@SessionAttribute User loginUser) {
+		int delete=0;
+		try {
+			delete=reviewMapper.deleteByReviewNo(reviewNo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(delete>0) {
+			return "redirect:/review/userReviewList/"+loginUser.getUser_id();
+		} else {
+			return "redirect:/review/userReviewUpdate/"+reviewNo;
+		}
+	}
 }
