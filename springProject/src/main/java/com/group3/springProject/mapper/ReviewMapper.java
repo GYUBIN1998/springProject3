@@ -14,5 +14,5 @@ public interface ReviewMapper {
 	List<Review> selectByUserId(String userId);
 	Review selectByReviewNo(int reviewNo);
 	int updateByReviewNo(Review review);
-	
+	int deleteByReviewNo(int reviewNo);
 }

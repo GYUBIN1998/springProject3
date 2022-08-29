@@ -29,4 +29,7 @@
 			review_score=#{review_score}
 			WHERE review_no=#{review_no}
 	</update>
+	<delete id="deleteByReviewNo" parameterType="int">
+		DELETE FROM REVIEW WHERE review_no=#{reviewNo}
+	</delete>
 </mapper>
