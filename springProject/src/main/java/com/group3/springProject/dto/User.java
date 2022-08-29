@@ -16,7 +16,7 @@ import lombok.Data;
 | user_addr_postcode | varchar(255) | NO   |     | NULL    |       |
 | user_addr_main     | varchar(255) | NO   |     | NULL    |       |
 | user_addr_detail   | varchar(255) | NO   |     | NULL    |       |
-| user_addr_extra    | varchar(255) | NO   |     | NULL    |       |
+| user_addr_extra    | varchar(255) | NO   |     | (없음)   |       |
 +--------------------+--------------+------+-----+---------+-------+
 */
 

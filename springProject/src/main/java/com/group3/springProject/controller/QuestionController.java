@@ -36,10 +36,10 @@ public class QuestionController {
 		int rowCount = 0;
 		List<QnaBoard> qnaList = null;
 		
-		if(field != null && !field.equals("")) {
+		if(field != null && !field.equals("")) { // 검색
 			qnaList = questionMapper.selectQnaAll(startRow, row, field, search);	
 			rowCount = questionMapper.selectQnaAllCount(field, search);
-		} else {
+		} else { // 검색(x)
 			qnaList = questionMapper.selectQnaAll(startRow, row, null, null);
 			rowCount = questionMapper.selectQnaAllCount(null, null);
 		}
@@ -72,15 +72,21 @@ public class QuestionController {
 		List<FaqBoard> faqList = null; 
 		List<FaqBoard> faqCategoryList = null;
 		
-		if(field != null && !field.equals("")) {
+		if(field != null && !field.equals("")) { // 검색
+			// faq 전체 검색
 			faqList = questionMapper.selectFaqAll(startRow, row, field, search);
-			faqCategoryList = questionMapper.selectFaqCategory(faq_division_no, startRow, row, field, search);
 			rowCount = questionMapper.selectFaqAllCount(field, search);
+			
+			// faq 카테고리 선택 후 검색
+			faqCategoryList = questionMapper.selectFaqCategory(faq_division_no, startRow, row, field, search);
 			categoryCount = questionMapper.selectFaqCategoryCount(faq_division_no, field, search);
-		} else {
+		} else { // 검색(x)
+			// faq 전체 출력
 			faqList = questionMapper.selectFaqAll(startRow, row, null, null);
-			faqCategoryList = questionMapper.selectFaqCategory(faq_division_no, startRow, row, null, null);
 			rowCount = questionMapper.selectFaqAllCount(null, null);
+			
+			// faq 카테고리 선택 후 출력
+			faqCategoryList = questionMapper.selectFaqCategory(faq_division_no, startRow, row, null, null);
 			categoryCount = questionMapper.selectFaqCategoryCount(faq_division_no, null, null);
 		}
 		
