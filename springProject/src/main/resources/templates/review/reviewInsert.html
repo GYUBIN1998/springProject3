@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/%22%3E
+<head>
+<meta charset="UTF-8">
+<title>리뷰 등록 페이지</title>
+<style>
+  a{
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+    <!--페이지 상단-->
+  <header th:insert="/header"></header>
+
+    <main class="container">
+         <h1 class="m-3">리뷰 등록 페이지</h1>
+
+         <form  action="/review/reviewlist.do" method="post" class="row g-3 needs-validation" validate enctype="multipart/form-data">
+              <div class="mb-3 was-validated">
+                <label for="inputTitle" class="form-label">타이틀</label>
+                <input name="title" class="form-control" id="inputTitle" placeholder="타이틀을 입력하세요" required>
+                <div class="invalid-feedback">
+                </div>
+              </div>
+               <div class="mb-3">
+                <label for="inputTitle" class="form-label">이미지</label><br>
+
+                <input name="imgFiles" class="form-control mb-1" type="file"><br>
+                <input name="imgFiles" class="form-control mb-1" type="file"><br>
+                <input name="imgFiles" class="form-control mb-1" type="file"><br>
+                <input name="imgFiles" class="form-control mb-1" type="file"><br>
+                <input name="imgFiles" class="form-control mb-1" type="file">
+              </div>
+
+
+              <div class="mb-3 was-validated">
+                <label for="inputContents" class="form-label">내용</label><br>
+                <textarea name="contents" class="form-control" id="inputContents" placeholder="내용을 입력하세요" required></textarea>
+              </div>
+
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit">등록</button>
+          <button class="btn btn-primary" type="submit"><a href="./reviewList.html" type="none">취소</a></button>
+              </div>
+        </form>
+
+    </main>
+  <!--페이지 하단-->
+  <footer th:insert="/footer"></footer>
+</body>
+</html>

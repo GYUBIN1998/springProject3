@@ -1,5 +1,5 @@
 package com.group3.springProject.controller;
-
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,15 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.group3.springProject.dto.IdCheck;
 import com.group3.springProject.dto.PhoneCheck;
 import com.group3.springProject.dto.EmailCheck;
 import com.group3.springProject.dto.User;
 import com.group3.springProject.dto.IdCheck;
 import com.group3.springProject.mapper.UserMapper;
-
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -33,10 +32,15 @@ public class UserController {
 		return "/user/detail";
 	};
 	
+	//회원정보 수정
 	@PostMapping("/update.do")
 	public String update(User user) {
 		int update=0;
-		update=userMapper.updateOne(user);
+		try {
+			update=userMapper.updateOne(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if(update>0) {
 			return "redirect:/";
 		} else {
@@ -96,5 +100,33 @@ public class UserController {
 		} else {		
 			return "redirect:/user/signup";
 		}		
+	}
+	
+	@GetMapping("/login.do")
+	public void login() {}
+	@PostMapping("/login.do")
+	public String login(
+			@RequestParam(value = "user_id")String user_id,
+			@RequestParam(value = "user_pw")String user_pw,
+			HttpSession session
+			) {
+		User user = null;
+		try {
+			user=userMapper.selectPwOne(user_id, user_pw);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(user);
+		if(user != null) {
+			session.setAttribute("loginUser", user);
+			return "redirect:/";
+		}else {
+			return "redirect:/user/login.do";
+		}
+	}
+	@GetMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.removeAttribute("loginUser");
+		return "redirect:/";
 	}
 }

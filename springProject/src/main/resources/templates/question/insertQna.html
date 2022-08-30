@@ -54,10 +54,13 @@
 	<div class="container">
 		<form action="insertQna.do" method="post">
 			<div class="wd1000 mb10">
-				<input id="qnaTitle" class="form-control" type="text" autofocus="autofocus" placeholder="제목을 입력하세요.">
+				<input name="qnaboard_title" id="qnaTitle" class="form-control" type="text" autofocus="autofocus" placeholder="제목을 입력하세요.">
+			</div>
+			<div class="mb10" hidden="true">
+				<input name="user.user_id" class="form-control" type="text" readonly th:value="${session.loginUser.user_id}">
 			</div>
 			<div>
-				<textarea id="qnaContes" class="form-control" rows="10" maxlength="1000" placeholder="문의하실 내용을 입력하세요." style="resize: none;"></textarea>
+				<textarea name="qnaboard_content" id="qnaContent" class="form-control" rows="10" maxlength="1000" placeholder="문의하실 내용을 입력하세요." style="resize: none;"></textarea>
 			</div>
 			<div>
 				<input type="checkbox" id="secretYn">

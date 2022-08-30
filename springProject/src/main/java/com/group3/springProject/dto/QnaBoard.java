@@ -19,4 +19,6 @@ public class QnaBoard {
 	 private String qnaboard_content;
 	 private String user_id;
 	 private Date post_time;
+	 
+	 private User user;
 }

@@ -35,31 +35,44 @@ public class Paging {
 	}
 	
 	public void setAll() {
-		this.previousPage = page - 1;
-		this.nextPage = page + 1;
-		this.lastPage = rowCount/row + ((rowCount % row > 0) ? 1 : 0);
-		
-		this.isFirst = (page > firstPage) ? true : false;
-		this.isPrevious = (page > firstPage) ? true : false;
-		this.isNext = (page < lastPage) ? true : false;
-		this.isLast = (page < lastPage) ? true : false;
-		
-		this.start = page - 1;
-		this.end = page + 1;
-		
-		if(start < firstPage) {
-			end = end + (-(start) + 1);
-			if(end > lastPage) {
-				end = lastPage;
-				}
-			start = firstPage;
-		}
-		if(end > lastPage) {
-			start = start - (end - lastPage);
+		if(rowCount > 0) {		
+			this.previousPage = page - 1;
+			this.nextPage = page + 1;
+			this.lastPage = rowCount/row + ((rowCount % row > 0) ? 1 : 0);
+			
+			this.isFirst = (page > firstPage) ? true : false;
+			this.isPrevious = (page > firstPage) ? true : false;
+			this.isNext = (page < lastPage) ? true : false;
+			this.isLast = (page < lastPage) ? true : false;
+			
+			this.start = page - 1;
+			this.end = page + 1;
+			
 			if(start < firstPage) {
+				end = end + (-(start) + 1);
+				if(end > lastPage) {
+					end = lastPage;
+					}
 				start = firstPage;
-				}
-			end = lastPage;
+			}
+			if(end > lastPage) {
+				start = start - (end - lastPage);
+				if(start < firstPage) {
+					start = firstPage;
+					}
+				end = lastPage;
+			}
+		} else {
+			this.end=1;
+			this.start=1;
+			this.firstPage=1;
+			this.lastPage=1;
+			this.nextPage=1;
+			this.previousPage=1;
+			this.isFirst=false;
+			this.isLast=false;
+			this.isNext=false;
+			this.isPrevious=false;
 		}
 	}
 }

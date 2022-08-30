@@ -2,7 +2,7 @@
      display: flex;
      justify-content: space-around;
      align-items: center;
-     padding: 30px;
+     padding: 40px;
      min-width: 1200px;
 }
 #header #headerLeft h1 a {
@@ -37,6 +37,10 @@
      text-decoration: none;
      color: black;
      vertical-align: middle;
+}
+#header #headerRight nav ol li a:hover {
+     color: dodgerblue;
+     text-decoration: underline;
 }
 #nav {
  	 padding: 0;

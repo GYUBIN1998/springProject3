@@ -20,12 +20,14 @@ function toggler(event) {
 		}	
 	});
 };
+
 function dropdown1Mouseover(event) {
 	if(toggleBtn.className == "navbar-toggler collapsed") {
 		dropdownSubmenu[0].style.display = 'block'; 
 		dropdownSubmenu[0].style.position = 'absolute';			
 	}
 }
+
 function dropdown1Mouseout(event) {
 	if(toggleBtn.className == "navbar-toggler collapsed") {		
 		dropdownSubmenu[0].style.display = 'none';

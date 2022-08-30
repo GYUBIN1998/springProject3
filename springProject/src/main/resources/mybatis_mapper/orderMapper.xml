@@ -11,12 +11,24 @@
 			<result column="user_name" property="user_name"/>	
 			<result column="user_phone" property="user_phone"/>	
 			<result column="user_email" property="user_email"/>	
-			<result column="user_adress" property="user_adress"/>	
+			<result column="user_addr_postcode" property="user_addr_postcode"/>	
+			<result column="user_addr_main" property="user_addr_main"/>	
+			<result column="user_addr_detail" property="user_addr_detail"/>	
+			<result column="user_addr_extra" property="user_addr_extra"/>	
 		</association>
 	</resultMap>
 	
 	<select id="selectByUserId" resultMap="OrderSheetMap">
-	SELECT * FROM ORDERSHEET o LEFT JOIN USER u ON o.user_id=u.user_id WHERE o.user_id=#{userId}
+	SELECT o.*, u.*
+	FROM ORDERSHEET o
+	
+	LEFT JOIN USER u USING (user_id)
+	
+	WHERE o.user_id=#{userId}
 	</select>
+	<insert id="insertOrderInfo" parameterType="OrderSheet">
+		INSERT INTO ORDERSHEET (user_id,order_type,order_time,order_name,order_phone,order_email,order_addr_postcode,order_addr_main,order_addr_detail,order_addr_extra) 
+		VALUES (#{userId},#{orderType},#{orderTime},#{name},#{phone},#{email},#{orderAddrPostcode},#{addr_main},#{addr_detail},#{addr_extra})
+	</insert>
 
 </mapper>

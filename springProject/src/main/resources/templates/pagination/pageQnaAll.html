@@ -3,27 +3,27 @@
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item" th:classappend="${(pageQnaAll.isFirst) ? '' : 'disabled'}">
-      <a class="page-link" th:href="@{{url}{page}(url=${pageQnaAll.url}, page=${pageQnaAll.firstPage})}" aria-label="Previous">
+      <a class="page-link" th:href="@{{url}{page}(url=${pageQnaAll.url}, page=${pageQnaAll.firstPage}, field=${param.field}, search=${param.search}, sort=${param.sort}, direct=${param.direct})}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     <li class="page-item" th:classappend="${(pageQnaAll.isPrevious) ? '' : 'disabled'}">
-      <a class="page-link" th:href="@{{url}{page}(url=${pageQnaAll.url}, page=${pageQnaAll.previousPage})}">
+      <a class="page-link" th:href="@{{url}{page}(url=${pageQnaAll.url}, page=${pageQnaAll.previousPage}, field=${param.field}, search=${param.search}, sort=${param.sort}, direct=${param.direct})}">
         Prev
       </a>
     </li>
     <th:block th:each="n : ${#numbers.sequence(pageQnaAll.start, pageQnaAll.end)}">
 	    <li class="page-item" th:classappend="${(pageQnaAll.page == n) ? 'active' : ''}">
-	    	<a class="page-link" th:href="@{{url}{page}(url=${pageQnaAll.url}, page=${n})}" th:text="${n}"></a>
+	    	<a class="page-link" th:href="@{{url}{page}(url=${pageQnaAll.url}, page=${n}, field=${param.field}, search=${param.search}, sort=${param.sort}, direct=${param.direct})}" th:text="${n}"></a>
 	    </li>  
     </th:block>
     <li class="page-item" th:classappend="${(pageQnaAll.isNext) ? '' : 'disabled'}">
-      <a class="page-link" th:href="@{{url}{page}(url=${pageQnaAll.url}, page=${pageQnaAll.nextPage})}">
+      <a class="page-link" th:href="@{{url}{page}(url=${pageQnaAll.url}, page=${pageQnaAll.nextPage}, field=${param.field}, search=${param.search}, sort=${param.sort}, direct=${param.direct})}">
         Next
       </a>
     </li>
     <li class="page-item" th:classappend="${(pageQnaAll.isLast) ? '' : 'disabled'}">
-      <a class="page-link" th:href="@{{url}{page}(url=${pageQnaAll.url}, page=${pageQnaAll.lastPage})}" aria-label="Next">
+      <a class="page-link" th:href="@{{url}{page}(url=${pageQnaAll.url}, page=${pageQnaAll.lastPage}, field=${param.field}, search=${param.search}, sort=${param.sort}, direct=${param.direct})}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
