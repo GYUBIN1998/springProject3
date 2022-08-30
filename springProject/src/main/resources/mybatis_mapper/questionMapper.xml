@@ -24,6 +24,7 @@
 		<if test="field != null">
 			WHERE ${field} LIKE CONCAT('%', #{search}, '%')
 		</if>
+		ORDER BY qnaboard_no DESC
 		LIMIT #{startRow}, #{row}
 	</select>
 	<select id="selectQnaAllCount" resultType="int"> <!-- qna 전체 검색 및 페이징 -->
