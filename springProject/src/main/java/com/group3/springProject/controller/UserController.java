@@ -129,4 +129,8 @@ public class UserController {
 		session.removeAttribute("loginUser");
 		return "redirect:/";
 	}
+	@GetMapping("/mypage.do")
+	public String mypage() {
+		return"/user/mypage";
+	}
 }

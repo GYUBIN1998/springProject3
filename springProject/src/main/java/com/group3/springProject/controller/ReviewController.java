@@ -73,4 +73,12 @@ public class ReviewController {
 			return "redirect:/review/userReviewUpdate/"+reviewNo;
 		}
 	}
+	@GetMapping("/reviewList.do")
+	public String reviewList () {
+		return"/review/reviewList";
+	}
+	@GetMapping("/reviewInsert.do")
+	public String reviewInsert() {
+		return"/review/reviewInsert";
+	}
 }
