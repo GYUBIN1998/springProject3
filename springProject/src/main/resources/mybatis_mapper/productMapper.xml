@@ -9,12 +9,23 @@
 	<result column="prod_stock" property="prod_stock"/>
 	<result column="category_code" property="category_code"/>
 	<result column="prod_img" property="prod_img"/>
-	<result column="division_code" property="division_code"/>
 	<result column="good" property="good"/>
 	<result column="shipping_id" property="shipping_id"/>
+	<association property="notebook" javaType="Notebook">
+		<id column="division_code" property="division_code"/>
+		<result column="notebook_name" property="notebook_name"/>
+		<result column="maker" property="maker"/>
+		<result column="main_cpu" property="main_cpu"/>
+		<result column="screen_size" property="screen_size"/>
+		<result column="memory_size" property="memory_size"/>
+		<result column="storage_size" property="storage_size"/>
+		<result column="weight" property="weight"/>
+	</association>
 	</resultMap>
-	<select id="selectAll" resultType="Product">
+	<select id="selectAll" resultMap="ProductMap">
 		SELECT * FROM PRODUCT 
+		LEFT JOIN NOTEBOOK
+		USING(division_code)
 		<if test="search != null">
 			WHERE prod_name LIKE CONCAT('%', #{search}, '%')
 		</if>
@@ -31,6 +42,8 @@
 	</select>
 	<select id="selectAllCount" resultType="int">
 		SELECT COUNT(*) FROM PRODUCT
+		LEFT JOIN NOTEBOOK
+		USING(division_code)
 		<if test="search != null">
 			WHERE prod_name LIKE CONCAT('%', #{search}, '%')
 		</if>

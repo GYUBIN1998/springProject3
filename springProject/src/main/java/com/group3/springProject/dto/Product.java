@@ -26,7 +26,7 @@ public class Product {
 	 private int prod_stock;
 	 private String category_code;
 	 private String prod_img;
-	 private int division_code;
+	 private Notebook notebook;
 	 private int good;
 	 private String shipping_id;
 }

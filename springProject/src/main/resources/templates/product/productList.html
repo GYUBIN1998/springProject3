@@ -17,15 +17,22 @@
 	<div th:insert="/product/filter" id="filter"></div>
 	<nav class="sticky-top" id="filterNav" th:insert="/product/productNav"></nav>
 	<ul id="productContainer">
-        <li th:each="product : ${products}">
+        <li id="productItem" th:each="product : ${products}">
           <div class="productList border">
             <div class="thumbnail border">이미지 영역</div>
             <div class="listInfo">
                 <div class="title">
                     <a th:href="@{/product/productDetail/{prodId}(prodId=${product.prod_id})}" th:text="${product.prod_name}"></a>
                 </div>
-                <div class="detail border">    
-                    제품 설명란        
+                <div class="detail">    
+                    <ul>
+                    	<li th:text="'제조사 : ' + ${product.notebook.maker}"></li>
+                    	<li th:text="'CPU 종류 : ' + ${product.notebook.main_cpu}"></li>
+                    	<li th:text="'화면 크기 : ' + ${product.notebook.screen_size} + '인치'"></li>
+                    	<li th:text="'메모리 용량 : ' + ${product.notebook.memory_size}"></li>
+                    	<li th:text="'저장 용량 : ' + ${product.notebook.storage_size}"></li>
+                    	<li th:text="'무게 : ' + ${product.notebook.weight} + 'kg'"></li>
+                    </ul>      
                 </div>
                 <div class="properties">
                     <span id="sale" class="property text-danger border border-danger">SALE</span>
@@ -64,7 +71,7 @@
 					</svg>
 	                <i class="bi bi-star"></i>
                 </span>
-                <span>3.5</span>
+                <span th:text="${product.good}"></span>
                 </div>
                 <div class="basketBuy btn-group">
                     <a href="#" class="btn btn-light border">장바구니</a>
