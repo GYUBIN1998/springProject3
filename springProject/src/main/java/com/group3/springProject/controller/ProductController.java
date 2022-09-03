@@ -22,6 +22,8 @@ public class ProductController {
 	public String productList(
 			@PathVariable int page, 
 			@RequestParam(required = false) String search,
+			@RequestParam(required = false) String startMoney,
+			@RequestParam(required = false) String endMoney,
 			@RequestParam(required = false) String sort,
 			@RequestParam(required = false, defaultValue = "desc") String direct,
 			Model model) {
@@ -31,22 +33,42 @@ public class ProductController {
 		int rowCount = 0;
 		List<Product> products = null;
 		
-		if((search != null && !search.equals(""))) { // 검색
-			if((sort != null && !sort.equals(""))) { // 검색 + 정렬
-				products = productMapper.selectAll(startRow, row, search, sort, direct);
-				rowCount = productMapper.selectAllCount(search, sort, direct);	
-			} else { // 검색 + 정렬(x)
-				products = productMapper.selectAll(startRow, row, search, null, null);
-				rowCount = productMapper.selectAllCount(search, null, null);	
+		if((search != null && !search.equals(""))) { // 검색(o)
+			if((sort != null && !sort.equals(""))) { // 검색(o) + 정렬(o)
+				if((startMoney != null && !startMoney.equals("")) && (endMoney != null && !endMoney.equals(""))) { // 검색(o) + 정렬(o) + 가격 검색(o)
+					products = productMapper.selectAll(startRow, row, search, startMoney, endMoney, sort, direct);
+					rowCount = productMapper.selectAllCount(search, startMoney, endMoney, sort, direct);						
+				} else { // 검색(o) + 정렬(o) + 가격 검색(x)
+					products = productMapper.selectAll(startRow, row, search, null, null, sort, direct);
+					rowCount = productMapper.selectAllCount(search, null, null, sort, direct);
+				}
+			} else { // 검색(o) + 정렬(x)
+				if((startMoney != null && !startMoney.equals("")) && (endMoney != null && !endMoney.equals(""))) { // 검색(o) + 정렬(x) + 가격 검색(o)
+					products = productMapper.selectAll(startRow, row, search, startMoney, endMoney, null, null);
+					rowCount = productMapper.selectAllCount(search, startMoney, endMoney, null, null);						
+				} else { // 검색(o) + 정렬(x) + 가격 검색(x)
+					products = productMapper.selectAll(startRow, row, search, null, null, null, null);
+					rowCount = productMapper.selectAllCount(search, null, null, null, null);
+				}	
 			}
 			System.out.println(products);
 		} else { // 검색(x)
-			if((sort != null && !sort.equals(""))) { // 검색(x) + 정렬
-				products = productMapper.selectAll(startRow, row, null, sort, direct);
-				rowCount = productMapper.selectAllCount(null, sort, direct);	
+			if((sort != null && !sort.equals(""))) { // 검색(x) + 정렬(o)
+				if((startMoney != null && !startMoney.equals("")) && (endMoney != null && !endMoney.equals(""))) { // 검색(x) + 정렬(o) + 가격 검색(o)
+					products = productMapper.selectAll(startRow, row, null, startMoney, endMoney, sort, direct);
+					rowCount = productMapper.selectAllCount(null, startMoney, endMoney, sort, direct);						
+				} else { // 검색(x) + 정렬(o) + 가격 검색(x)
+					products = productMapper.selectAll(startRow, row, null, null, null, sort, direct);
+					rowCount = productMapper.selectAllCount(null, null, null, sort, direct);
+				}
 			} else { // 검색(x) + 정렬(x)
-				products = productMapper.selectAll(startRow, row, null, null, null);
-				rowCount = productMapper.selectAllCount(null, null, null);	
+				if((startMoney != null && !startMoney.equals("")) && (endMoney != null && !endMoney.equals(""))) { // 검색(x) + 정렬(x) + 가격 검색(o)
+					products = productMapper.selectAll(startRow, row, null, startMoney, endMoney, null, null);
+					rowCount = productMapper.selectAllCount(null, startMoney, endMoney, null, null);						
+				} else { // 검색(x) + 정렬(x) + 가격 검색(x)
+					products = productMapper.selectAll(startRow, row, null, null, null, null, null);
+					rowCount = productMapper.selectAllCount(null, null, null, null, null);
+				}
 			}
 			System.out.println(products);
 		}

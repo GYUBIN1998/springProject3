@@ -14,19 +14,19 @@
 	    <div class="collapse navbar-collapse" id="navbarNavDropdown">
 	      <ul class="navbar-nav d-flex justify-content-around" style="width: 100%;">
 	        <li class="nav-item">
-	          	<a class="nav-link" aria-current="page" th:href="@{./1(search=${param.search}, sort=good, direct=desc)}">인기순</a>
+	          	<a class="nav-link" th:href="@{./1(search=${param.search}, startMoney=${param.startMoney}, endMoney=${param.endMoney}, sort=good, direct=desc)}">인기순</a>
 	        </li>
 	        <li class="nav-item">
-	          	<a class="nav-link" th:href="@{./1(search=${param.search}, sort=prod_name, direct=asc)}">오름차순</a>
+	          	<a class="nav-link" th:href="@{./1(search=${param.search}, startMoney=${param.startMoney}, endMoney=${param.endMoney}, sort=prod_name, direct=asc)}">오름차순</a>
 	        </li>
 	        <li class="nav-item">
-	          	<a class="nav-link" th:href="@{./1(search=${param.search}, sort=prod_name, direct=desc)}">내림차순</a>
+	          	<a class="nav-link" th:href="@{./1(search=${param.search}, startMoney=${param.startMoney}, endMoney=${param.endMoney}, sort=prod_name, direct=desc)}">내림차순</a>
 	        </li>
 	        <li class="nav-item">
-	          	<a class="nav-link" th:href="@{./1(search=${param.search}, sort=prod_price, direct=asc)}">낮은가격순</a>
+	          	<a class="nav-link" th:href="@{./1(search=${param.search}, startMoney=${param.startMoney}, endMoney=${param.endMoney}, sort=prod_price, direct=asc)}">낮은가격순</a>
 	        </li>
 	        <li class="nav-item">
-	          	<a class="nav-link" th:href="@{./1(search=${param.search}, sort=prod_price, direct=desc)}">높은가격순</a>
+	          	<a class="nav-link" th:href="@{./1(search=${param.search}, startMoney=${param.startMoney}, endMoney=${param.endMoney}, sort=prod_price, direct=desc)}">높은가격순</a>
 	        </li>
 	      </ul>
 	    </div>

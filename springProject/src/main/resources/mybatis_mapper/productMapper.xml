@@ -29,6 +29,16 @@
 		<if test="search != null">
 			WHERE prod_name LIKE CONCAT('%', #{search}, '%')
 		</if>
+		<if test="startMoney != null and endMoney != null">
+			<choose>
+				<when test="search != null"> <!-- 검색을 했을 시 where가 이미 사용되었으므로 and를 써야 함 -->
+					AND prod_price BETWEEN #{startMoney} AND #{endMoney}	
+				</when>
+				<otherwise> <!-- 검색을 안 했을 시 where가 없으므로 and가 아니라 where를 써야 함 -->
+					WHERE prod_price BETWEEN #{startMoney} AND #{endMoney}
+				</otherwise>
+			</choose>
+		</if>
 		<if test="sort != null">
 			ORDER BY ${sort} 
 		</if>
@@ -46,6 +56,16 @@
 		USING(division_code)
 		<if test="search != null">
 			WHERE prod_name LIKE CONCAT('%', #{search}, '%')
+		</if>
+		<if test="startMoney != null and endMoney != null">
+			<choose>
+				<when test="search != null"> <!-- 검색을 했을 시 where가 이미 사용되었으므로 and를 써야 함 -->
+					AND prod_price BETWEEN #{startMoney} AND #{endMoney}	
+				</when>
+				<otherwise> <!-- 검색을 안 했을 시 where가 없으므로 and가 아니라 where를 써야 함 -->
+					WHERE prod_price BETWEEN #{startMoney} AND #{endMoney}
+				</otherwise>
+			</choose>
 		</if>
 		<if test="sort != null">
 			ORDER BY ${sort} 

@@ -168,15 +168,18 @@
                 <ul class="filterList">
                     <li class="d-flex" style="align-items: center; vertical-align: middle;">
                      <span>직접 입력</span>
-                     <form class="d-flex" role="search" action="#" id="priceSearchForm" name="priceSearchForm">
+                     <form class="d-flex" role="search" th:action="@{./1}" id="priceSearchForm" name="priceSearchForm">
+						<input type="hidden" name="search" th:value="${param.search}"> <!-- 검색 파라미터 -->
                         <span class="moneyInput">
                             <input class="form-control border" type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="startMoney"><label>원</label>
                             ~
                             <input class="form-control border" type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="endMoney"><label>원</label>
                         </span>
-						<button class="btn btn-secondary" type="submit" style="padding: 0; width: 25px; height: 25px; margin-left: 10px;">
+						<button class="btn btn-light" type="submit" style="padding: 0; width: 25px; height: 25px; margin-left: 10px;">
 						    <img src="/public/img/pngegg.png">
 						</button>
+						<input type="hidden" name="sort" th:value="${param.sort}"> <!-- 정렬 파라미터 -->
+						<input type="hidden" name="direct" th:value="${param.direct}"> <!-- 정렬 방향 파라미터 -->
 					 </form>
                     </li>
                 </ul>
