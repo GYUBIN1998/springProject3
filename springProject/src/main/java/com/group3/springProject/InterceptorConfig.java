@@ -6,11 +6,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.group3.springProject.interceptor.LoginCheckInterceptor;
 @Configuration
-public class InterceptorConfig implements WebMvcConfigurer{
+public class InterceptorConfig  implements WebMvcConfigurer{
 	@Autowired
-	private LoginCheckInterceptor loginCheckInterceptor;
+	LoginCheckInterceptor loginCheckInterceptor;
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(loginCheckInterceptor);   
 	}
 }

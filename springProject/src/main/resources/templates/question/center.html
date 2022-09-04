@@ -56,28 +56,31 @@
      
 </style>
 <body>
+	<header th:insert="/header"></header>
 	<div id="center">
 		<h1>고객센터</h1>	
 	</div>
 	<hr>
 	<div id="box1">
           <div id="qna">
-               <a href=""><h1>QnA</h1></a>
+               <a href="/question/qnaList/1"><h1>QnA</h1></a>
           </div>
           
           <div id="faq">
-               <a href=""><h1>FAQ</h1></a>
+               <a href="/question/faqList/0/1"><h1>FAQ</h1></a>
           </div>
      </div>
-	<div id="one">
-          <a href=""><h1>1대1 문의</h1></a>
+	 <div id="one">
+          <a href="/question/insertQna.do"><h1>1대1 문의</h1></a>
+          <a href="/question/myQna/$loginUser.getUserId()"><h1>내 문의글</h1></a>          
      </div>
      <div id="info">
           <p>전화 연결</p>
           <p>영업시간 : 09:00 ~ 18:00</p>
           <p>공휴일, 주말 제외</p>
-          <p>전화번호 1588-0000</p>
+          <p>전화번호 1234-5678</p>
      </div>
      <hr>
+     <footer th:insert="/footer"></footer>
 </body>
 </html>

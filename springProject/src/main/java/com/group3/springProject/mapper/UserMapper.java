@@ -16,4 +16,6 @@ public interface UserMapper {
 	User selectOne(String user_id);
 	public int updateOne(User user);
 	User selectPwOne(String user_id, String user_pw);
+	
+	User selectFindId(String user_name, String user_email);
 }
