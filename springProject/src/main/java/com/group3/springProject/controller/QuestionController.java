@@ -206,4 +206,24 @@ public class QuestionController {
 			return "redirect:/user/login.do";
 		}
 	}
+	
+	
+	@GetMapping("/myQna/{userId}")
+	public String myQna(@PathVariable String userId, QnaBoard qnaboard, @SessionAttribute User loginUser, Model model) {	
+		List<QnaBoard> qnaboards=questionMapper.selectByUserId(userId);
+		if(loginUser!=null && loginUser.getUser_id().equals(userId)) {
+			model.addAttribute("qnaboards",qnaboards);		
+			model.addAttribute("userId",userId);
+			return "/question/myQna";
+		}else {
+			return "redirect:/user/login.do";
+		}
+	}
+	
+	@GetMapping("/center")
+	public String center() {
+		return "/question/center";
+	}
+	
+	
 }

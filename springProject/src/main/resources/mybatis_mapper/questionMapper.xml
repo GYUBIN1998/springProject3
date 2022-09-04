@@ -77,4 +77,11 @@
 	<delete id="deleteQnaOne">
 		DELETE FROM QNABOARD WHERE qnaboard_no=#{qnaboard_no} 
 	</delete>
+	
+	
+	
+	<select id="selectByUserId" resultMap="QnaBoardMap">
+		SELECT * FROM QNABOARD WHERE user_id=#{userId}
+	</select>
+
 </mapper>

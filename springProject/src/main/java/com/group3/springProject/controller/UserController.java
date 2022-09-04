@@ -1,4 +1,8 @@
 package com.group3.springProject.controller;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -108,8 +112,10 @@ public class UserController {
 	public String login(
 			@RequestParam(value = "user_id")String user_id,
 			@RequestParam(value = "user_pw")String user_pw,
-			HttpSession session
-			) {
+			HttpSession session,
+			HttpServletRequest request,
+			HttpServletResponse response
+			) throws Exception{
 		User user = null;
 		try {
 			user=userMapper.selectPwOne(user_id, user_pw);
@@ -121,12 +127,22 @@ public class UserController {
 			session.setAttribute("loginUser", user);
 			return "redirect:/";
 		}else {
+			response.setContentType("text/html; charset=UTF-8");			
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('아이디 또는 비밀번호를 확인해주세요'); history.go(-1); </script>");
+			out.flush();
 			return "redirect:/user/login.do";
 		}
 	}
+
 	@GetMapping("/logout.do")
 	public String logout(HttpSession session) {
 		session.removeAttribute("loginUser");
 		return "redirect:/";
+	}
+	
+	@GetMapping("/cart")
+	public String center() {
+		return "/user/cart";
 	}
 }
