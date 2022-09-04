@@ -35,4 +35,9 @@ public interface QuestionMapper {
 	public int insertQnaOne(QnaBoard qnaBoard);
 	public int updateQnaOne(QnaBoard qnaBoard);
 	public int deleteQnaOne(int qnaBoardNo);
+	
+	
+	
+	public List<QnaBoard> selectByUserId(String userId);
+
 }

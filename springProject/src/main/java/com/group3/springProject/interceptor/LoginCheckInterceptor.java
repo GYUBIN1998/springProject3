@@ -15,13 +15,13 @@ public class LoginCheckInterceptor implements HandlerInterceptor{
 		String prevPage = request.getHeader("Referer"); // 요청한 페이지의 이전 페이지(로그인하면 되돌아갈 페이지)
 		//System.out.println("prevPage : " + prevPage);
 		HttpSession session = request.getSession();
-		Object loginUser = session.getAttribute("");
+		Object loginUser = session.getAttribute("loginUser");
 		if(loginUser != null) {
 			return true;			
 		} else { 
-			session.setAttribute("", "");
+			session.setAttribute("msg", "로그인하세요");
 			session.setAttribute("redirectPage", prevPage); // 로그인 성공 시 이동할 페이지
-			response.sendRedirect("");
+			response.sendRedirect("/user/login.do");
 			return false; // 요청한 controller로 전달하지 않음 
 		}
 	}
