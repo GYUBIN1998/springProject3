@@ -42,4 +42,8 @@
 	<select id="selectPwOne" resultType="User">
 		SELECT * FROM USER WHERE user_id = #{user_id} AND user_pw = #{user_pw}
 	</select>
+	
+	<select id="selectFindId" resultType="User">
+		SELECT user_id FROM USER WHERE user_name = #{user_name} AND user_email = #{user_email}
+	</select>
 </mapper>

@@ -106,7 +106,8 @@ public class UserController {
 		}		
 	}
 	
-	@GetMapping("/login.do")
+// 로그인	
+	@GetMapping("/login")
 	public void login() {}
 	@PostMapping("/login.do")
 	public String login(
@@ -131,7 +132,7 @@ public class UserController {
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('아이디 또는 비밀번호를 확인해주세요'); history.go(-1); </script>");
 			out.flush();
-			return "redirect:/user/login.do";
+			return "redirect:/user/login";
 		}
 	}
 
@@ -141,8 +142,44 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/findId")
+	public void findId() {}
+	
+	@PostMapping("/findId.do")
+	public String findId(
+			@RequestParam(value = "user_name")String user_name,
+			@RequestParam(value = "user_email")String user_email,
+			HttpSession session,
+			HttpServletRequest request,
+			HttpServletResponse response
+			) throws Exception{
+		User findId = null;
+		try {
+			findId=userMapper.selectFindId(user_name, user_email);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(findId);
+		if(findId != null) {
+			response.setContentType("text/html; charset=UTF-8");			
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('찾았습니다');</script>");
+			out.flush();
+			return "redirect:/user/login";
+		}else {
+			response.setContentType("text/html; charset=UTF-8");			
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('없는 회원입니다.'); history.go(-1); </script>");
+			out.flush();
+			return "redirect:/user/login";
+		}
+	}
+	
+
+// 장바구니
 	@GetMapping("/cart")
-	public String center() {
+	public String cart() {
 		return "/user/cart";
 	}
 }
