@@ -126,13 +126,13 @@ public class UserController {
 		System.out.println(user);
 		if(user != null) {
 			session.setAttribute("loginUser", user);
-			return "redirect:/";
+			return "redirect:/";	
 		}else {
 			response.setContentType("text/html; charset=UTF-8");			
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('아이디 또는 비밀번호를 확인해주세요'); history.go(-1); </script>");
 			out.flush();
-			return "redirect:/user/login";
+			return "redirect:/user/login.do";
 		}
 	}
 
@@ -168,7 +168,7 @@ public class UserController {
 		if(findId != null) {
 			response.setContentType("text/html; charset=UTF-8");			
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('찾았습니다');</script>");
+			out.println("<script>alert('찾았습니다'); </script>");
 			out.flush();
 			return "redirect:/user/login";
 		}else {
