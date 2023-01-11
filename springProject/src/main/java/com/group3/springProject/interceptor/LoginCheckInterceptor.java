@@ -25,14 +25,14 @@ public class LoginCheckInterceptor implements HandlerInterceptor{
 			return false; // 요청한 controller로 전달하지 않음 
 		}
 	}
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		//System.out.println("LoginCheckInterceptor.postHandle : 해당 url이 요청 완료됨(응답 직전)");
-	}
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		//System.out.println("LoginCheckInterceptor.afterCompletion : 해당 url의 응답이 완료된 후(thymeleaf 동적 파일이 실행 완료)");
-	}
+//	@Override
+//	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+//			ModelAndView modelAndView) throws Exception {
+//		//System.out.println("LoginCheckInterceptor.postHandle : 해당 url이 요청 완료됨(응답 직전)");
+//	}
+//	@Override
+//	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+//			throws Exception {
+//		//System.out.println("LoginCheckInterceptor.afterCompletion : 해당 url의 응답이 완료된 후(thymeleaf 동적 파일이 실행 완료)");
+//	}
 }
